@@ -9,7 +9,7 @@
 
   .content {
     background-color: @default-foreground-color;
-    width: 80%;
+    width: @default-page-width;
     display: flex;
     flex-direction: column;
 
@@ -17,16 +17,16 @@
       margin-top: @header-margin;
       margin-left: @header-margin;
       margin-right: @header-margin;
-      font-size: 36px;
+      font-size: @header-logo-font-size;
       color: @default-yellow;
       font-family: Monaco;
     }
 
     .down {
-      margin-top: 26px;
+      margin-top: @header-nav-font-size;
       margin-left: @header-margin;
       margin-right: @header-margin;
-      background-color: @default-background-color;
+      background-color: @default-foreground-color;
       box-shadow: @header-down-shadow;
       border-radius: @default-radius;
 

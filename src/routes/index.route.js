@@ -7,7 +7,7 @@ export default function () {
   return (
       <BrowserRouter>
         <Switch>
-          <DefaultLayout component={Home} exact path='/' />
+          <DefaultLayout component={Home} path='/' />
         </Switch>
       </BrowserRouter>
   );
