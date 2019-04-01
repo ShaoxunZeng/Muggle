@@ -1,0 +1,32 @@
+@import "../../themes/default.less";
+
+.whole {
+  height: @recentmovies-height;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .header {
+    font-size: @default-label-font-size;
+    letter-spacing: @default-label-letter-spacing;
+    color: @default-yellow;
+    margin-top: @header-margin;
+    margin-left: @header-margin;
+  }
+
+  .image-board {
+    margin-top: @header-margin;
+    margin-left: @header-margin;
+    margin-right: @header-margin;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .image {
+      width: 300px;
+      overflow: hidden;
+    }
+  }
+}
