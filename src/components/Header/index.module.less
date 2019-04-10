@@ -17,9 +17,19 @@
       margin-top: @header-margin;
       margin-left: @header-margin + 10px;
       margin-right: @header-margin;
-      font-size: 36px;
-      color: @default-yellow;
-      font-family: Monaco;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      .icon {
+        font-size: 36px;
+        color: @default-yellow;
+        font-family: Monaco;
+      }
+
+      .right {
+
+      }
     }
 
     .down {

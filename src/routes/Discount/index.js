@@ -5,20 +5,14 @@ import ImageBoard from "../../components/ImageBoard";
 import RecentMoives from "../../components/RecentMovies";
 import Button from "../../components/Button";
 
-class Index extends PureComponent {
+class Discount extends PureComponent {
   render() {
     return (
         <div className={styles.whole}>
-          <div className={styles["image-board"]}>
-            <ImageBoard />
-          </div>
-          <div className={styles["recent-movies"]}>
-            <RecentMoives />
-          </div>
-          <Button type="gray"> 立即购买 </Button>
+          Discount
         </div>
     )
   };
 }
 
-export default Index;
+export default Discount;

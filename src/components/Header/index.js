@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { NavLink, withRouter } from "react-router-dom";
 import styles from './index.module.less';
+import UserAvatar from '../Avatar';
 
 class Header extends Component {
     render() {
@@ -8,13 +9,18 @@ class Header extends Component {
             <div className={styles.whole}>
                 <div className={styles.content}>
                     <div className={styles.up}>
-                        MUGGLE  CINEME
+                        <div className={styles.icon}>
+                            MUGGLE  CINEME
+                        </div>
+                        <div className={styles.right}>
+                            <UserAvatar src={"https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"} />
+                        </div>
                     </div>
                     <div className={styles.down}>
                         <nav className={styles.nav}>
                             <NavLink
                                 className={styles["nav-item"]}
-                                exact
+                                exact  // 加一个exact关键字防止主页下面的白条一直都是active
                                 to={"/"}
                                 activeClassName={styles["nav-active"]}
                             >
@@ -23,7 +29,7 @@ class Header extends Component {
                             </NavLink>
                             <NavLink
                                 className={styles["nav-item"]}
-                                to={"/all"}
+                                to={"/allmovies"}
                                 activeClassName={styles["nav-active"]}
                             >
                                 全部影片
