@@ -1,0 +1,35 @@
+@import "../../themes/default.less";
+
+.whole {
+
+}
+
+.button-all {
+  outline: none;
+  border-radius: @default-radius;
+  width: @button-width;
+  height: @button-height;
+  cursor: pointer;
+  letter-spacing: 3px;
+  font-size: 14px;
+  border: 0px;
+}
+
+.button-type {
+  &-yellow {
+    background-color: @default-yellow;
+
+    &:hover {
+      box-shadow: @button-hover-yellow-shadow;
+    }
+  }
+
+  &-gray {
+    background-color: @default-gray;
+    color: @default-white;
+
+    &:hover {
+      box-shadow: @button-hover-yellow-shadow;
+    }
+  }
+}

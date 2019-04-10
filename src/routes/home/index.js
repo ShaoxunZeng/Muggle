@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./index.module.less";
 import ImageBoard from "../../components/ImageBoard";
 import RecentMoives from "../../components/RecentMovies";
+import Button from "../../components/Button";
 
 class Index extends PureComponent {
   render() {
@@ -14,6 +15,7 @@ class Index extends PureComponent {
           <div className={styles["recent-movies"]}>
             <RecentMoives />
           </div>
+          <Button type="gray"> 立即购买 </Button>
         </div>
     )
   };
