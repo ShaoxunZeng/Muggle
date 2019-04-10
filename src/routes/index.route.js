@@ -11,11 +11,11 @@ export default function () {
   return (
       <BrowserRouter>
         <Switch>
-          <DefaultLayout component={Home} exact path='/' />
           <DefaultLayout component={Login} exact path='/login' />
           <DefaultLayout component={AllMovies} exact path='/allmovies' />
           <DefaultLayout component={Discount} exact path='/discount' />
           <DefaultLayout component={PrivateCinema} exact path='/privateCinema' />
+          <DefaultLayout component={Home}  path='/' />
         </Switch>
       </BrowserRouter>
   );
