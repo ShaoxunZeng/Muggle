@@ -4,6 +4,7 @@ import styles from "./index.module.less";
 import ImageBoard from "../../components/ImageBoard";
 import RecentMoives from "../../components/RecentMovies";
 import Button from "../../components/Button";
+import WithHeaderFooter from "../../components/WithHeaderFooter";
 
 class Login extends PureComponent {
   render() {
@@ -15,4 +16,4 @@ class Login extends PureComponent {
   };
 }
 
-export default Login;
+export default WithHeaderFooter(Login);

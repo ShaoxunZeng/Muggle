@@ -4,6 +4,7 @@ import styles from "./index.module.less";
 import ImageBoard from "../../components/ImageBoard";
 import RecentMoives from "../../components/RecentMovies";
 import Button from "../../components/Button";
+import WithHeaderFooter from "../../components/WithHeaderFooter";
 
 class AllMovies extends PureComponent {
   render() {
@@ -15,4 +16,4 @@ class AllMovies extends PureComponent {
   };
 }
 
-export default AllMovies;
+export default WithHeaderFooter(AllMovies);

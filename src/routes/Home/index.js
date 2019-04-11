@@ -4,6 +4,7 @@ import styles from "./index.module.less";
 import ImageBoard from "../../components/ImageBoard";
 import RecentMoives from "../../components/RecentMovies";
 import Button from "../../components/Button";
+import WithHeaderFooter from "../../components/WithHeaderFooter";
 
 class Home extends PureComponent {
   render() {
@@ -21,4 +22,4 @@ class Home extends PureComponent {
   };
 }
 
-export default Home;
+export default WithHeaderFooter(Home);
