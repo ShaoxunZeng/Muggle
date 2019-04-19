@@ -11,22 +11,24 @@
     font-size: @default-label-font-size;
     letter-spacing: @default-label-letter-spacing;
     color: @default-yellow;
-    margin-top: @header-margin;
-    margin-left: @header-margin;
+    margin: @header-margin @header-margin 0 @header-margin;
   }
 
   .image-board {
-    margin-top: @header-margin;
-    margin-left: @header-margin;
-    margin-right: @header-margin;
     height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 
-    .image {
-      width: 300px;
-      overflow: hidden;
+    .image-container {
+      height: 100%;
+      display: flex;
+      align-items: center;
+
+      .image {
+        padding: 10px;
+        width: 200px;
+      }
     }
   }
 }

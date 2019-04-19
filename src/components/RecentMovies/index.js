@@ -9,10 +9,31 @@ class ImageBoard extends Component {
             近期热片
           </div>
           <div className={styles['image-board']}>
-            <div className={styles.image} > <img src={"https://s2.ax1x.com/2019/04/01/Ayk8SI.png"}/></div>
-            <div className={styles.image} > <img src={"https://s2.ax1x.com/2019/04/01/Ayk8SI.png"}/></div>
-            <div className={styles.image} > <img src={"https://s2.ax1x.com/2019/04/01/Ayk8SI.png"}/></div>
-            <div className={styles.image} > <img src={"https://s2.ax1x.com/2019/04/01/Ayk8SI.png"}/></div>
+            <div className={styles['image-container']}>
+              <div className={styles.image}>
+                <img src={"https://s2.ax1x.com/2019/04/01/Ayk8SI.png"} />
+              </div>
+            </div>
+
+            <div className={styles['image-container']}>
+              <div className={styles.image}>
+                <img src={"https://s2.ax1x.com/2019/04/01/Ayk8SI.png"} />
+              </div>
+            </div>
+
+            <div className={styles['image-container']}>
+              <div className={styles.image}>
+                <img src={"https://s2.ax1x.com/2019/04/01/Ayk8SI.png"} />
+              </div>
+            </div>
+
+            <div className={styles['image-container']}>
+              <div className={styles.image}>
+                <img src={"https://s2.ax1x.com/2019/04/01/Ayk8SI.png"} />
+              </div>
+            </div>
+
+
           </div>
         </div>
     )
