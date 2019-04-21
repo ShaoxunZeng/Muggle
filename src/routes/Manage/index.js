@@ -5,18 +5,17 @@ import ImageBoard from "../../components/ImageBoard";
 import RecentMoives from "../../components/RecentMovies";
 import Button from "../../components/Button";
 import WithHeaderFooter from "../../components/WithHeaderFooter";
-import {NavLink} from "react-router-dom";
+import WithSider from "../../components/WithSider";
 
-class Login extends PureComponent {
+class Manage extends PureComponent {
   render() {
     return (
         <div className={styles.whole}>
-          Login
-          <NavLink to='/'> 登陆 </NavLink>
-          <NavLink to='/manage'> 管理员身份登录 </NavLink>
+          Manage
+          <div className={styles.block}/>
         </div>
     )
   };
 }
 
-export default Login;
+export default WithSider(Manage);
