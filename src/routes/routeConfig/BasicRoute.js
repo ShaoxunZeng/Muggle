@@ -6,6 +6,7 @@ import AllMovies from "../AllMovies";
 import Discount from "../Discount";
 import PrivateCinema from "../PrivateCinema";
 import Manage from "../Manage";
+import MovieDetailsPage from "../MovieDetailPage";
 
 export default [
   <Route component={Login} exact path='/login' />,
@@ -13,5 +14,6 @@ export default [
   <Route component={Discount} exact path='/discount' />,
   <Route component={PrivateCinema} exact path='/privateCinema' />,
   <Route component={Manage} exact path='/manage' />,
+  <Route component={MovieDetailsPage} exact path='/moviedetails/:movieId' />,
   <Route component={Home}  path='/' />
 ];
