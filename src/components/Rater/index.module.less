@@ -1,15 +1,23 @@
 @import "../../themes/default.less";
 
-.rater {
+.container {
+  display: flex;
+  flex-direction: row;
 
+  .rater {
+
+  }
+
+  .rater-text{
+    margin-top: 2px;
+    margin-left: 13px;
+    font-size: 22px;
+    color: @default-white;
+  }
 }
 
 :global {
   .ant-rate-star-full {
     color: @default-yellow;
-  }
-
-  .ant-rate-star-zero {
-    color: #1890ff;
   }
 }

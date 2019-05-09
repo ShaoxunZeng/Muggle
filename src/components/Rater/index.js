@@ -2,11 +2,9 @@ import React, {Component} from "react";
 import { Rate } from 'antd';
 import styles from './index.module.less';
 
-const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
-
 class Rater extends Component {
   state = {
-    value: 3,
+    value: 10,
   };
 
   handleChange = (value) => {
@@ -16,10 +14,10 @@ class Rater extends Component {
   render() {
     const { value } = this.state;
     return (
-        <span>
-        <Rate count={10} onChange={this.handleChange} value={value} className={styles.rater} />
-          <span className="ant-rate-text">{desc[value - 1]}</span>
-      </span>
+        <div className={styles.container}>
+          <Rate count={10} onChange={this.handleChange} value={value} className={styles.rater} />
+          <div className={styles['rater-text']}>{value}</div>
+        </div>
     );
   }
 }
