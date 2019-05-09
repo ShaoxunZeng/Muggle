@@ -10,6 +10,7 @@
     margin-left: @header-margin;
     height: 430px;
     width: 430px;
+    box-shadow:0px 10px 26px #181818;
 
     .image {
       width: 100%;
@@ -18,12 +19,13 @@
   }
 
   .details-container {
+    display: flex;
+    flex-direction: column;
     margin-top: @header-margin - 10px;
     margin-left: @header-margin + 30px;
     margin-right: @header-margin;
     height: 430px;
     width: 100%;
-    background-color: #272729;
 
     .name {
       font-weight: 400;
@@ -64,16 +66,82 @@
       }
     }
 
-    .score-rater-container {
-      .score {
-        margin-top: @header-margin;
-        color: @default-yellow;
-        font-size: @moviedetails-score-size;
+    .score {
+      margin-top: @header-margin - 5px;
+      color: @default-yellow;
+      font-size: @moviedetails-score-size;
+    }
+
+    .rater {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+
+      .trangle {
+        margin-top: 20px;
+        margin-left: 10px;
+        width: 30px;
+        background-image: url("../../assets/Triangle/Triangle.svg");
+        background-repeat: no-repeat;
+      }
+
+      .text {
+        width: 120px;
+        margin-top: 13px;
+        font-size: @moviedetails-text-font-size;
+        color: @default-white;
       }
 
       .rater {
-
+        margin-left: 30px;
+        margin-top: 7px;
       }
+    }
+
+    .roles-container {
+      margin-top: 20px;
+      width: 100%;
+      color: @default-white;
+      font-size: @moviedetails-text-font-size;
+      letter-spacing: 6px;
+      display: flex;
+      flex-direction: row;
+
+      .director {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .staring {
+        margin-left: 20px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .all-avators {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+
+        .avator-container {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          overflow: hidden;
+          margin-right: 20px;
+
+          .img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+
+    .i-like {
+      margin-top: 30px;
+      color: @default-yellow;
+      font-size: @moviedetails-text-font-size;
     }
   }
 }
