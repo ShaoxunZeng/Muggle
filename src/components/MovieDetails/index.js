@@ -1,8 +1,13 @@
 import React, {Component} from "react";
 import styles from './index.module.less';
 import Rater from "../Rater";
+import Button from "../Button";
 
 class MovieDetails extends Component {
+  handleLikeButtonClick = function () {
+    alert("已添加到我喜欢")
+  };
+
   render() {
     const {url, name, type, limit, year, time, score, directors, starings} = this.props;
     return (
@@ -11,8 +16,15 @@ class MovieDetails extends Component {
             <img className={styles.image} src={url} alt=""/>
           </div>
           <div className={styles['details-container']}>
-            <div className={styles.name}>{name}</div>
-            <div className={styles.type}>{type}</div>
+            <div className={styles.header}>
+              <div>
+                <div className={styles.name}>{name}</div>
+                <div className={styles.type}>{type}</div>
+              </div>
+              <div className={styles['buy-button']}>
+                <Button type={'yellow'}>立即购买</Button>
+              </div>
+            </div>
             <div className={styles['limit-year-time-container']}>
               <div className={styles.limit}>{limit}</div>
               <div className={styles.dot}/>
@@ -56,7 +68,7 @@ class MovieDetails extends Component {
                 </div>
               </div>
             </div>
-            <div className={styles['i-like']}>+添加到我喜欢</div>
+            <div className={styles['i-like']} onClick={() => this.handleLikeButtonClick()}>+添加到我喜欢</div>
           </div>
         </div>
     )

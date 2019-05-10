@@ -27,16 +27,26 @@
     height: 430px;
     width: 100%;
 
-    .name {
-      font-weight: 400;
-      color: @moviedetails-name-color;
-      font-size: @moviedetails-name-font-size;
-    }
+    .header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
 
-    .type {
-      margin-top: 2px;
-      color: @moviedetails-type-color;
-      font-size: @moviedetails-type-font-size;
+      .name {
+        font-weight: 400;
+        color: @moviedetails-name-color;
+        font-size: @moviedetails-name-font-size;
+      }
+
+      .type {
+        margin-top: 2px;
+        color: @moviedetails-type-color;
+        font-size: @moviedetails-type-font-size;
+      }
+
+      .buy-button {
+        margin-top: 10px;
+      }
     }
 
     .limit-year-time-container {
@@ -142,6 +152,10 @@
       margin-top: 30px;
       color: @default-yellow;
       font-size: @moviedetails-text-font-size;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }
