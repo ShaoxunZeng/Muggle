@@ -2,10 +2,16 @@ import React, {Component} from "react";
 import styles from './index.module.less';
 import Rater from "../Rater";
 import Button from "../Button";
+import {withRouter} from "react-router-dom";
 
 class MovieDetails extends Component {
   handleLikeButtonClick = function () {
-    alert("已添加到我喜欢")
+    alert("已添加到我喜欢");
+  };
+
+  handleBuyButtonClick = function () {
+    const { movieId } = this.props;
+    this.props.history.push(`/movieorder/${movieId}`)
   };
 
   render() {
@@ -22,7 +28,7 @@ class MovieDetails extends Component {
                 <div className={styles.type}>{type}</div>
               </div>
               <div className={styles['buy-button']}>
-                <Button type={'yellow'}>立即购买</Button>
+                <Button type={'yellow'} onClick={() => this.handleBuyButtonClick()}>立即购买</Button>
               </div>
             </div>
             <div className={styles['limit-year-time-container']}>
@@ -75,4 +81,4 @@ class MovieDetails extends Component {
   }
 }
 
-export default MovieDetails;
+export default withRouter(MovieDetails);

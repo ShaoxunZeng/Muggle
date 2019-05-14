@@ -31,7 +31,7 @@ class MovieDetailPage extends PureComponent {
     return (
         <div className={styles.whole}>
           <MovieDetails
-              id={movieId}
+              movieId={movieId}
               url={movieDetails.url}
               name={movieDetails.name}
               type={movieDetails.type}

@@ -9,11 +9,11 @@ const ButtonProps = {
 
 class Button extends Component {
     render() {
-      const { children, type } = this.props;
+      const { children, type, onClick } = this.props;
       const classNames=`${styles["button-all"]} ${styles[`button-type-${type}`]}`;
         return (
             <div className={styles.whole}>
-              <button className={classNames}>{children}</button>
+              <button className={classNames} onClick={onClick}>{children}</button>
             </div>
         )
     }
