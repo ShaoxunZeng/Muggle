@@ -20,13 +20,13 @@ class SeatsPicker extends Component {
      */
     function calculate(rowIndex, columnIndex) {
       let i = 0;
-      while (true) {
-        if (seats[rowIndex][i] == 0) {
-          i += 1;
-        } else {  //TODO
-          return [rowIndex, columnIndex - i];
-        }
+      let realColumnIndex = 0;
+      while (i < columnIndex) {
+        if (seats[rowIndex][i] !== 0)
+          realColumnIndex += 1;
+        i += 1;
       }
+      return [rowIndex, realColumnIndex];
     }
 
     return (
