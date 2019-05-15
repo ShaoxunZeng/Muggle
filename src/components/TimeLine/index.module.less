@@ -1,0 +1,57 @@
+@import "../../themes/default.less";
+
+.whole {
+  width: @timeline-width;
+  height: @timeline-height;
+
+  .background-line {
+    width: 100%;
+    height: 100%;
+    background-color: @default-gray;
+    position: relative;
+
+    .lighter {
+      position: absolute;
+      height: 100%;
+      background-color: @default-yellow;
+      box-shadow: @default-yellow-shadow;
+    }
+  }
+
+  .vertical-line-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+
+    .vertical-line {
+      height: 12px;
+      width: @timeline-height;
+      background-color: @default-gray;
+
+      &-long {
+        margin-bottom: -10px;
+        height: 25px;
+        width: @timeline-height;
+        background-color: @default-yellow;
+        box-shadow: @default-yellow-shadow;
+      }
+    }
+  }
+
+  .text-container {
+    margin-top: 3px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 103%;
+
+    .text {
+      margin-left: -32px;
+      color: @default-gray;
+      font-size: @timeline-text-font-size;
+    }
+  }
+}

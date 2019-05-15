@@ -10,7 +10,7 @@ export default function WithHeaderFooter (WrappedComponent) {
             return (
                 <div className={styles.wholeBody}>
                     <Header/>
-                    <div className={styles.BodyContent}>
+                    <div className={styles.bodyContent}>
                         <WrappedComponent {...passThroughProps} />
                     </div>
                     <Footer />

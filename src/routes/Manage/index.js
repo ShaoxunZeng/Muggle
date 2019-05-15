@@ -1,18 +1,31 @@
-import { PureComponent } from "react";
+import {PureComponent} from "react";
 import React from "react";
 import styles from "./index.module.less";
-import ImageBoard from "../../components/ImageBoard";
-import RecentMoives from "../../components/RecentMovies";
-import Button from "../../components/Button";
-import WithHeaderFooter from "../../components/WithHeaderFooter";
 import WithSider from "../../components/WithSider";
+import TimeLine from "../../components/TimeLine";
+
+let intervals = [{
+  startTime: "7:00",
+  endTime: "9:00"
+},{
+  startTime: "09:30",
+  endTime: "11:30"
+},{
+  startTime: "21:30",
+  endTime: "23:28"
+},{
+  startTime: "18:10",
+  endTime: "20:20"
+}];
 
 class Manage extends PureComponent {
   render() {
     return (
         <div className={styles.whole}>
           Manage
-          <div className={styles.block}/>
+          <div className={styles.block}>
+            <TimeLine intervals={intervals}/>
+          </div>
         </div>
     )
   };
