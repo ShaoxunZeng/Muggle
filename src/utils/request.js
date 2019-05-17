@@ -39,7 +39,7 @@ function checkStatus(response) {
  */
 export default async function request(url, options) {
   const defaultOptions = {
-    credentials: "include"
+    credentials: "include"  //允许token认证
   };
   const newOptions = { ...defaultOptions, ...options };
   if (

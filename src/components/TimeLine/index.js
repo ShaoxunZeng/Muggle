@@ -27,7 +27,7 @@ class TimeLine extends Component {
               const left = percentageToLeft(interval.startTime);
               const right = percentageToLeft(interval.endTime);
               return (
-                  <Popover content={`${interval.startTime} 到 ${interval.endTime}`}>
+                  <Popover content={`${interval.startTime} - ${interval.endTime}`}>
                     <div style={{marginLeft: `${left}%`, width: `${right - left}%`}}
                          className={styles.lighter}/>
                   </Popover>
