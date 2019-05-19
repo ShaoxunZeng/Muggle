@@ -13,14 +13,50 @@
 
   .right {
     width: 100%;
-    .seletors {
 
+    .selectors-container {
+      .selectors {
+        width: 270px;
+        background-color: @default-foreground-darker-color;
+        color: @default-white;
+
+
+        :global {
+          .ant-cascader-menus {
+            height: 0;
+          }
+
+          .ant-cascader-menu-item {
+            height: 0;
+          }
+
+          .ant-cascader {
+            width: 300px;
+
+            &-input {
+              height: 40px;
+            }
+
+            &-picker {
+
+              &-clear {
+                height: 0;
+
+                :hover {
+                  height: 0;
+                }
+              }
+            }
+          }
+        }
+      }
     }
 
-    .picker-info{
+    .picker-info {
       .picker {
 
       }
+
       .information {
 
       }
