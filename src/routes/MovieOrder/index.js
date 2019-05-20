@@ -94,8 +94,7 @@ class MovieOrder extends Component {
       selectedSeats: [],
       selectedScene: {},
       scenes: [{}],
-      sceneId: -1,  //维持一个sceneId用来作为Picker的key，并且可以识别出是否确实切换了影厅
-      reRender: false
+      sceneId: -1  //维持一个sceneId用来作为Picker的key，并且可以识别出是否确实切换了影厅
     };
   }
 
@@ -154,8 +153,7 @@ class MovieOrder extends Component {
         selectedScene: scene,
         seats: scene.seats,
         selectedSeats: [],
-        sceneId: scene.sceneId,
-        reRender: !prevState.reRender
+        sceneId: scene.sceneId
       }})
     }
   };
@@ -195,7 +193,7 @@ class MovieOrder extends Component {
                 <div className={styles.line} style={{marginLeft: 25}}/>
               </div>
               <div className={styles.picker}>
-                <SeatsPicker seats={seats} onSelected={this.handleSelected} sceneId={sceneId} reRender={this.state.reRender}/>
+                <SeatsPicker seats={seats} onSelected={this.handleSelected} sceneId={sceneId}/>
               </div>
             </div>
             <div className={styles.information}>

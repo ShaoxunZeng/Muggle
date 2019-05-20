@@ -28,7 +28,6 @@ class SeatsPicker extends Component {
      * onSelected从父组件传递给子组件
      */
     const {seats, onSelected, sceneId} = this.props;
-    console.log(this.props.reRender);
     return (
         <div className={styles.whole}>
           {seats.map((row, rowIndex) => {
@@ -39,8 +38,9 @@ class SeatsPicker extends Component {
                       return <NoSeat key={sceneId + "_" + columnIndex}/>  //产生唯一的key，不仅是sibling，而且要和别的场次不一样
                     } else return (column == 1
                         ? <SeatTaken key={sceneId + "_" + columnIndex}/>
-                        : <Seat position={this.calculate(seats, rowIndex, columnIndex)}
-                                onSelected={onSelected} reRender={this.props.reRender}/>)
+                        :
+                        <Seat key={sceneId + "_" + columnIndex} position={this.calculate(seats, rowIndex, columnIndex)}
+                              onSelected={onSelected}/>)
                   })}
                 </div>
             )
