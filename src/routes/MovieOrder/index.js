@@ -4,6 +4,9 @@ import styles from "./index.module.less";
 import WithHeaderFooter from "../../components/WithHeaderFooter";
 import SeatsPicker from "../../components/SeatsPicker";
 import {Cascader} from 'antd';
+import RectangleClicked from '../../assets/Rectangle/Clicked.svg';
+import RectangleUnClicked from '../../assets/Rectangle/Unclicked.svg';
+import Taken from '../../assets/Rectangle/Alreadytaken.svg';
 
 /**
  * 0代表没有座位
@@ -90,11 +93,9 @@ class MovieOrder extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      seats: [[]],
       selectedSeats: [],
       selectedScene: {},
-      scenes: [{}],
-      sceneId: -1  //维持一个sceneId用来作为Picker的key，并且可以识别出是否确实切换了影厅
+      scenes: [{}]
     };
   }
 
@@ -107,8 +108,6 @@ class MovieOrder extends Component {
     this.setState({
       scenes: scenes,
       selectedScene: scenes[0],
-      seats: scenes[0].seats,
-      sceneId: scenes[0].sceneId
     })
   };
 
@@ -148,13 +147,13 @@ class MovieOrder extends Component {
         && item.interval === value[1]
         && item.hallName === value[2]
     )[0];
-    if (scene.sceneId !== this.state.sceneId) {  // 如果确实切换了影厅，才需要更新
-      this.setState((prevState) => {return {
-        selectedScene: scene,
-        seats: scene.seats,
-        selectedSeats: [],
-        sceneId: scene.sceneId
-      }})
+    if (scene.sceneId !== this.state.selectedScene.sceneId) {  // 如果确实切换了影厅，才需要更新
+      this.setState((prevState) => {
+        return {
+          selectedScene: scene,
+          selectedSeats: []
+        }
+      })
     }
   };
 
@@ -172,7 +171,7 @@ class MovieOrder extends Component {
 
   render() {
     const {movieId} = this.props.match.params;
-    const {scenes, selectedSeats, selectedScene, seats, sceneId} = this.state;
+    const {scenes, selectedSeats, selectedScene} = this.state;
     return (
         <div className={styles.whole}>
           <div className={styles['image-container']}>
@@ -193,21 +192,35 @@ class MovieOrder extends Component {
                 <div className={styles.line} style={{marginLeft: 25}}/>
               </div>
               <div className={styles.picker}>
-                <SeatsPicker seats={seats} onSelected={this.handleSelected} sceneId={sceneId}/>
+                <SeatsPicker seats={selectedScene.seats} onSelected={this.handleSelected} sceneId={selectedScene.sceneId}/>
               </div>
             </div>
             <div className={styles.information}>
+              <div className={styles.icons}>
+                <img src={Taken}/>
+                <img src={RectangleUnClicked}/>
+                <img src={RectangleClicked}/>
+              </div>
+              <div className={styles.text}>
+                <div>被购</div>
+                <div>可选</div>
+                <div>已选</div>
+              </div>
               影厅
               <div className={styles.hall}>
                 {selectedScene.hallName}
               </div>
               座位
               <div className={styles.seats}>
-                {selectedSeats}
+                {selectedSeats.map((item) => {
+                  return (<div>
+                    {`${item[0] + 1} 排 - ${item[1] + 1} 座`}
+                  </div>)
+                })}
               </div>
               总价
               <div className={styles.price}>
-                ¥56
+                {`¥${selectedSeats.length * selectedScene.price}`}
               </div>
             </div>
           </div>

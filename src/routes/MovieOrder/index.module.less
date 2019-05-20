@@ -94,7 +94,7 @@
 
     .information {
       width: 25%;
-      margin-top: 80px;
+      margin-top: 10px;
       padding-right: @header-margin + 8px;
       color: @default-white;
       font-size: @default-label-font-size;
@@ -102,6 +102,22 @@
       display: flex;
       flex-direction: column;
       align-items: flex-end;
+
+      .icons {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .text{
+        margin-top: 6px;
+        width: 100%;
+        margin-bottom: 50px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
 
       .hall {
         color: @default-yellow;
@@ -112,7 +128,7 @@
 
       .seats {
         color: @default-yellow;
-        height: 160px;
+        min-height: 160px;
         font-size: @default-label-font-size + 6px;
         margin-top: 3px;
       }
