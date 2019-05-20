@@ -7,6 +7,7 @@ import {Cascader} from 'antd';
 import RectangleClicked from '../../assets/Rectangle/Clicked.svg';
 import RectangleUnClicked from '../../assets/Rectangle/Unclicked.svg';
 import Taken from '../../assets/Rectangle/Alreadytaken.svg';
+import Button from "../../components/Button";
 
 /**
  * 0代表没有座位
@@ -192,7 +193,8 @@ class MovieOrder extends Component {
                 <div className={styles.line} style={{marginLeft: 25}}/>
               </div>
               <div className={styles.picker}>
-                <SeatsPicker seats={selectedScene.seats} onSelected={this.handleSelected} sceneId={selectedScene.sceneId}/>
+                <SeatsPicker seats={selectedScene.seats} onSelected={this.handleSelected}
+                             sceneId={selectedScene.sceneId}/>
               </div>
             </div>
             <div className={styles.information}>
@@ -221,6 +223,9 @@ class MovieOrder extends Component {
               总价
               <div className={styles.price}>
                 {`¥${selectedSeats.length * selectedScene.price}`}
+              </div>
+              <div className={styles['continue-button']}>
+                <Button type={'gray'}>立即购买</Button>
               </div>
             </div>
           </div>
