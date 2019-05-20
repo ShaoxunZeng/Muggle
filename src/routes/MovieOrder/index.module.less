@@ -2,63 +2,125 @@
 
 .whole {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: row;
   background-color: @default-foreground-lighter-color;
 
   .image-container {
-    width: 420px;
+    margin-top: @header-margin;
+    padding-left: @header-margin;
+    width: 25%;
     background-color: #61dafb;
   }
 
   .right {
-    width: 100%;
+    margin-top: @header-margin;
+    width: 75%;
+    display: flex;
+    flex-direction: row;
 
-    .selectors-container {
-      .selectors {
-        width: 270px;
-        background-color: @default-foreground-darker-color;
-        color: @default-white;
+    .picker-selector {
+      width: 75%;
 
+      .selectors-container {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
 
-        :global {
-          .ant-cascader-menus {
-            height: 0;
-          }
+        .selectors {
+          width: 270px;
+          background-color: @default-foreground-darker-color;
+          color: @default-white;
 
-          .ant-cascader-menu-item {
-            height: 0;
-          }
-
-          .ant-cascader {
-            width: 300px;
-
-            &-input {
-              height: 40px;
+          :global {
+            .ant-cascader-menus {
+              height: 0;
             }
 
-            &-picker {
+            .ant-cascader-menu-item {
+              height: 0;
+            }
 
-              &-clear {
-                height: 0;
+            .ant-cascader {
+              width: 300px;
 
-                :hover {
+              &-input {
+                height: 40px;
+              }
+
+              &-picker {
+
+                &-clear {
                   height: 0;
+
+                  :hover {
+                    height: 0;
+                  }
                 }
               }
             }
           }
         }
       }
-    }
 
-    .picker-info {
-      .picker {
+      .screen {
+        margin-top: @header-margin;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        color: @default-white;
+        font-size: 18px;
 
+        .line {
+          height: 3px;
+          width: 200px;
+          background-color: @default-yellow;
+          box-shadow: @default-yellow-shadow;
+        }
       }
 
-      .information {
+      .picker {
+        margin-top: @header-margin;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+    }
 
+    .information {
+      width: 25%;
+      margin-top: 80px;
+      padding-right: @header-margin + 8px;
+      color: @default-white;
+      font-size: @default-label-font-size;
+      letter-spacing: @default-label-letter-spacing;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+
+      .hall {
+        color: @default-yellow;
+        height: 60px;
+        font-size: @default-label-font-size + 6px;
+        margin-top: 3px;
+      }
+
+      .seats {
+        color: @default-yellow;
+        height: 160px;
+        font-size: @default-label-font-size + 6px;
+        margin-top: 3px;
+      }
+
+      .price {
+        color: @default-yellow;
+        font-size: @default-label-font-size + 6px;
+        margin-top: 3px;
       }
     }
   }

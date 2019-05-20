@@ -1,4 +1,4 @@
-import {PureComponent} from "react";
+import {Component} from "react";
 import React from "react";
 import styles from "./index.module.less";
 import WithHeaderFooter from "../../components/WithHeaderFooter";
@@ -20,20 +20,20 @@ let scenes = [
     date: '2019-6-1',
     interval: '9:00-12:00',
     seats: [
-      [0, 0, 0, 2, 2, 2, 1, 1, 1, 2, 1, 2, 1, 1, 0, 0, 0],
-      [0, 0, 1, 2, 2, 2, 1, 2, 2, 2, 2, 1, 2, 2, 2, 0, 0],
-      [0, 2, 1, 1, 2, 2, 1, 2, 2, 2, 2, 2, 1, 2, 2, 2, 0],
-      [2, 1, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 1, 1, 1, 1, 2],
-      [1, 2, 1, 2, 2, 2, 1, 1, 1, 2, 1, 2, 1, 2, 1, 1, 2],
-      [2, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 1, 2, 2, 1, 1, 1],
-      [2, 1, 1, 2, 2, 2, 1, 2, 1, 2, 2, 2, 1, 1, 1, 1, 2],
-      [1, 2, 1, 2, 2, 2, 1, 2, 2, 2, 1, 2, 1, 1, 1, 1, 2],
-      [0, 1, 1, 1, 2, 2, 2, 1, 1, 1, 2, 2, 1, 1, 2, 2, 0],
-      [0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 0, 0],
-      [0, 0, 0, 2, 1, 2, 1, 2, 2, 2, 1, 1, 1, 2, 0, 0, 0],
+      [0, 0, 0, 2, 2, 2, 1, 1, 1, 2, 1],
+      [0, 0, 1, 2, 2, 2, 1, 2, 2, 2, 2],
+      [0, 2, 1, 1, 2, 2, 1, 2, 2, 2, 2],
+      [2, 1, 2, 2, 2, 2, 2, 1, 1, 2, 2],
+      [1, 2, 1, 2, 2, 2, 1, 1, 1, 2, 1],
+      [2, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2],
+      [2, 1, 1, 2, 2, 2, 1, 2, 1, 2, 2],
+      [1, 2, 1, 2, 2, 2, 1, 2, 2, 2, 1],
+      [0, 1, 1, 1, 2, 2, 2, 1, 1, 1, 2],
+      [0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 1],
+      [0, 0, 0, 2, 1, 2, 1, 2, 2, 2, 1],
     ]
   }, {
-    sceneId: 1,
+    sceneId: 2,
     price: 1,
     hallName: '2号厅',
     date: '2019-6-1',
@@ -49,7 +49,7 @@ let scenes = [
       [1, 2, 1, 2, 2, 2, 1, 2, 2, 2, 1, 2, 1, 1, 1, 1, 2],
     ]
   }, {
-    sceneId: 1,
+    sceneId: 3,
     price: 1,
     hallName: '1号厅',
     date: '2019-6-2',
@@ -66,7 +66,7 @@ let scenes = [
       [0, 1, 1, 1, 2, 2, 2, 1, 1, 1, 2, 2, 1, 1, 2, 2, 0],
     ]
   }, {
-    sceneId: 1,
+    sceneId: 4,
     price: 1,
     hallName: '1号厅',
     date: '2019-6-2',
@@ -86,27 +86,38 @@ let scenes = [
   }
 ];
 
-class MovieOrder extends PureComponent {
+class MovieOrder extends Component {
   constructor(props) {
     super(props);
     this.state = {
       seats: [[]],
       selectedSeats: [],
       selectedScene: {},
-      scenes: [{}]
+      scenes: [{}],
+      sceneId: -1,  //维持一个sceneId用来作为Picker的key，并且可以识别出是否确实切换了影厅
+      reRender: false
     };
   }
 
   componentWillMount() {
     //TODO
     // 拉取数据，放到state里面
-    // 同时指定第一个场次的seats座位默认展示的seats
+    // 指定第一个场次为默认选择的场次
+    // 同时指定第一个场次的seats作为默认展示的seats
+    // 指定默认的sceneId，作为唯一的key传入Picker组件
     this.setState({
       scenes: scenes,
-      seats: scenes[0].seats
+      selectedScene: scenes[0],
+      seats: scenes[0].seats,
+      sceneId: scenes[0].sceneId
     })
   };
 
+  /**
+   * 将扁平数据结构转化成级联数据结构
+   * @param scenes
+   * @returns {Array}
+   */
   renderOptions = function (scenes) {
     let options = [];
     let filter = [];
@@ -133,14 +144,20 @@ class MovieOrder extends PureComponent {
   };
 
   handleChange = (value, _) => {
-    let seats = this.state.scenes.filter(item =>
+    let scene = this.state.scenes.filter(item =>
         item.date === value[0]
         && item.interval === value[1]
         && item.hallName === value[2]
-    )[0].seats;
-    this.setState({
-      seats: seats
-    })
+    )[0];
+    if (scene.sceneId !== this.state.sceneId) {  // 如果确实切换了影厅，才需要更新
+      this.setState((prevState) => {return {
+        selectedScene: scene,
+        seats: scene.seats,
+        selectedSeats: [],
+        sceneId: scene.sceneId,
+        reRender: !prevState.reRender
+      }})
+    }
   };
 
   //indexOf和includes比较的都是引用 filter不改变原数组
@@ -157,24 +174,42 @@ class MovieOrder extends PureComponent {
 
   render() {
     const {movieId} = this.props.match.params;
+    const {scenes, selectedSeats, selectedScene, seats, sceneId} = this.state;
     return (
         <div className={styles.whole}>
           <div className={styles['image-container']}>
           </div>
           <div className={styles.right}>
-            <div className={styles['selectors-container']}>
-              <Cascader
-                  options={this.renderOptions(this.state.scenes)}
-                  className={styles.selectors}
-                  onChange={this.handleChange}
-                  defaultValue={[this.state.scenes[0].date, this.state.scenes[0].interval, this.state.scenes[0].hallName]}
-              />
-            </div>
-            <div className={styles['picker-info']}>
-              <div className={styles.picker}>
-                <SeatsPicker seats={this.state.seats} onSelected={this.handleSelected}/>
+            <div className={styles['picker-selector']}>
+              <div className={styles['selectors-container']}>
+                <Cascader
+                    options={this.renderOptions(scenes)}
+                    className={styles.selectors}
+                    onChange={this.handleChange}
+                    defaultValue={[scenes[0].date, scenes[0].interval, scenes[0].hallName]}
+                />
               </div>
-              <div className={styles.information}>
+              <div className={styles.screen}>
+                <div className={styles.line} style={{marginRight: 25}}/>
+                Screen
+                <div className={styles.line} style={{marginLeft: 25}}/>
+              </div>
+              <div className={styles.picker}>
+                <SeatsPicker seats={seats} onSelected={this.handleSelected} sceneId={sceneId} reRender={this.state.reRender}/>
+              </div>
+            </div>
+            <div className={styles.information}>
+              影厅
+              <div className={styles.hall}>
+                {selectedScene.hallName}
+              </div>
+              座位
+              <div className={styles.seats}>
+                {selectedSeats}
+              </div>
+              总价
+              <div className={styles.price}>
+                ¥56
               </div>
             </div>
           </div>

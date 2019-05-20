@@ -24,14 +24,15 @@ class Seat extends Component {
   };
 
   render() {
-    const {isClicked} = this.state;
+    console.log(this.props.key);
+    let {isClicked} = this.state;
     /**
      * 下标从0开始
      */
     const {position} = this.props;
     return (
         <div className={styles.whole}>
-          <Popover content={`${position[0]}排 ${position[1]}座`}>
+          <Popover content={`${position[0] + 1}排 ${position[1] + 1}座`}>
             <img src={isClicked ? RectangleClicked : RectangleUnClicked} onClick={() => this.handleClick()}/>
           </Popover>
         </div>
