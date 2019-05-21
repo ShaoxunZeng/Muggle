@@ -1,11 +1,12 @@
 import {PureComponent} from "react";
 import React from "react";
 import styles from "./index.module.less";
-import WithHeaderFooter from "../../components/WithHeaderFooter";
-import MovieDetails from "../../components/MovieDetails";
+import WithHeaderFooter from "../../../components/WithHeaderFooter";
+import MovieDetails from "../../../components/MovieDetails";
 
 const movieDetails = {
   posterUrl: "https://s2.ax1x.com/2019/05/07/EyJKv4.png",
+  // posterUrl: "https://s2.ax1x.com/2019/05/21/VSWMHP.png",  // 测试图片
   movieName: "雷  神 Thor: Ragnarok",
   movieType: "Action, Adventure, Drama",
   year: 2019,

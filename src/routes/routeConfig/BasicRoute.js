@@ -1,13 +1,13 @@
 import React from "react";
 import { Route } from "react-router-dom"
-import Home from "../Home";
+import Home from "../Users/Home";
 import Login from "../Login";
-import AllMovies from "../AllMovies";
-import Discount from "../Discount";
-import PrivateCinema from "../PrivateCinema";
-import Manage from "../Manage";
-import MovieDetailsPage from "../MovieDetailPage";
-import MovieOrder from "../MovieOrder";
+import AllMovies from "../Users/AllMovies";
+import Discount from "../Users/Discount";
+import PrivateCinema from "../Users/PrivateCinema";
+import Manage from "../Managers/Manage";
+import MovieDetailsPage from "../Users/MovieDetailPage";
+import MovieOrder from "../Users/MovieOrder";
 
 export default [
   <Route component={Login} exact path='/login' />,

@@ -1,8 +1,8 @@
 import {PureComponent} from "react";
 import React from "react";
 import styles from "./index.module.less";
-import WithSider from "../../components/WithSider";
-import TimeLine from "../../components/TimeLine";
+import WithSider from "../../../components/WithSider";
+import TimeLine from "../../../components/TimeLine";
 
 let intervals = [{
   startTime: "7:00",

@@ -1,13 +1,13 @@
 import {Component} from "react";
 import React from "react";
 import styles from "./index.module.less";
-import WithHeaderFooter from "../../components/WithHeaderFooter";
-import SeatsPicker from "../../components/SeatsPicker";
-import {Cascader} from 'antd';
-import RectangleClicked from '../../assets/Rectangle/Clicked.svg';
-import RectangleUnClicked from '../../assets/Rectangle/Unclicked.svg';
-import Taken from '../../assets/Rectangle/Alreadytaken.svg';
-import Button from "../../components/Button";
+import WithHeaderFooter from "../../../components/WithHeaderFooter";
+import SeatsPicker from "../../../components/SeatsPicker";
+import {Cascader} from 'antd/lib/index';
+import RectangleClicked from '../../../assets/Rectangle/Clicked.svg';
+import RectangleUnClicked from '../../../assets/Rectangle/Unclicked.svg';
+import Taken from '../../../assets/Rectangle/Alreadytaken.svg';
+import Button from "../../../components/Button";
 
 /**
  * 0代表没有座位
