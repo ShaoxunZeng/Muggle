@@ -24,7 +24,6 @@ class Seat extends Component {
   };
 
   render() {
-    console.log(this.props.key);
     let {isClicked} = this.state;
     /**
      * 下标从0开始

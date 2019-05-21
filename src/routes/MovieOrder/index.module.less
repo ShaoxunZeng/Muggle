@@ -7,11 +7,49 @@
   flex-direction: row;
   background-color: @default-foreground-lighter-color;
 
-  .image-container {
+  .left {
+    width: 25%;
     margin-top: @header-margin;
     padding-left: @header-margin;
-    width: 25%;
-    background-color: #61dafb;
+
+    .image-container {
+      width: 270px;
+      height: 400px;
+
+      .image {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .details-container {
+      display: flex;
+      flex-direction: column;
+      margin-top: @header-margin - 10px;
+      width: 100%;
+      color: @default-white;
+
+      .name {
+        font-weight: 400;
+        color: @moviedetails-name-color;
+        font-size: @moviedetails-name-font-size;
+      }
+
+      .type {
+        margin-top: 2px;
+        color: @moviedetails-type-color;
+        font-size: @moviedetails-type-font-size;
+      }
+
+      .year {
+        color: @default-yellow;
+      }
+
+      .length {
+        color: @default-yellow;
+      }
+
+    }
   }
 
   .right {

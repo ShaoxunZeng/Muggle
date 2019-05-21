@@ -11,8 +11,15 @@ class MovieDetails extends Component {
   };
 
   handleBuyButtonClick = function () {
-    const {movieId} = this.props;
-    this.props.history.push(`/movieorder/${movieId}`)
+    const {movieId, posterUrl, movieType, movieName, year, length} = this.props;
+    const state = {  // 简写，等价于 year: year
+      posterUrl,
+      movieType,
+      movieName,
+      year,
+      length
+    };
+    this.props.history.push(`/movieorder/${movieId}`, state)
   };
 
   render() {
