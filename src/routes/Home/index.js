@@ -6,6 +6,7 @@ import RecentMoives from "../../components/RecentMovies";
 import Button from "../../components/Button";
 import WithHeaderFooter from "../../components/WithHeaderFooter";
 
+
 class Home extends PureComponent {
   render() {
     return (

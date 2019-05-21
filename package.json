@@ -6,6 +6,8 @@
     "antd": "^3.13.4",
     "babel-plugin-import": "^1.11.0",
     "customize-cra": "^0.2.11",
+    "element-react": "^1.4.34",
+    "element-theme-default": "^1.4.13",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "prop-types": "^15.7.2",
@@ -34,5 +36,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "react-hot-loader": "^4.8.6"
+  }
 }
