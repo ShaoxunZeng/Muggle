@@ -10,6 +10,7 @@
   .left {
     width: 25%;
     margin-top: @header-margin;
+    margin-bottom: @header-margin;
     padding-left: @header-margin;
 
     .image-container {
@@ -41,14 +42,29 @@
         font-size: @moviedetails-type-font-size;
       }
 
-      .year {
-        color: @default-yellow;
-      }
+      .year-length-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 10px;
 
-      .length {
-        color: @default-yellow;
-      }
+        .year {
+          color: @default-yellow;
+        }
 
+        .dot {
+          width: 4px;
+          height: 4px;
+          border-radius: 50%;
+          background-color: @moviedetails-dot-color;
+          margin-left: 13px;
+          margin-right: 13px;
+        }
+
+        .length {
+          color: @default-yellow;
+        }
+      }
     }
   }
 
@@ -178,7 +194,7 @@
       }
 
       .continue-button {
-        margin-top: 6px;
+        margin-top: 26px;
       }
     }
   }

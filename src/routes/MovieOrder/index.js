@@ -151,7 +151,8 @@ class MovieOrder extends Component {
     if (scene.sceneId !== this.state.selectedScene.sceneId) {  // 如果确实切换了影厅，才需要更新
       this.setState((prevState) => {
         return {
-          selectedScene: scene
+          selectedScene: scene,
+          selectedSeats: []
         }
       })
     }
@@ -182,8 +183,11 @@ class MovieOrder extends Component {
             <div className={styles['details-container']}>
               <div className={styles.name}>{movieName}</div>
               <div className={styles.type}>{movieType}</div>
-              <div className={styles.year}>{year}</div>
-              <div className={styles.length}>{length}</div>
+              <div className={styles['year-length-container']}>
+                <div className={styles.year}>{year}</div>
+                <div className={styles.dot}/>
+                <div className={styles.length}>{length + " min"}</div>
+              </div>
             </div>
           </div>
           <div className={styles.right}>
