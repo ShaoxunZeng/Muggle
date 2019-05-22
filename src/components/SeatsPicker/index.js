@@ -8,6 +8,7 @@ class SeatsPicker extends Component {
   /**
    * 掌握所有的位置信息，所以负责计算出每一个位子的坐标
    * 下标从0开始，传递给子组件负责渲染
+   * @param seats
    * @param rowIndex
    * @param columnIndex
    * @returns {*[]}
@@ -34,9 +35,9 @@ class SeatsPicker extends Component {
             return (
                 <div className={styles.row}>
                   {row.map((column, columnIndex) => {
-                    if (column == 0) {
+                    if (column === 0) {
                       return <NoSeat key={sceneId + "_" + columnIndex}/>  //产生唯一的key，不仅是sibling，而且要和别的场次不一样
-                    } else return (column == 1
+                    } else return (column === 1
                         ? <SeatTaken key={sceneId + "_" + columnIndex}/>
                         :
                         <Seat key={sceneId + "_" + columnIndex} position={this.calculate(seats, rowIndex, columnIndex)}
