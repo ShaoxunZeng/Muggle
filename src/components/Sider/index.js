@@ -96,7 +96,7 @@ class Sider extends Component {
               <div className={styles.underline}/>
               <NavLink
                   className={styles["nav-item"]}
-                  to={"/manage/personel"}
+                  to={"/manage/personnel"}
                   activeClassName={styles["nav-active"]}
               >
                 <div className={styles.text}>

@@ -2,17 +2,16 @@ import { PureComponent } from "react";
 import React from "react";
 import styles from "./index.module.less";
 import {NavLink} from "react-router-dom";
+import WithSider from "../../../components/WithSider";
 
-class Login extends PureComponent {
+class Account extends PureComponent {
   render() {
     return (
         <div className={styles.whole}>
-          Login
-          <NavLink to='/'> 登陆 </NavLink>
-          <NavLink to='/manage'> 管理员身份登录 </NavLink>
+          Account
         </div>
     )
   };
 }
 
-export default Login;
+export default WithSider(Account);
