@@ -19,6 +19,7 @@ class Sider extends Component {
                   to={"/manage/arrange"}
                   activeClassName={styles["nav-active"]}
               >
+                <div className={styles['vertical-line']}/>
                 <div className={styles.text}>
                   排片管理
                 </div>
@@ -29,6 +30,7 @@ class Sider extends Component {
                   to={"/manage/onshelf"}
                   activeClassName={styles["nav-active"]}
               >
+                <div className={styles['vertical-line']}/>
                 <div className={styles.text}>
                   上架管理
                 </div>
@@ -39,6 +41,7 @@ class Sider extends Component {
                   to={"/manage/statistics"}
                   activeClassName={styles["nav-active"]}
               >
+                <div className={styles['vertical-line']}/>
                 <div className={styles.text}>
                   数据统计
                 </div>
@@ -49,6 +52,7 @@ class Sider extends Component {
                   to={"/manage/movies"}
                   activeClassName={styles["nav-active"]}
               >
+                <div className={styles['vertical-line']}/>
                 <div className={styles.text}>
                   影片信息
                 </div>
@@ -59,6 +63,7 @@ class Sider extends Component {
                   to={"/manage/halls"}
                   activeClassName={styles["nav-active"]}
               >
+                <div className={styles['vertical-line']}/>
                 <div className={styles.text}>
                   影厅信息
                 </div>
@@ -69,6 +74,7 @@ class Sider extends Component {
                   to={"/manage/activity"}
                   activeClassName={styles["nav-active"]}
               >
+                <div className={styles['vertical-line']}/>
                 <div className={styles.text}>
                   优惠活动
                 </div>
@@ -79,6 +85,7 @@ class Sider extends Component {
                   to={"/manage/member"}
                   activeClassName={styles["nav-active"]}
               >
+                <div className={styles['vertical-line']}/>
                 <div className={styles.text}>
                   会员管理
                 </div>
@@ -89,6 +96,7 @@ class Sider extends Component {
                   to={"/manage/strategy"}
                   activeClassName={styles["nav-active"]}
               >
+                <div className={styles['vertical-line']}/>
                 <div className={styles.text}>
                   策略管理
                 </div>
@@ -99,6 +107,7 @@ class Sider extends Component {
                   to={"/manage/personnel"}
                   activeClassName={styles["nav-active"]}
               >
+                <div className={styles['vertical-line']}/>
                 <div className={styles.text}>
                   人事管理
                 </div>
@@ -110,6 +119,7 @@ class Sider extends Component {
                   to={"/manage/account"}
                   activeClassName={styles["nav-active"]}
               >
+                <div className={styles['vertical-line']}/>
                 <div className={styles.text}>
                   个人信息
                 </div>
