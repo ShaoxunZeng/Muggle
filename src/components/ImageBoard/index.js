@@ -5,14 +5,19 @@ import 'element-theme-default';
 
 
 class ImageBoard extends Component {
-    posterUrls = Array(7).fill("https://s2.ax1x.com/2019/04/01/AyCRGq.png");
+    constructor(props){
+        super(props)
+    }
+
+    // todo()  Warning: Each child in a list should have a unique "key" prop.
     render() {
+        const posterUrls=this.props.posterUrls;
         return (
             <div className={styles.whole}>
                 <div className={styles.image}>
                     <Carousel interval="3000" type="card" height="400px">
                         {
-                            this.posterUrls.map((url, index) => {
+                            posterUrls.map((url, index) => {
                                 return (
                                     <Carousel.Item key={index}>
                                         <img src={url} />
