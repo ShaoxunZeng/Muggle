@@ -3,8 +3,10 @@ import React from "react";
 import styles from "./index.module.less";
 import WithHeaderFooter from "../../../components/WithHeaderFooter";
 import MovieDetails from "../../../components/MovieDetails";
+import {getMovieDetails} from "../../../services/apiMovies";
 
 const movieDetails = {
+  movieId: 1,
   posterUrl: "https://s2.ax1x.com/2019/05/07/EyJKv4.png",
   // posterUrl: "https://s2.ax1x.com/2019/05/21/VSWMHP.png",  // 测试图片
   movieName: "雷  神 Thor: Ragnarok",
@@ -38,12 +40,31 @@ const movieDetails = {
 };
 
 class MovieDetailPage extends PureComponent {
-  render() {
+  state = {
+    movieDetails: {},
+    isLoading: true
+  };
+
+  componentWillMount() {
     const {movieId} = this.props.match.params;
-    return (
+    // getMovieDetails(movieId).then((movieDetails) => {
+    //   this.setState({
+    //     movieDetails: movieDetails,
+    //     isLoading: false
+    //   });
+    // });
+      this.setState({
+        movieDetails: movieDetails,
+        isLoading: false
+      });
+  }
+
+  render() {
+    const {movieDetails, isLoading} = this.state;
+    return isLoading ? "" : (
         <div className={styles.whole}>
           <MovieDetails
-              movieId={movieId}
+              movieId={movieDetails.movieId}
               posterUrl={movieDetails.posterUrl}
               movieName={movieDetails.movieName}
               movieType={movieDetails.movieType}

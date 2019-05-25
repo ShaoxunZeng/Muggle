@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import Taken from '../../../assets/Rectangle/Alreadytaken.svg';
+import {ReactComponent as Taken} from '../../../assets/Rectangle/Alreadytaken.svg';
 import styles from './index.module.less';
 import {Popover} from 'antd';
 
@@ -8,7 +8,7 @@ class SeatTaken extends Component {
     return (
         <div className={styles.whole}>
           <Popover content={"已被订"}>
-            <img src={Taken}/>
+            <Taken/>
           </Popover>
         </div>
     );

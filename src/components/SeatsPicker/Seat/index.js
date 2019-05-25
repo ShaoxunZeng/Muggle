@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import RectangleClicked from '../../../assets/Rectangle/Clicked.svg';
-import RectangleUnClicked from '../../../assets/Rectangle/Unclicked.svg';
+import {ReactComponent as RectangleClicked} from '../../../assets/Rectangle/Clicked.svg';
+import {ReactComponent as RectangleUnClicked} from '../../../assets/Rectangle/Unclicked.svg';
 import styles from './index.module.less';
 import {Popover} from 'antd';
 
@@ -32,7 +32,8 @@ class Seat extends Component {
     return (
         <div className={styles.whole}>
           <Popover content={`${position[0] + 1}排 ${position[1] + 1}座`}>
-            <img src={isClicked ? RectangleClicked : RectangleUnClicked} onClick={() => this.handleClick()}/>
+            {isClicked ? <RectangleClicked onClick={() => this.handleClick()}/> :
+                <RectangleUnClicked onClick={() => this.handleClick()}/>}
           </Popover>
         </div>
     );

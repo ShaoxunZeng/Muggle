@@ -4,9 +4,9 @@ import styles from "./index.module.less";
 import WithHeaderFooter from "../../../components/WithHeaderFooter";
 import SeatsPicker from "../../../components/SeatsPicker";
 import {Cascader} from 'antd';
-import RectangleClicked from '../../../assets/Rectangle/Clicked.svg';
-import RectangleUnClicked from '../../../assets/Rectangle/Unclicked.svg';
-import Taken from '../../../assets/Rectangle/Alreadytaken.svg';
+import {ReactComponent as RectangleClicked} from '../../../assets/Rectangle/Clicked.svg';
+import {ReactComponent as RectangleUnClicked} from '../../../assets/Rectangle/Unclicked.svg';
+import {ReactComponent as Taken} from '../../../assets/Rectangle/Alreadytaken.svg';
 import Button from "../../../components/Button";
 
 /**
@@ -212,9 +212,9 @@ class MovieOrder extends Component {
             </div>
             <div className={styles.information}>
               <div className={styles.icons}>
-                <img src={Taken}/>
-                <img src={RectangleUnClicked}/>
-                <img src={RectangleClicked}/>
+                <Taken/>
+                <RectangleUnClicked/>
+                <RectangleClicked/>
               </div>
               <div className={styles.text}>
                 <div>被购</div>
