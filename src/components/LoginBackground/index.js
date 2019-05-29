@@ -13,7 +13,7 @@ export default function LoginBackground(WrappedComponent) {
                         </div>
 
                         <div className={styles.rightWrapper}>
-                            rightWrapper
+                            <WrappedComponent {...passThroughProps}/>
                         </div>
 
                     </div>
