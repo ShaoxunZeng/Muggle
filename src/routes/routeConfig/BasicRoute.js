@@ -23,24 +23,28 @@ import Personnel from "../Managers/Personnel";
 import Account from "../Managers/Account";
 
 export default [
-  <Route component={Login} exact path='/login'/>,
-  // 经理界面
-  <Route component={Manage} exact path='/manage'/>,
-  <Route component={Arrange} exact path='/manage/arrange'/>,
-  <Route component={Onshelf} exact path='/manage/onshelf'/>,
-  <Route component={Statistic} exact path='/manage/statistics'/>,
-  <Route component={Movies} exact path='/manage/movies'/>,
-  <Route component={Halls} exact path='/manage/halls'/>,
-  <Route component={Activity} exact path='/manage/activity'/>,
-  <Route component={Member} exact path='/manage/member'/>,
-  <Route component={Strategy} exact path='/manage/strategy'/>,
-  <Route component={Personnel} exact path='/manage/personnel'/>,
-  <Route component={Account} exact path='/manage/account'/>,
-  // 用户界面
-  <Route component={AllMovies} exact path='/allmovies'/>,
-  <Route component={Discount} exact path='/discount'/>,
-  <Route component={PrivateCinema} exact path='/privateCinema'/>,
-  <Route component={MovieDetailsPage} exact path='/moviedetails/:movieId'/>,
-  <Route component={MovieOrder} exact path='/movieorder/:movieId'/>,
-  <Route component={Home} path='/'/>
-];
+    //登陆注册
+    <Route component={Login} exact path='/login'>
+        {/*<Route component={}></Route>*/}
+    </Route>,
+    // 经理界面
+    <Route component={Manage} exact path='/manage'/>,
+    <Route component={Arrange} exact path='/manage/arrange'/>,
+    <Route component={Onshelf} exact path='/manage/onshelf'/>,
+    <Route component={Statistic} exact path='/manage/statistics'/>,
+    <Route component={Movies} exact path='/manage/movies'/>,
+    <Route component={Halls} exact path='/manage/halls'/>,
+    <Route component={Activity} exact path='/manage/activity'/>,
+    <Route component={Member} exact path='/manage/member'/>,
+    <Route component={Strategy} exact path='/manage/strategy'/>,
+    <Route component={Personnel} exact path='/manage/personnel'/>,
+    <Route component={Account} exact path='/manage/account'/>,
+    // 用户界面
+    <Route component={AllMovies} exact path='/allmovies'/>,
+    <Route component={Discount} exact path='/discount'/>,
+    <Route component={PrivateCinema} exact path='/privateCinema'/>,
+    <Route component={MovieDetailsPage} exact path='/moviedetails/:movieId'/>,
+    <Route component={MovieOrder} exact path='/movieorder/:movieId'/>,
+    <Route component={Home} path='/'/>
+]
+;

@@ -11,7 +11,7 @@ class ImageBoard extends Component {
 
     // todo()  Warning: Each child in a list should have a unique "key" prop.
     render() {
-        const posterUrls=this.props.posterUrls;
+        const {posterUrls}=this.props;
         return (
             <div className={styles.whole}>
                 <div className={styles.image}>
@@ -20,7 +20,7 @@ class ImageBoard extends Component {
                             posterUrls.map((url, index) => {
                                 return (
                                     <Carousel.Item key={index}>
-                                        <img src={url} />
+                                        <img key={'pic'+index} src={url} />
                                     </Carousel.Item>
                                 )
                             })

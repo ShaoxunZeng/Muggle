@@ -1,0 +1,43 @@
+@import "../../themes/default.less";
+
+.wholePage {
+  display: flex;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  left: 0;
+  justify-content: center; /* 水平居中 */
+  position: absolute;
+  flex-direction: column;
+  align-items: center;
+  background-color: @default-foreground-darker-color;
+
+  .mainModule {
+    height: 60%;
+    width: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    box-shadow: @default-yellow-shadow;
+    border-radius: @loginBackground-border-radius;
+
+    .leftWrapper {
+      height: 100%;
+      width: 50%;
+      background-color: @default-foreground-darker-color;
+      border-bottom-left-radius: @loginBackground-border-radius;
+      border-top-left-radius: @loginBackground-border-radius;
+      .logo{
+        margin-top:20%;
+      }
+    }
+
+    .rightWrapper {
+      height: 100%;
+      width: 50%;
+      background-color: @default-yellow;
+      border-bottom-right-radius: @loginBackground-border-radius;
+      border-top-right-radius: @loginBackground-border-radius;    }
+
+  }
+}
