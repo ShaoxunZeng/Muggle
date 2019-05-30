@@ -23,7 +23,6 @@ class UserRegister extends Component {
     render() {
         return (
             <div>
-                UserRegister
                 <LoginInput/>
                 <Button type={'yellow'} onClick={() => this.handleUserRegisterButtonClick()}>用户注册</Button>
             </div>

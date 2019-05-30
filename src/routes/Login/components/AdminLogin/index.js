@@ -22,7 +22,7 @@ class AdminLogin extends Component {
     render() {
         return (
             <div>
-                AdminLogin
+
                 <LoginInput />
                 <Button type={'yellow'} onClick={() => this.handleAdminLoginButtonClick()}>管理员登陆</Button>
             </div>

@@ -24,7 +24,7 @@
     .leftWrapper {
       height: 100%;
       width: 50%;
-      background-color: @default-foreground-darker-color;
+      background-color: @default-foreground-lighter-color;
       border-bottom-left-radius: @loginBackground-border-radius;
       border-top-left-radius: @loginBackground-border-radius;
       .logo{
@@ -32,10 +32,17 @@
       }
     }
 
+    .yellowLines{
+      height: 100%;
+      width:5px;
+      background-color: @default-yellow-light;
+     box-shadow: @default-yellow-shadow;
+    }
     .rightWrapper {
       height: 100%;
       width: 50%;
-      background-color: @default-white;
+     // border-left:2px solid @default-yellow;
+      background-color: @default-foreground-darker-color;
       border-bottom-right-radius: @loginBackground-border-radius;
       border-top-right-radius: @loginBackground-border-radius;
     }

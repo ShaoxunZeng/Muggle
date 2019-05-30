@@ -25,7 +25,7 @@ class UserLogin extends Component {
     render() {
         return (
             <div>
-                UserLogin
+
                 <LoginInput/>
                 <Button type={'yellow'} onClick={() => this.handleUserLoginButtonClick()}>用户登陆</Button>
 

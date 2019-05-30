@@ -24,8 +24,9 @@ class LoginInput extends Component {
                         rules: [{ required: true, message: 'Please input your username!' }],
                     })(
                         <Input
-                            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                            prefix={<Icon type="user" style={{ color: '#FFFFFF' }} />}
                             placeholder="Username"
+                            style={{marginBottom:20+'px'}}
                         />,
                     )}
                 </Form.Item>
@@ -34,7 +35,7 @@ class LoginInput extends Component {
                         rules: [{ required: true, message: 'Please input your Password!' }],
                     })(
                         <Input
-                            prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                            prefix={<Icon type="lock" style={{ color: '#FFFFFF' }} />}
                             type="password"
                             placeholder="Password"
                         />,

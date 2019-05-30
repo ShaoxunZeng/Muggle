@@ -26,24 +26,36 @@ class Login extends PureComponent {
         this.setState({
             showAdmin: !this.state.showAdmin
         })
-    };
+    }
 
     render() {
         return (
             <div className={styles.wrapper}>
 
-                {this.state.showAdmin ? <AdminLogin/> :
-                    <div>
-                        <Radio.Group onChange={this.handleStatusChange.bind(this)} defaultValue="signIn">
-                            <Radio.Button
-                                style={{background: '#FFF9C6', borderBottomLeftRadius: 10, borderTopLeftRadius: 10,}}
-                                value="signIn">Sign In</Radio.Button>
-                            <Radio.Button
-                                style={{background: '#414142', borderBottomRightRadius: 10, borderTopRightRadius: 10}}
-                                value="signUp">Sign Up</Radio.Button>
-                        </Radio.Group>
-                        {this.state.toRegister ? <UserRegister/> : <UserLogin/>}
 
+                {this.state.showAdmin ? <AdminLogin/> :
+                    <div className={styles.userModule}>
+                        <div className={styles.userRadio}>
+                            <Radio.Group onChange={this.handleStatusChange.bind(this)} defaultValue="signIn">
+                                <Radio.Button
+                                    style={{
+                                        background: '#FFF9C6',
+                                        borderBottomLeftRadius: 10,
+                                        borderTopLeftRadius: 10,
+                                    }}
+                                    value="signIn">Sign In</Radio.Button>
+                                <Radio.Button
+                                    style={{
+                                        background: '#414142',
+                                        borderBottomRightRadius: 10,
+                                        borderTopRightRadius: 10
+                                    }}
+                                    value="signUp">Sign Up</Radio.Button>
+                            </Radio.Group>
+                        </div>
+                        <div className={styles.adminModule}>
+                            {this.state.toRegister ? <UserRegister/> : <UserLogin/>}
+                        </div>
                     </div>
                 }
 
