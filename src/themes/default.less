@@ -2,22 +2,22 @@
 @default-page-width: 1100px;
 @default-sider-width: 330px;
 @default-sider-height: 1000px;
-@default-radius:4px;
-@default-font:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-@default-foreground-darker-color: rgba(33, 33, 34, 0.95);  // 就是页面头部Muggle Cinema的背景，黑乎乎的那种
-@default-foreground-lighter-color: rgba(33, 33, 34, 0.29);  // 页面主体部分，有点透明
-@default-yellow: #FFEB9E;  // 黄色 基本所有的黄色都是这个颜色
-@default-white: rgba(255, 255, 255, 0.8);  // 白色，字体颜色
-@default-gray: rgba(192, 192, 192, 0.52);  // 灰色 按钮颜色
-@default-yellow-shadow: 2px 2px 36px #FFF8DE;  // 黄色的阴影，比如页头部的黄色光晕
-@default-yellow-light: rgba(255, 249, 198, 0.82);  // 稍微淡一点的黄色
-@default-space-between: 20px;  // 页面的主体部分和页头的间隔
-@default-label-font-size: 16px;  // label即页面头部的那几个字 主页 啥的
-@default-label-letter-spacing: 3px;  // label那几个字的字间距
+@default-radius: 4px;
+@default-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+@default-foreground-darker-color: rgba(33, 33, 34, 0.95); // 就是页面头部Muggle Cinema的背景，黑乎乎的那种
+@default-foreground-lighter-color: rgba(33, 33, 34, 0.29); // 页面主体部分，有点透明
+@default-yellow: #FFEB9E; // 黄色 基本所有的黄色都是这个颜色
+@default-white: rgba(255, 255, 255, 0.8); // 白色，字体颜色
+@default-gray: rgba(192, 192, 192, 0.52); // 灰色 按钮颜色
+@default-yellow-shadow: 2px 2px 36px #FFF8DE; // 黄色的阴影，比如页头部的黄色光晕
+@default-yellow-light: rgba(255, 249, 198, 0.82); // 稍微淡一点的黄色
+@default-space-between: 20px; // 页面的主体部分和页头的间隔
+@default-label-font-size: 16px; // label即页面头部的那几个字 主页 啥的
+@default-label-letter-spacing: 3px; // label那几个字的字间距
 
 // ----------Header-----------
 @header-height: 200px;
-@header-margin: 32px;  // 就是页头 主页和左边的间距，这个属性很重要，基本上间距都是这个！！！
+@header-margin: 32px; // 就是页头 主页和左边的间距，这个属性很重要，基本上间距都是这个！！！
 @header-item-margin: 60px;
 @header-nav-shadow: 0px -1px 0 #545454;
 @header-down-shadow: 0px 1px 0 #545454;
@@ -31,8 +31,8 @@
 @recentmovies-height: 300px;
 
 // ----------Button-----------
-@button-width:131px;
-@button-height:38px;
+@button-width: 131px;
+@button-height: 38px;
 @button-hover-yellow-shadow: 0px 0px 12px rgba(255, 248, 222, 0.5);
 @button-hover-gray-shadow: 0px 0px 12px rgba(192, 192, 192, 0.8);
 
@@ -60,9 +60,76 @@
 @sider-up-height: 160px;
 @sider-item-height: 60px;
 
-// ----------- HintInput -----------
-@input-width:200px;
-@input-prefix-width: 50px;
+
+// ----------- antd-Input -----------
+:global {
+  .ant-input {
+    background-color: transparent;
+    color: @default-yellow;
+    height: 45px;
+    border-width: 2px;
+    border-radius: 10px;
+
+    &:hover {
+      box-shadow: 2px 2px 10px #FFF8DE;
+    }
+
+    &::selection {
+      box-shadow: 2px 2px 10px #FFF8DE;
+    }
+  }
+}
 
 // ----------- LoginBackground -----------
-@loginBackground-border-radius:30px;
+@loginBackground-border-radius: 30px;
+
+// ----------- antd-table -----------
+
+@table-background-color:  #444343;
+@table-border-color: #646363;
+@table-body-text-color: #cccccc;
+@table-expanded-row-bg:#fff6c7;
+@table-body-divide-border:  2px ridge @default-foreground-lighter-color;
+
+:global {
+  .ant-table-thead>tr>th{
+    background-color: @table-background-color;
+    color: #ffffff;
+    border-bottom: 2px solid @default-yellow;
+  }
+  .ant-table{
+    color:@table-body-text-color;
+    border: 1px solid @table-border-color;
+  }
+
+  .ant-table-body{
+    background-color: @table-background-color;
+  }
+
+  .ant-table-row {
+    border-bottom: @table-body-divide-border;
+  }
+  tr.ant-table-expanded-row{
+    background-color: @table-expanded-row-bg;
+  }
+  //分页栏
+  .ant-table-pagination.ant-pagination {
+    margin: 20px 0;
+    float:left;
+    position: relative;
+    left: 40%;
+  }
+  .ant-pagination-prev .ant-pagination-item-link, .ant-pagination-next .ant-pagination-item-link {
+    background-color: transparent;
+    color:white;
+  }
+  .ant-pagination-item-active {
+    border: 1px solid #d9d9d9;
+  }
+  .ant-pagination-item {
+    background-color: transparent;
+    //border: 0;
+    color:@default-yellow-light
+
+  }
+}

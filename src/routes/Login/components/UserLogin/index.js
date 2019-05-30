@@ -15,7 +15,7 @@ class UserLogin extends Component {
     }
 
     handleUserLoginButtonClick() {
-        //todo() 实现用户登陆后跳转回上一个浏览的界面
+        //todo() 实现用户登陆后跳转回上一个浏览的界面 调用登陆接口
         console.log(this.state.username)
         console.log(this.state.password)
         // this.props.history.push('/')

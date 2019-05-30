@@ -13,9 +13,10 @@ class UserRegister extends Component {
         }
     }
     handleUserRegisterButtonClick() {
-        //todo() 实现用户登陆后跳转回上一个浏览的界面
-        console.log(this.state.username)
-        console.log(this.state.password)
+
+        //todo() 调用注册接口 完成注册后回到登陆界面
+        console.log(this.state.username);
+        console.log(this.state.password);
         // this.props.history.push('/')
     };
 

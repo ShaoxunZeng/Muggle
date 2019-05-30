@@ -59,8 +59,7 @@ class Login extends PureComponent {
                     </div>
                 }
 
-                <NavLink to='/'> 登陆 </NavLink>
-                <NavLink onClick={this.handleAdminChange.bind(this)}> 管理员身份登录 </NavLink>
+                <a onClick={this.handleAdminChange.bind(this)}> 管理员身份登录 </a>
             </div>
         )
     };
