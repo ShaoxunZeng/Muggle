@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./index.module.less";
 import WithSider from "../../../components/WithSider";
 import TimeLine from "../../../components/TimeLine";
+import {DatePicker} from "antd";
 
 let intervals = [{
   startTime: "7:00",
@@ -26,6 +27,7 @@ class Manage extends PureComponent {
           <div className={styles.block}>
             <TimeLine intervals={intervals}/>
           </div>
+          <DatePicker className={styles.datepicker}/>
         </div>
     )
   };
