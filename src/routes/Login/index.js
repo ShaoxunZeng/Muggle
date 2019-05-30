@@ -36,21 +36,21 @@ class Login extends PureComponent {
                 {this.state.showAdmin ? <AdminLogin/> :
                     <div className={styles.userModule}>
                         <div className={styles.userRadio}>
-                            <Radio.Group onChange={this.handleStatusChange.bind(this)} defaultValue="signIn">
+                            <Radio.Group onChange={this.handleStatusChange.bind(this)} defaultValue="LoginIn">
                                 <Radio.Button
                                     style={{
                                         background: '#FFF9C6',
                                         borderBottomLeftRadius: 10,
                                         borderTopLeftRadius: 10,
                                     }}
-                                    value="signIn">Sign In</Radio.Button>
+                                    value="LoginIn">Login In</Radio.Button>
                                 <Radio.Button
                                     style={{
                                         background: '#414142',
                                         borderBottomRightRadius: 10,
                                         borderTopRightRadius: 10
                                     }}
-                                    value="signUp">Sign Up</Radio.Button>
+                                    value="Register">Register</Radio.Button>
                             </Radio.Group>
                         </div>
                         <div className={styles.adminModule}>
