@@ -19,18 +19,46 @@
   }
 
   .main-body {
-    margin-top: @header-margin;
+    margin: @header-margin;
+    padding: @header-margin;
     background-color: @default-foreground-lighter-color;
     height: 100%;
     width: 100%;
 
-    .datepicker {
-      width: 200px;
-      margin: @header-margin;
+    .text {
+      color: @header-nav-color;
+      font-size: @default-label-font-size
+    }
 
-      :global {
-        .ant-calendar-picker-clear {
-          height: 0px;
+    .picker-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+
+      .time-picker {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .datepicker {
+          width: 200px;
+          margin-left: @header-margin;
+
+          :global {
+            .ant-calendar-picker-clear {
+              height: 0px;
+            }
+          }
+        }
+      }
+
+      .hall-picker {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .hallpicker {
+          margin-left: @header-margin;
         }
       }
     }
