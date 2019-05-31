@@ -24,16 +24,20 @@
     background-color: @default-foreground-lighter-color;
     height: 100%;
     width: 100%;
-
-    .text {
-      color: @header-nav-color;
-      font-size: @default-label-font-size
-    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     .picker-container {
       display: flex;
+      width: 100%;
       flex-direction: row;
-      justify-content: space-around;
+      justify-content: space-between;
+
+      .text {
+        color: @header-nav-color;
+        font-size: @default-label-font-size
+      }
 
       .time-picker {
         display: flex;
@@ -56,6 +60,15 @@
           margin-left: @header-margin;
         }
       }
+    }
+
+    .timeline {
+      margin: @header-margin;
+    }
+
+    .card {
+      height: @ararngeinfocard-height;
+      width: @arrangeinfocard-width;
     }
   }
 }

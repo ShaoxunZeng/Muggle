@@ -1,0 +1,29 @@
+@import "../../../../../themes/default.less";
+
+.whole {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .image-container {
+    height: 380px;
+    width: 260px;
+
+    .image{
+      width: 100%;
+      height: 100%;
+    }
+
+    .text {
+      margin-top: 6px;
+      color: @default-yellow;
+      font-size: @default-label-font-size;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+}
