@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Table, Descriptions, Popconfirm, Icon, Modal} from 'antd'
+import {Table, Descriptions, Popconfirm, Icon, Form, Modal, Input, Select, DatePicker} from 'antd'
 import Button from "../../../../../components/Button";
 import ActivityInfo from "./ActivityInfo";
 
@@ -28,7 +28,6 @@ class ManageActivity extends Component {
         this.state = ({
             activityFormVisible: false,
             activityFormConfirmLoading: false,
-            fields:{}//表单数据
         })
     };
 
@@ -40,14 +39,13 @@ class ManageActivity extends Component {
     };
 
 
-
     //提交表单
     handleOk = () => {
         this.setState({
             activityFormConfirmLoading: true,
         });
         //TODO() 更改为调用上传数据成功后关闭
-        //  this.props.appendActivity();
+        //  this.props.appendActivity(activityInfo);
         setTimeout(() => {
             this.setState({
                 activityFormVisible: false,
@@ -64,6 +62,7 @@ class ManageActivity extends Component {
         })
     };
 
+
     operation = () => {
         return (
             <div>
@@ -78,7 +77,19 @@ class ManageActivity extends Component {
                     confirmLoading={this.state.activityFormConfirmLoading}
                 >
 
-                    <ActivityInfo />
+                    {/*todo() 提交表单信息*/}
+                    <Form>
+                        <Form.Item><Input placeholder={'活动名称'}/></Form.Item>
+                        <Form.Item><Input placeholder={'活动描述'}/></Form.Item>
+                        <Form.Item><Select placeholder="参与电影"/></Form.Item>
+                        <Form.Item><DatePicker placeholder={'开始时间'}/></Form.Item>
+                        <Form.Item><DatePicker placeholder={'结束时间'}/></Form.Item>
+                        <Form.Item><Input placeholder={'优惠券名称'}/></Form.Item>
+                        <Form.Item><Input placeholder={'优惠券描述'}/></Form.Item>
+                        <Form.Item><Input placeholder={'使用门槛'}/></Form.Item>
+                        <Form.Item><Input placeholder={'折扣'}/></Form.Item>
+                        <Form.Item><Input placeholder={'优惠券图片'}/></Form.Item>
+                    </Form>
 
                 </Modal>
             </div>)
@@ -113,7 +124,7 @@ class ManageActivity extends Component {
                 <Descriptions
                     title={"优惠券名称： " + record.couponName}
                     border>
-                    <Descriptions.Item label="优惠券描述" >{record.couponDescription}</Descriptions.Item>
+                    <Descriptions.Item label="优惠券描述">{record.couponDescription}</Descriptions.Item>
                     <Descriptions.Item label="参与电影" span={2}>{record.moviesIncluded.join(',')}</Descriptions.Item>
                     <Descriptions.Item label="有效时长">{record.couponExpiration}</Descriptions.Item>
                     <Descriptions.Item label="使用门槛">{record.couponThreshold + '元'}</Descriptions.Item>
