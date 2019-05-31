@@ -4,16 +4,17 @@
   width: 100%;
   height: 100%;
   //background-color: @default-background-color;
-  background-image: url("../../assets/Background/Background.svg");
   display: flex;
   flex-direction: row;
 
   .sider {
-    min-width: @default-sider-width;
+    min-width: @sider-width;
     min-height: 1000px;
   }
 
   .bodyContent {
+    background-image: url("../../assets/Background/Background.svg");
     width: 100%;
+    padding: @default-with-sider-padding;
   }
 }
