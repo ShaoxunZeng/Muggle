@@ -83,53 +83,80 @@
 // ----------- LoginBackground -----------
 @loginBackground-border-radius: 30px;
 
-// ----------- antd-table -----------
 
-@table-background-color:  #444343;
+// ----------- antd-Table -----------
+@table-background-color: #444343;
 @table-border-color: #646363;
 @table-body-text-color: #cccccc;
-@table-expanded-row-bg:#fff6c7;
-@table-body-divide-border:  2px ridge @default-foreground-lighter-color;
+@table-expanded-row-bg: #fff6c7;
+@table-body-divide-border: 2px ridge @default-foreground-lighter-color;
 
 :global {
-  .ant-table-thead>tr>th{
+  .ant-table-thead > tr > th {
     background-color: @table-background-color;
     color: #ffffff;
-    border-bottom: 2px solid @default-yellow;
+    border-bottom: 2px solid @default-yellow-light;
   }
-  .ant-table{
-    color:@table-body-text-color;
+
+  .ant-table {
+    color: @table-body-text-color;
     border: 1px solid @table-border-color;
   }
 
-  .ant-table-body{
+  .ant-table-body {
     background-color: @table-background-color;
   }
 
   .ant-table-row {
     border-bottom: @table-body-divide-border;
   }
-  tr.ant-table-expanded-row{
+
+  tr.ant-table-expanded-row {
     background-color: @table-expanded-row-bg;
   }
+
   //分页栏
   .ant-table-pagination.ant-pagination {
     margin: 20px 0;
-    float:left;
+    float: left;
     position: relative;
     left: 40%;
   }
+
   .ant-pagination-prev .ant-pagination-item-link, .ant-pagination-next .ant-pagination-item-link {
     background-color: transparent;
-    color:white;
+    color: white;
   }
+
   .ant-pagination-item-active {
     border: 1px solid #d9d9d9;
   }
+
   .ant-pagination-item {
     background-color: transparent;
     //border: 0;
-    color:@default-yellow-light
+    color: @default-yellow-light
 
+  }
+}
+
+// ----------- antd-Tab -----------
+
+@tab-container-yellow-shadow: 0px 0px 10px @default-yellow;
+@tab-container-border-bottom: 1px ridge @default-yellow;
+:global {
+  .ant-tabs-nav-container {
+    font-size: 14px;
+    color: white;
+    border-bottom: @tab-container-border-bottom;
+    box-shadow: @tab-container-yellow-shadow;
+
+  }
+  .ant-tabs-bar{
+    margin-bottom: 40px;
+  }
+  .ant-tabs.ant-tabs-card .ant-tabs-card-bar .ant-tabs-tab {
+    background-color: transparent;
+    border: 0;
   }
 }

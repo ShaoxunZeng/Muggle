@@ -1,8 +1,9 @@
 import request from "../utils/request";
+import prefix from "./version";
 
 //接口1. 登陆
 export const login=({username="",password=""})=>{
-    return request(`/login`, {
+    return request(`${prefix}/login`, {
         method: "POST",
         body: {
             username,
@@ -13,7 +14,7 @@ export const login=({username="",password=""})=>{
 
 //接口2. 注册
 export const register=({username='',password=''})=>{
-    return request(`/register`,{
+    return request(`${prefix}/register`,{
         method:"POST",
         body:{
             username,

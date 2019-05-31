@@ -4,6 +4,10 @@ import styles from "./index.module.less";
 import WithSider from "../../../components/WithSider";
 import SendCoupon from "./components/SendCoupon";
 import ManageActivity from "./components/ManageActivity";
+import {Divider, Tabs} from "antd";
+
+
+const {TabPane} = Tabs;
 
 const testActivityInfo = {
     eventId: 1,
@@ -40,9 +44,16 @@ class Activity extends PureComponent {
         const {activities} = this.state;
         return (
             <div className={styles.whole}>
-                Activity
-                <ManageActivity activities={activities}/>
-                <SendCoupon/>
+                <div className={styles.wrapper}>
+                    <Tabs type="card">
+                        <TabPane tab="优惠活动" key="1">
+                            <ManageActivity activities={activities}/>
+                        </TabPane>
+                        <TabPane tab="发布优惠券" key="2">
+                            <SendCoupon/>
+                        </TabPane>
+                    </Tabs>,
+                </div>
             </div>
         )
     };
