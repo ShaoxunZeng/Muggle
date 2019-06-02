@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Table, Tag} from 'antd'
+import {Table, Tag} from 'antd'
 import CouponInfoModal from "./CouponInfoModal";
 
 
@@ -9,9 +9,7 @@ class SendCoupon extends Component {
         this.state = (
             {
                 selectedRowKeys: [],
-                couponFormVisible:false
-
-
+                couponFormVisible: false
             }
         )
 
@@ -50,16 +48,16 @@ class SendCoupon extends Component {
         this.setState({selectedRowKeys});
     };
 
-    closeCouponInfoModal=()=>{
+    closeCouponInfoModal = () => {
         this.setState({
-            couponFormVisible:false
+            couponFormVisible: false
         })
     };
 
 
     render() {
         const {briefUserInfo} = this.props;
-        const {selectedRowKeys,couponFormVisible} = this.state;
+        const {selectedRowKeys, couponFormVisible} = this.state;
         const rowSelection = {
                 selectedRowKeys,
                 onChange: this.onSelectChange,
@@ -70,7 +68,7 @@ class SendCoupon extends Component {
                         text: '赠送优惠券',
                         onSelect: () => {
                             this.setState({
-                                couponFormVisible:true
+                                couponFormVisible: true
                             })
                         }
                     }],
