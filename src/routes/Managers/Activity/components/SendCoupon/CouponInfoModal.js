@@ -72,7 +72,7 @@ class CouponInfoModal extends Component {
                     </Form.Item>
                     <Form.Item>
                         {getFieldDecorator('couponDiscount')(
-                            <Input placeholder={'折扣(填写数字)   '}/>)}
+                            <Input placeholder={'折扣(填写数字)'}/>)}
                     </Form.Item>
                     <Form.Item>
                         {getFieldDecorator('couponPictureUrl')(

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Table, Descriptions, Popconfirm, Icon, Form, Modal, Input, Select, DatePicker} from 'antd'
 import Button from "../../../../../components/Button";
-import ActivityInfo from "./ActivityInfo";
+import ActivityInfoModal from "./ActivityInfoModal";
 
 
 function CustomExpandIcon(props) {
@@ -27,7 +27,6 @@ class ManageActivity extends Component {
         super(props);
         this.state = ({
             activityFormVisible: false,
-            activityFormConfirmLoading: false,
         })
     };
 
@@ -39,29 +38,11 @@ class ManageActivity extends Component {
     };
 
 
-    //提交表单
-    handleOk = () => {
-        this.setState({
-            activityFormConfirmLoading: true,
-        });
-        //TODO() 更改为调用上传数据成功后关闭
-        //  this.props.appendActivity(activityInfo);
-        setTimeout(() => {
-            this.setState({
-                activityFormVisible: false,
-                activityFormConfirmLoading: false,
-            });
-        }, 2000);
-
-    };
-
-    //取消更改
-    handleCancel = () => {
+    closeActivityInfoModal = () => {
         this.setState({
             activityFormVisible: false
         })
     };
-
 
     operation = () => {
         return (
@@ -69,30 +50,11 @@ class ManageActivity extends Component {
                 <span>操作</span>
                 <Icon style={{fontSize: '18px', marginLeft: '10px', color: '#FFEB9E'}} type="plus-circle"
                       onClick={this.showActivityForm}/>
-                <Modal
-                    title="新活动信息"
-                    visible={this.state.activityFormVisible}
-                    onOk={this.handleOk}
-                    onCancel={this.handleCancel}
-                    confirmLoading={this.state.activityFormConfirmLoading}
-                >
+                <ActivityInfoModal activityFormVisible={this.state.activityFormVisible}
+                                   closeActivityInfoModal={this.closeActivityInfoModal}
+                                   movieOnShelfInfo={this.props.movieOnShelfInfo}
+                />
 
-                    {/*todo() 提交表单信息*/}
-                    <ActivityInfo/>
-                    {/*<Form>*/}
-                        {/*<Form.Item><Input placeholder={'活动名称'}/></Form.Item>*/}
-                        {/*<Form.Item><Input placeholder={'活动描述'}/></Form.Item>*/}
-                        {/*<Form.Item><Select placeholder="参与电影"/></Form.Item>*/}
-                        {/*<Form.Item><DatePicker placeholder={'开始时间'}/></Form.Item>*/}
-                        {/*<Form.Item><DatePicker placeholder={'结束时间'}/></Form.Item>*/}
-                        {/*<Form.Item><Input placeholder={'优惠券名称'}/></Form.Item>*/}
-                        {/*<Form.Item><Input placeholder={'优惠券描述'}/></Form.Item>*/}
-                        {/*<Form.Item><Input placeholder={'使用门槛'}/></Form.Item>*/}
-                        {/*<Form.Item><Input placeholder={'折扣'}/></Form.Item>*/}
-                        {/*<Form.Item><Input placeholder={'优惠券图片'}/></Form.Item>*/}
-                    {/*</Form>*/}
-
-                </Modal>
             </div>)
     };
 

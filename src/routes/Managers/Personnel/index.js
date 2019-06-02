@@ -5,7 +5,7 @@ import WithSider from "../../../components/WithSider";
 import {Icon, Tabs, Popconfirm, Table} from 'antd'
 import {delManager, getAllManagers} from "../../../services/apiPersonnel";
 import Button from "../../../components/Button";
-import MemberInfoModal from "./MemberInfoModal";
+import ManagerInfoModal from "./ManagerInfoModal";
 
 const {TabPane} = Tabs;
 
@@ -38,7 +38,7 @@ class Personnel extends PureComponent {
         });
         console.log('删除该工号管理员' + managerId);
 
-        //TODO() 调用接口48 删除管理员
+        //TODO() 调用接口48 删除管理员 Bug: 同删除活动 第一次删除无效
         // delManager(managerId)
     };
 
@@ -48,7 +48,7 @@ class Personnel extends PureComponent {
         })
     };
 
-    closeMemberInfoModal = () => {
+    closeManagerInfoModal = () => {
         this.setState({
             managerFormVisible: false
         })
@@ -60,8 +60,8 @@ class Personnel extends PureComponent {
                 <span>操作</span>
                 <Icon style={{fontSize: '18px', marginLeft: '10px', color: '#FFEB9E'}} type="plus-circle"
                       onClick={this.showManagerForm}/>
-                <MemberInfoModal managerFormVisible={this.state.managerFormVisible}
-                                 closeMemberInfoModal={this.closeMemberInfoModal}/>
+                <ManagerInfoModal managerFormVisible={this.state.managerFormVisible}
+                                 closeMemberInfoModal={this.closeManagerInfoModal}/>
             </div>
         )
     };

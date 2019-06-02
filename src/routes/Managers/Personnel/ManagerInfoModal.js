@@ -3,14 +3,14 @@ import {addManager} from "../../../services/apiPersonnel";
 import {Form, Input, Modal} from 'antd'
 import Button from "../../../components/Button";
 
-class MemberInfoModal extends Component {
+class ManagerInfoModal extends Component {
     constructor(props) {
         super(props);
     }
 
     //取消更改
     handleCancel = () => {
-        this.props.closeMemberInfoModal();
+        this.props.closeManagerInfoModal();
     };
     handleSubmit = e => {
         e.preventDefault();
@@ -21,7 +21,7 @@ class MemberInfoModal extends Component {
                 // addManager(value)
             }
         });
-        this.props.closeMemberInfoModal();
+        this.props.closeManagerInfoModal();
     };
 
     render() {
@@ -56,7 +56,7 @@ class MemberInfoModal extends Component {
     }
 }
 
-export default MemberInfoModal = Form.create()(MemberInfoModal);
+export default ManagerInfoModal = Form.create()(ManagerInfoModal);
 
 
 
