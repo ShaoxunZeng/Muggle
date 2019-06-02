@@ -10,9 +10,7 @@ class MemberInfoModal extends Component {
 
     //取消更改
     handleCancel = () => {
-        this.setState({
-            managerFormVisible: false
-        })
+        this.props.closeMemberInfoModal();
     };
     handleSubmit = e => {
         e.preventDefault();
