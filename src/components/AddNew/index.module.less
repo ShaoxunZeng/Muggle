@@ -1,37 +1,23 @@
 @import "../../themes/default.less";
 
 .whole {
+  width: 100%;
+  height: 100%;
+  background: @addnew-background-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-}
-
-.button-all {
-  outline: none;
-  border-radius: @default-radius;
-  width: @button-width;
-  height: @button-height;
-  cursor: pointer;
-  letter-spacing: 4px;
-  font-size: 16px;
-  border: 0px;
-  font-weight: 500;
-}
-
-.button-type {
-  &-yellow {
+  .vertical{
+    width: 3px;
+    height: 100px;
     background-color: @default-yellow;
-    color: #565657;
-
-    &:hover {
-      box-shadow: @button-hover-yellow-shadow;
-    }
   }
 
-  &-gray {
-    background-color: @default-gray;
-    color: @default-white;
-
-    &:hover {
-      box-shadow: @button-hover-yellow-shadow;
-    }
+  .horizon{
+    width: 100px;
+    height: 3px;
+    background-color: @default-yellow;
+    margin-left: -50px;
   }
 }

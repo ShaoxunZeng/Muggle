@@ -5,6 +5,7 @@ import WithSider from "../../../components/WithSider";
 import {DatePicker, Icon, Input, Select, Tooltip} from "antd";
 import TimeLine from "../../../components/TimeLine";
 import ArrangeInfoCard from "./components/ArrangeInfoCard";
+import AddNew from "../../../components/AddNew";
 
 let arrangeInfo = [
   {
@@ -109,6 +110,9 @@ class Arrange extends PureComponent {
                     </div>
                 )
               })}
+            </div>
+            <div className={styles.addnew}>
+              <AddNew/>
             </div>
           </div>
         </div>
