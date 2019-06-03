@@ -1,0 +1,67 @@
+@import "../../themes/default.less";
+
+.whole {
+  background-color: @usersider-background-color;
+  width: 100%;
+  height: 100%;
+
+  .up {
+    height: @sider-up-height;
+  }
+
+  .yellow-lines {
+    width: 100%;
+    height: 3px;
+    background-color: @default-yellow;
+    box-shadow: @default-yellow-shadow;
+    margin-top: 3px;
+  }
+
+  .items {
+
+    .nav {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+
+      .nav-item {
+        width: 100%;
+        height: @sider-item-height;
+        text-decoration: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .text {
+          height: 100%;
+          margin-left: 10px;
+          color: @header-nav-color;
+          font-size: @default-label-font-size;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+      }
+
+      .vertical-line {
+        margin-left: 5px;
+        height: 80%;
+        width: 3px;
+      }
+
+      //.underline {
+      //  width: 100%;
+      //  height: 3px;
+      //  background-color: @default-foreground-darker-color;
+      //}
+
+      .nav-active {
+        background-color: @usersider-active-background-color;
+        .vertical-line {
+          background-color: @default-yellow;
+          box-shadow: @default-yellow-shadow;
+        }
+      }
+    }
+  }
+}

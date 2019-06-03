@@ -10,6 +10,14 @@ import PrivateCinema from "../Users/PrivateCinema";
 import MovieDetailsPage from "../Users/MovieDetailPage";
 import MovieOrder from "../Users/MovieOrder";
 
+import Coupon from "../Users/UserHome/Coupon";
+import Mark from "../Users/UserHome/Mark";
+import MemberCenter from "../Users/UserHome/MemberCenter";
+import Message from "../Users/UserHome/Message";
+import Order from "../Users/UserHome/Order";
+import Setting from "../Users/UserHome/Setting";
+
+
 import Manage from "../Managers/Manage";
 import Arrange from "../Managers/Arrange";
 import Onshelf from "../Managers/Onshelf";
@@ -24,9 +32,8 @@ import Account from "../Managers/Account";
 
 export default [
     //登陆注册
-    <Route component={Login} exact path='/login'>
-        {/*<Route component={}></Route>*/}
-    </Route>,
+    <Route component={Login} exact path='/login'/>,
+
     // 经理界面
     <Route component={Manage} exact path='/manage'/>,
     <Route component={Arrange} exact path='/manage/arrange'/>,
@@ -45,6 +52,15 @@ export default [
     <Route component={PrivateCinema} exact path='/privateCinema'/>,
     <Route component={MovieDetailsPage} exact path='/moviedetails/:movieId'/>,
     <Route component={MovieOrder} exact path='/movieorder/:movieId'/>,
-    <Route component={Home} path='/'/>
+    <Route component={Home} exact path='/'/>,
+    //todo() 不知道为什么 一定要设置exact 不然下面的路由跳转无效
+    //用户中心界面
+    <Route component={Order} exact path='/home/order'/>,
+    <Route component={Coupon} exact path='/home/coupon'/>,
+    <Route component={MemberCenter} exact path='/home/membercenter'/>,
+    <Route component={Mark} exact path='/home/mark'/>,
+    <Route component={Message} exact path='/home/message'/>,
+    <Route component={Setting} exact path='/home/setting'/>
+
 ]
 ;

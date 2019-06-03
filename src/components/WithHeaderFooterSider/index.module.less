@@ -1,0 +1,36 @@
+@import "../../themes/default.less";
+
+.wholeBody {
+  width: 100%;
+  height: 100%;
+  background-image: url("../../assets/Background/Background.svg");
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .bodyContent {
+    width: @default-page-width;
+    margin-top: @default-space-between;
+    margin-bottom: @default-space-between;
+
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    // background-color: @default-foreground-darker-color;
+
+
+    .mainContent {
+      //background-color: white;
+      flex-grow: 1;
+      flex-shrink: 0;
+      padding: @default-with-sider-padding;
+    }
+
+    .userSider {
+      width: @usersider-width;
+      height: @usersider-height;
+      margin-left: @default-space-between+10px;
+
+    }
+  }
+}
