@@ -3,26 +3,33 @@ import prefix from "./version";
 
 //接口3 获取当前已上架电影信息（七部热门影片）
 export const getPopularMovies = () => {
-  return request(`${prefix}/movie/popular`, {
-    method: "GET",
-  });
+    return request(`${prefix}/movie/popular`, {
+        method: "GET",
+    });
 };
 
 
 //接口4. 获取当前已上架所有影片
-export const getMoviesOnShelf=()=>{
-  return request(`${prefix}/movie/onshelf`,{
-    methods:"GET"
-  })
+export const getMoviesOnShelf = () => {
+    return request(`${prefix}/movie/onshelf`, {
+        methods: "GET"
+    })
 
 };
 
 //接口5. 获取某部电影详情
 export const getMovieDetails = (movieId) => {
-  return request(`${prefix}/movie/detail/${movieId}`, {
-    method: "GET",
-  });
+    return request(`${prefix}/movie/detail/${movieId}`, {
+        method: "GET",
+    });
 };
 
+
+//接口36.查看电影评价
+export const getMovieComment = (movieId) => {
+    return request(`${prefix}/movie/comment/${movieId}`, {
+        method: "GET"
+    });
+};
 
 

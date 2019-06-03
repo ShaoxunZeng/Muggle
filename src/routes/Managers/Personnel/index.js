@@ -19,7 +19,8 @@ class Personnel extends PureComponent {
     constructor(props) {
         super(props);
         this.state = ({
-            managerList: []
+            managerList: [],
+            managerFormVisible:false
         })
     };
 

@@ -9,13 +9,14 @@ class Rater extends Component {
 
   handleChange = (value) => {
     this.setState({ value });
+    this.props.handleRateChange(value);
   };
 
   render() {
     const { value } = this.state;
     return (
         <div className={styles.container}>
-          <Rate count={10} onChange={this.handleChange} value={value} className={styles.rater} />
+          <Rate count={10} onChange={this.handleChange} ref='rateValue' value={value} className={styles.rater} />
           <div className={styles['rater-text']}>{value}</div>
         </div>
     );
