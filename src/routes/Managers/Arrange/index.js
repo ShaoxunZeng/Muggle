@@ -6,7 +6,7 @@ import {DatePicker, Icon, Input, Select, Tooltip} from "antd";
 import TimeLine from "../../../components/TimeLine";
 import ArrangeInfoCard from "./components/ArrangeInfoCard";
 
-let arrangInfo = [
+let arrangeInfo = [
   {
     sceneId: 1,
     price: 100,
@@ -17,32 +17,46 @@ let arrangInfo = [
       endTime: '14:00'
     },
     seats: [
-      [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
-      [0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0],
-      [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-      [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-      [0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0],
-      [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+      [0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0],
+      [0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0],
+      [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0],
+      [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+      [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+      [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+      [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+      [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+      [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0],
+      [0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0],
+      [0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0],
     ],
-    movieName: "xxx",
-    posterUrl: "https://s2.ax1x.com/2019/05/31/VQrg6s.png"
+    movieName: "spider man",
+    posterUrl: "https://s2.ax1x.com/2019/05/31/VQrg6s.png",
+    length: 123
   }, {
-    sceneId: 2,
+    sceneId: 1,
     price: 100,
-    hallName: '2号厅 3D MAX',
+    hallName: '1号厅 3D MAX',
     date: '2019-1-1',
     interval: {
-      startTime: '15:10',
-      endTime: '17:00'
+      startTime: '9:10',
+      endTime: '14:00'
     },
-    seats: [[1]],
-    movieName: "xxx",
-    posterUrl: "https://s2.ax1x.com/2019/05/31/VQrg6s.png"
+    seats: [
+      [0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0],
+      [0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0],
+      [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0],
+      [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+      [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+      [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+      [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+      [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+      [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0],
+      [0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0],
+      [0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0],
+    ],
+    movieName: "spider man",
+    posterUrl: "https://s2.ax1x.com/2019/05/31/VQrg6s.png",
+    length: 123
   }
 ];
 
@@ -73,7 +87,7 @@ class Arrange extends PureComponent {
                 <Select
                     showSearch
                     style={{width: 200}}
-                    placeholder="Select a person"
+                    placeholder="Select a hall"
                     optionFilterProp="children"
                     className={styles.hallpicker}
                 >
@@ -87,8 +101,14 @@ class Arrange extends PureComponent {
               <TimeLine intervals={[{startTime: '9:00', endTime: '10:00'}]}/>
             </div>
 
-            <div className={styles.card}>
-              <ArrangeInfoCard/>
+            <div className={styles.cards}>
+              {arrangeInfo.map((item) => {
+                return (
+                    <div className={styles.card}>
+                      <ArrangeInfoCard arrangeInfo={item}/>
+                    </div>
+                )
+              })}
             </div>
           </div>
         </div>

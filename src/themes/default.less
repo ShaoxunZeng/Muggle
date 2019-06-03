@@ -216,7 +216,7 @@
 
 // ------------- ArrangeInfoCard -------------
 @arrangeinfocard-width: @default-page-width;
-@ararngeinfocard-height: 500px;
+@ararngeinfocard-height: 520px;
 
 // ----------- antd-Datepicker -----------
 :global {
@@ -271,7 +271,6 @@
 }
 
 // ----------- antd-Form -----------
-
 :global {
   .ant-form-item-label > label {
     color: #ffffff; //表格label颜色
@@ -285,3 +284,25 @@
   }
 
 }
+
+// --------- antd-time-picker ---------
+:global {
+  .ant-time-picker-input {
+    background-color: transparent;
+    color: @default-yellow;
+    height: @default-ant-input-height;
+    border-width: @default-ant-input-border-width;
+    border-radius: @default-ant-input-border-radius;
+
+    &:hover {
+      box-shadow: 2px 2px 10px #FFF8DE;
+    }
+
+    &::selection {
+      box-shadow: 2px 2px 10px #FFF8DE;
+    }
+  }
+}
+
+// -------------- arrange-info-card -------------
+@arrange-info-card-inputs-width: 200px;

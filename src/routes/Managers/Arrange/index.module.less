@@ -66,9 +66,16 @@
       margin: @header-margin;
     }
 
-    .card {
-      height: @ararngeinfocard-height;
-      width: @arrangeinfocard-width;
+    .cards {
+      margin-top: @header-item-margin;
+      display: flex;
+      flex-direction: column;
+
+      .card {
+        width: @arrangeinfocard-width;
+        height: 100%;
+        margin-top: 6px;
+      }
     }
   }
 }

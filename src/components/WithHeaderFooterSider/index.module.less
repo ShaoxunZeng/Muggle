@@ -4,6 +4,7 @@
   width: 100%;
   height: 100%;
   background-image: url("../../assets/Background/Background.svg");
+  background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,24 +14,22 @@
     margin-top: @default-space-between;
     margin-bottom: @default-space-between;
 
-    text-align: center;
     display: flex;
     flex-direction: row;
     // background-color: @default-foreground-darker-color;
 
 
     .mainContent {
-      //background-color: white;
+      background-color: @default-foreground-lighter-color;
       flex-grow: 1;
       flex-shrink: 0;
-      padding: @default-with-sider-padding;
+      padding: @header-item-margin;
     }
 
     .userSider {
       min-width: @usersider-width;
-      min-height: @usersider-height;
+      height: @usersider-height;
       margin-left: @default-space-between+10px;
-
     }
   }
 }
