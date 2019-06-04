@@ -8,16 +8,19 @@
   justify-content: center;
   align-items: center;
 
-  .vertical{
-    width: 3px;
-    height: 100px;
-    background-color: @default-yellow;
-  }
-
-  .horizon{
+  .horizon {
     width: 100px;
     height: 3px;
     background-color: @default-yellow;
-    margin-left: -50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .vertical {
+      width: 3px;
+      height: 100px;
+      background-color: @default-yellow;
+    }
   }
+
 }

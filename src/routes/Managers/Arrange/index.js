@@ -2,10 +2,11 @@ import {PureComponent} from "react";
 import React from "react";
 import styles from "./index.module.less";
 import WithSider from "../../../components/WithSider";
-import {DatePicker, Icon, Input, Select, Tooltip} from "antd";
+import {DatePicker, Icon, Input, Popover, Select} from "antd";
 import TimeLine from "../../../components/TimeLine";
 import ArrangeInfoCard from "./components/ArrangeInfoCard";
 import AddNew from "../../../components/AddNew";
+import moment from 'moment';
 
 let arrangeInfo = [
   {
@@ -62,9 +63,15 @@ let arrangeInfo = [
 ];
 
 class Arrange extends PureComponent {
-  componentWillUnmount() {
+  handleChooseDate = (data) => {
+    let d = new Date(data);
+    console.log(d.getFullYear() + " " + (d.getMonth() + 1) + " " + d.getDate())
+  };
 
-  }
+  componentWillMount() {
+    let d = moment(new Date(), "YYYY/MM/DD").toDate();
+    console.log(d.getFullYear() + " " + (d.getMonth() + 1) + " " + d.getDate() + " " + d.getHours() + " " + d.getMinutes())
+  };
 
   render() {
     return (
@@ -80,7 +87,10 @@ class Arrange extends PureComponent {
             <div className={styles['picker-container']}>
               <div className={styles['time-picker']}>
                 <div className={styles.text}> 选择日期</div>
-                <DatePicker className={styles.datepicker}/>
+                <DatePicker
+                    className={styles.datepicker}
+                    onChange={this.handleChooseDate}
+                    defaultValue={moment(new Date(), "YYYY/MM/DD")}/>
               </div>
 
               <div className={styles['hall-picker']}>
@@ -111,9 +121,11 @@ class Arrange extends PureComponent {
                 )
               })}
             </div>
-            <div className={styles.addnew}>
-              <AddNew/>
-            </div>
+            <Popover content={"新增排片"}>
+              <div className={styles.addnew}>
+                <AddNew/>
+              </div>
+            </Popover>
           </div>
         </div>
     )

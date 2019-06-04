@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/Cellar/yarn/1.16.0/libexec/bin/yarn.js install
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.16.0/libexec/bin/yarn.js add moment
 
 PATH: 
   /Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/bin:/usr/local/mysql-5.7.25-macos10.14-x86_64/bin:/Users/cengshaoxun/anaconda3/bin:/Users/cengshaoxun/anaconda3/condabin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin
@@ -14,7 +14,17 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/antd/-/antd-3.19.1.tgz: ENOENT: no such file or directory, open '/Users/cengshaoxun/Library/Caches/Yarn/v4/npm-antd-3.19.1-97d5dd8dd945105b388e1435fc15c98f3455cb97/node_modules/antd/.yarn-tarball.tgz'
+  Error: https://registry.yarnpkg.com/antd/-/antd-3.19.1.tgz: ESOCKETTIMEDOUT
+      at ClientRequest.<anonymous> (/usr/local/Cellar/yarn/1.16.0/libexec/lib/cli.js:130217:19)
+      at Object.onceWrapper (events.js:277:13)
+      at ClientRequest.emit (events.js:189:13)
+      at TLSSocket.emitRequestTimeout (_http_client.js:662:40)
+      at Object.onceWrapper (events.js:277:13)
+      at TLSSocket.emit (events.js:189:13)
+      at TLSSocket.Socket._onTimeout (net.js:440:8)
+      at ontimeout (timers.js:436:11)
+      at tryOnTimeout (timers.js:300:5)
+      at listOnTimeout (timers.js:263:5)
 
 npm manifest: 
   {

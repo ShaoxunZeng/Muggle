@@ -6,12 +6,11 @@ import {Popover} from "antd";
 class AddNew extends Component {
   render() {
     return (
-        <Popover content={"新增排片"}>
-          <div className={styles.whole}>
+        <div className={styles.whole}>
+          <div className={styles.horizon}>
             <div className={styles.vertical}/>
-            <div className={styles.horizon}/>
           </div>
-        </Popover>
+        </div>
     )
   }
 }
