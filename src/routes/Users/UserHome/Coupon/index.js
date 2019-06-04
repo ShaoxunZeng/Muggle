@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./index.module.less";
 import WithHeaderFooterSider from "../../../../components/WithHeaderFooterSider";
 import {getAllCoupons} from "../../../../services/apiCoupon";
-import CouponCard from "../../../../components/Coupon";
+import CouponCard from "../../../../components/CouponCard";
 
 const testCouponInfo = [
     {
