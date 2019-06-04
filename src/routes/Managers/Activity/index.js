@@ -19,7 +19,7 @@ const testActivityInfo = [
         startTime: '2019-04-21',
         endTime: '2019-05-21',
         couponName: '品质联盟',
-        couponDescription: '春节电影节优惠券111111111111111',
+        couponDescription: '春节电影节优惠券',
         couponPictureUrl: '优惠券图片',
         couponDiscount: 10, // 优惠券折扣
         couponThreshold: 100, // 优惠券门槛

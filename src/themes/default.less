@@ -14,8 +14,9 @@
 @default-label-font-size: 16px; // label即页面头部的那几个字 主页 啥的
 @default-label-letter-spacing: 3px; // label那几个字的字间距
 @default-ant-input-height: 45px;
-@default-ant-input-border-width: 2px;
+@default-ant-input-border-width: 1px;
 @default-ant-input-border-radius: 10px;
+@default-inner-page-max-height: 800px;
 
 // ----------Header-----------
 @header-height: 200px;
@@ -65,10 +66,10 @@
 @sider-height: 1000px;
 
 // ----------- UserSider -----------
-@usersider-background-color:rgba(0, 0, 0, 0.15);
-@usersider-active-background-color:rgba(191, 191, 191, 0.1);
-@usersider-width:230px;
-@usersider-height:600px;
+@usersider-background-color: rgba(0, 0, 0, 0.15);
+@usersider-active-background-color: rgba(191, 191, 191, 0.1);
+@usersider-width: 230px;
+@usersider-height: 600px;
 // ----------- antd-Input -----------
 :global {
   .ant-input {
@@ -204,13 +205,14 @@
   }
 
   //多选
-  .ant-select-selection--multiple > ul > li, .ant-select-selection--multiple .ant-select-selection__rendered > ul > li{
-    margin-top:7px;
+  .ant-select-selection--multiple > ul > li, .ant-select-selection--multiple .ant-select-selection__rendered > ul > li {
+    margin-top: 7px;
   }
-  .ant-select-selection--multiple .ant-select-selection__choice{
-    border:0;
+
+  .ant-select-selection--multiple .ant-select-selection__choice {
+    border: 0;
     border-radius: @default-ant-input-border-radius;
-    background-color:@default-yellow;
+    background-color: @default-yellow;
   }
 }
 
@@ -247,6 +249,7 @@
     background-color: @default-foreground-darker-color;
     border-top-right-radius: @modal-border-radius;
     border-top-left-radius: @modal-border-radius;
+    border-bottom: 2px groove @default-yellow;
   }
 
   .ant-modal-title {
@@ -312,3 +315,13 @@
 
 //---------------- modal ----------------
 @modal-padding: 0 40px;
+
+
+//---------------- CouponCard ----------------
+@couponcard-height: 100px;
+@couponcard-box-shadow: 0 0px 20px @default-yellow-light;
+@couponcard-background: transparent;
+@couponcard-left-background-color: @default-yellow;
+@couponcard-right-background-color: #444343;
+@couponcard-padding:0 20px;
+

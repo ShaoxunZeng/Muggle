@@ -25,11 +25,17 @@ export const getMovieDetails = (movieId) => {
 };
 
 
-//接口36.查看电影评价
+//接口36. 查看电影评价
 export const getMovieComment = (movieId) => {
     return request(`${prefix}/movie/comment/${movieId}`, {
         method: "GET"
     });
 };
 
-
+//接口50. 根据movieId列表获取movieDetail列表
+//todo() url写法存疑
+export const getMovieInfoList=(movieIds)=>{
+    return request(`${prefix}/movie/detail/batch?movieIds=${movieIds}`,{
+        method:"GET"
+    })
+};

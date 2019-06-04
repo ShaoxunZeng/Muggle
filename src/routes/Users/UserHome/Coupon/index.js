@@ -1,13 +1,149 @@
-import { PureComponent } from "react";
+import {PureComponent} from "react";
 import React from "react";
 import styles from "./index.module.less";
 import WithHeaderFooterSider from "../../../../components/WithHeaderFooterSider";
+import {getAllCoupons} from "../../../../services/apiCoupon";
+import CouponCard from "../../../../components/Coupon";
 
-class Coupon extends  PureComponent{
+const testCouponInfo = [
+    {
+        couponId: 1,
+        moviesIncluded: [1, 2, 3],
+        couponName: '品质联盟1',
+        couponDescription: '春节电影节优惠券',
+        couponPictureUrl: 'pic',
+        couponDiscount: 30,
+        couponThreshold: 100, //使用门槛
+        couponStartTime: '2019-06-01',
+        couponEndTime: '2019-06-30',
+        couponExpiration: '10天', //有效期长度
+    },
+    {
+        couponId: 2,
+        moviesIncluded: [],
+        couponName: '品质联盟2',
+        couponDescription: '春节电影节优惠券',
+        couponPictureUrl: 'pic',
+        couponDiscount: 1000,
+        couponThreshold: 2000, //使用门槛
+        couponStartTime: '2019-06-01',
+        couponEndTime: '2019-06-30',
+        couponExpiration: '10天', //有效期长度
+    },
+    {
+        couponId: 2,
+        moviesIncluded: [1, 2, 3],
+        couponName: '品质联盟2',
+        couponDescription: '春节电影节优惠券',
+        couponPictureUrl: 'pic',
+        couponDiscount: 1000,
+        couponThreshold: 2000, //使用门槛
+        couponStartTime: '2019-06-01',
+        couponEndTime: '2019-06-30',
+        couponExpiration: '10天', //有效期长度
+    },
+    {
+        couponId: 2,
+        moviesIncluded: [1, 2, 3],
+        couponName: '品质联盟2',
+        couponDescription: '春节电影节优惠券',
+        couponPictureUrl: 'pic',
+        couponDiscount: 1000,
+        couponThreshold: 2000, //使用门槛
+        couponStartTime: '2019-06-01',
+        couponEndTime: '2019-06-30',
+        couponExpiration: '10天', //有效期长度
+    },
+    {
+        couponId: 2,
+        moviesIncluded: [1, 2, 3],
+        couponName: '品质联盟2',
+        couponDescription: '春节电影节优惠券',
+        couponPictureUrl: 'pic',
+        couponDiscount: 1000,
+        couponThreshold: 2000, //使用门槛
+        couponStartTime: '2019-06-01',
+        couponEndTime: '2019-06-30',
+        couponExpiration: '10天', //有效期长度
+    }, {
+        couponId: 2,
+        moviesIncluded: [1, 2, 3],
+        couponName: '品质联盟2',
+        couponDescription: '春节电影节优惠券',
+        couponPictureUrl: 'pic',
+        couponDiscount: 1000,
+        couponThreshold: 2000, //使用门槛
+        couponStartTime: '2019-06-01',
+        couponEndTime: '2019-06-30',
+        couponExpiration: '10天', //有效期长度
+    },
+    {
+        couponId: 2,
+        moviesIncluded: [1, 2, 3],
+        couponName: '品质联盟2',
+        couponDescription: '春节电影节优惠券',
+        couponPictureUrl: 'pic',
+        couponDiscount: 1000,
+        couponThreshold: 2000, //使用门槛
+        couponStartTime: '2019-06-01',
+        couponEndTime: '2019-06-30',
+        couponExpiration: '10天', //有效期长度
+    }, {
+        couponId: 2,
+        moviesIncluded: [1, 2, 3],
+        couponName: '品质联盟2',
+        couponDescription: '春节电影节优惠券',
+        couponPictureUrl: 'pic',
+        couponDiscount: 1000,
+        couponThreshold: 2000, //使用门槛
+        couponStartTime: '2019-06-01',
+        couponEndTime: '2019-06-30',
+        couponExpiration: '10天', //有效期长度
+    }
+
+
+];
+
+
+class Coupon extends PureComponent {
+    constructor(props) {
+        super(props);
+        this.state = {
+            couponList: []
+        }
+
+    }
+
+    componentWillMount() {
+        //TODO()  调用接口1的8 获得所有优惠券
+        // getAllCoupons()
+        this.setState(
+            {
+                couponList: testCouponInfo
+            }
+        )
+    }
+
     render() {
-        return(
+        const {couponList} = this.state;
+
+
+        return (
             <div className={styles.whole}>
-                Coupon
+                {
+                    couponList.map(coupon =>
+                        <div className={styles.couponCard}>
+                            <CouponCard moviesIncluded={coupon.moviesIncluded}
+                                        couponName={coupon.couponName}
+                                        couponDescription={coupon.couponDescription}
+                                        couponDiscount={coupon.couponDiscount}
+                                        couponThreshold={coupon.couponThreshold}
+                                        couponStartTime={coupon.couponStartTime}
+                                        couponEndTime={coupon.couponEndTime}
+                                        couponExpiration={coupon.couponExpiration}/>
+                        </div>
+                    )
+                }
             </div>
         )
     }

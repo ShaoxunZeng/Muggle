@@ -1,0 +1,107 @@
+@import "../../themes/default.less";
+
+.whole {
+  width: 100%;
+  height: @couponcard-height;
+  background-color: @couponcard-background;
+
+  display: flex;
+  flex-direction: row;
+
+  .title-container {
+    width: 60%;
+    height: 100%;
+    padding: @couponcard-padding;
+
+    background: linear-gradient(135deg, transparent 0, @couponcard-left-background-color 0) top left,
+    linear-gradient(-135deg, transparent 8px, @couponcard-left-background-color 0) top right,
+    linear-gradient(-45deg, transparent 8px, @couponcard-left-background-color 0) bottom right,
+    linear-gradient(45deg, transparent 0, @couponcard-left-background-color 0) bottom left;
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center; //垂直居中
+    .title {
+      .couponName {
+        font-size: 22px;
+        letter-spacing: 4px;
+        margin-right: 10px;
+        text-shadow: 2px 1px 2px gray;
+
+      }
+
+      .couponDescription {
+        font-size: 14px;
+        letter-spacing: 1px;
+      }
+    }
+
+    .movieNames {
+      color: @couponcard-right-background-color;
+
+      .hintText {
+        font-size: 10px;
+        letter-spacing: 1px;
+        margin-right: 10px;
+      }
+
+      .text {
+        font-size: 12px;
+        letter-spacing: 2px;
+      }
+    }
+  }
+
+  .discount-container {
+    width: 40%;
+    height: 100%;
+    padding: @couponcard-padding;
+
+    background: @couponcard-right-background-color;
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+    border: 1px solid @default-yellow-light;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center; //垂直居中
+
+    .money {
+      font-size: 24px;
+      letter-spacing: 7px;
+
+      .hintText {
+        color: @moviedetails-name-color;
+      }
+
+      .text {
+        color: @default-yellow;
+        text-shadow: 3px 1px 5px @default-yellow-light;
+        font-weight: 600;
+      }
+
+    }
+
+    .time {
+
+      .hintText {
+        color: @moviedetails-type-color;
+        font-size: 10px;
+        letter-spacing: 1px;
+
+      }
+
+      .text {
+        color: @default-yellow;
+        font-size: 12px;
+        letter-spacing: 2px;
+      }
+    }
+  }
+
+  &:hover {
+    box-shadow: @couponcard-box-shadow;
+  }
+}

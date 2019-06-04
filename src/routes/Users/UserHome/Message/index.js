@@ -4,7 +4,6 @@ import styles from "./index.module.less";
 import WithHeaderFooterSider from "../../../../components/WithHeaderFooterSider";
 import {Table, Tag} from 'antd'
 import {getALlMessage} from "../../../../services/apiMessage";
-import Button from "../../../../components/Button";
 import CommentInfoModal from "./CommentInfoModal/index.js";
 
 const testMsgList = [
@@ -80,7 +79,7 @@ class Message extends PureComponent {
         {
             title: '消息状态',
             align: 'center',
-            render: (record) => {
+            render: (text,record) => {
                 return (
                     record.messageType === 3 ?
                         <Tag color={'yellow'} onClick={() => this.showCommentForm(record.additionalMovieId)}>去评价</Tag> :
