@@ -62,7 +62,7 @@ class Personnel extends PureComponent {
                 <Icon style={{fontSize: '18px', marginLeft: '10px', color: '#FFEB9E'}} type="plus-circle"
                       onClick={this.showManagerForm}/>
                 <ManagerInfoModal managerFormVisible={this.state.managerFormVisible}
-                                 closeMemberInfoModal={this.closeManagerInfoModal}/>
+                                 closeManagerInfoModal={this.closeManagerInfoModal.bind(this)}/>
             </div>
         )
     };
