@@ -1,0 +1,28 @@
+@import "../../../../../themes/default.less";
+
+.whole {
+
+  .tag-all {
+    outline: none;
+    border-radius: @default-radius;
+    width: @button-width;
+    height: @button-height;
+    letter-spacing: 4px;
+    font-size: 16px;
+    border: 0px;
+    font-weight: 500;
+  }
+
+  .tag-type {
+    &-lime {
+      background-color: #fdffe8;
+      color: #9acd74;
+      cursor: pointer;
+    }
+
+    &-grey {
+      background-color: @default-gray;
+      color: @default-white;
+    }
+  }
+}
