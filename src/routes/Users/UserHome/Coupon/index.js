@@ -8,7 +8,6 @@ import CouponCard from "../../../../components/CouponCard";
 const testCouponInfo = [
     {
         couponId: 1,
-        moviesIncluded: [1, 2, 3],
         couponName: '品质联盟1',
         couponDescription: '春节电影节优惠券',
         couponPictureUrl: 'pic',
@@ -20,7 +19,6 @@ const testCouponInfo = [
     },
     {
         couponId: 2,
-        moviesIncluded: [],
         couponName: '品质联盟2',
         couponDescription: '春节电影节优惠券',
         couponPictureUrl: 'pic',
@@ -32,7 +30,6 @@ const testCouponInfo = [
     },
     {
         couponId: 2,
-        moviesIncluded: [1, 2, 3],
         couponName: '品质联盟2',
         couponDescription: '春节电影节优惠券',
         couponPictureUrl: 'pic',
@@ -44,7 +41,6 @@ const testCouponInfo = [
     },
     {
         couponId: 2,
-        moviesIncluded: [1, 2, 3],
         couponName: '品质联盟2',
         couponDescription: '春节电影节优惠券',
         couponPictureUrl: 'pic',
@@ -56,7 +52,6 @@ const testCouponInfo = [
     },
     {
         couponId: 2,
-        moviesIncluded: [1, 2, 3],
         couponName: '品质联盟2',
         couponDescription: '春节电影节优惠券',
         couponPictureUrl: 'pic',
@@ -67,7 +62,6 @@ const testCouponInfo = [
         couponExpiration: '10天', //有效期长度
     }, {
         couponId: 2,
-        moviesIncluded: [1, 2, 3],
         couponName: '品质联盟2',
         couponDescription: '春节电影节优惠券',
         couponPictureUrl: 'pic',
@@ -79,7 +73,6 @@ const testCouponInfo = [
     },
     {
         couponId: 2,
-        moviesIncluded: [1, 2, 3],
         couponName: '品质联盟2',
         couponDescription: '春节电影节优惠券',
         couponPictureUrl: 'pic',
@@ -90,7 +83,6 @@ const testCouponInfo = [
         couponExpiration: '10天', //有效期长度
     }, {
         couponId: 2,
-        moviesIncluded: [1, 2, 3],
         couponName: '品质联盟2',
         couponDescription: '春节电影节优惠券',
         couponPictureUrl: 'pic',
@@ -133,14 +125,14 @@ class Coupon extends PureComponent {
                 {
                     couponList.map(coupon =>
                         <div className={styles.couponCard}>
-                            <CouponCard moviesIncluded={coupon.moviesIncluded}
-                                        couponName={coupon.couponName}
-                                        couponDescription={coupon.couponDescription}
-                                        couponDiscount={coupon.couponDiscount}
-                                        couponThreshold={coupon.couponThreshold}
-                                        couponStartTime={coupon.couponStartTime}
-                                        couponEndTime={coupon.couponEndTime}
-                                        couponExpiration={coupon.couponExpiration}/>
+                            <CouponCard
+                                couponName={coupon.couponName}
+                                couponDescription={coupon.couponDescription}
+                                couponDiscount={coupon.couponDiscount}
+                                couponThreshold={coupon.couponThreshold}
+                                couponStartTime={coupon.couponStartTime}
+                                couponEndTime={coupon.couponEndTime}
+                                couponExpiration={coupon.couponExpiration}/>
                         </div>
                     )
                 }
