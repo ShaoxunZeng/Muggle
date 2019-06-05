@@ -17,6 +17,7 @@
 @default-ant-input-border-width: 1px;
 @default-ant-input-border-radius: 10px;
 @default-inner-page-max-height: 800px;
+@default-inner-page-max-width: @default-page-width - @usersider-width - @usersider-margin-left;
 
 // ----------Header-----------
 @header-height: 200px;
@@ -70,6 +71,9 @@
 @usersider-active-background-color: rgba(191, 191, 191, 0.1);
 @usersider-width: 230px;
 @usersider-height: 600px;
+@usersider-margin-left: @default-space-between+10px;
+
+
 // ----------- antd-Input -----------
 :global {
   .ant-input {

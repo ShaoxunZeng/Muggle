@@ -22,7 +22,7 @@
     .mainContent {
       background-color: @default-foreground-lighter-color;
       max-height: @default-inner-page-max-height;
-      max-width: @default-page-width - @usersider-width;
+      max-width: @default-inner-page-max-width;
       overflow: auto;
       flex-grow: 1;
       flex-shrink: 0;
@@ -32,7 +32,7 @@
     .userSider {
       min-width: @usersider-width;
       height: @usersider-height;
-      margin-left: @default-space-between+10px;
+      margin-left: @usersider-margin-left;
     }
   }
 }
