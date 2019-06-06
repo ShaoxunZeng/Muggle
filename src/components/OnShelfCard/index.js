@@ -8,11 +8,11 @@ class OnShelfCard extends Component {
     }
 
     render() {
-        const {posterUrl, movieName, movieYear, movieLength, movieType, isOnshow,movieId} = this.props;
+        const {posterUrl, movieName, movieYear, movieLength, movieType, isOnshow} = this.props;
         return (
             <div className={styles.whole}>
                 <div className={styles['image-container']}>
-                    <img className={styles.image} src={posterUrl} alt='海报' onClick={this.props.toDetailPage(movieId)}/>
+                    <img className={styles.image} src={posterUrl} alt='海报'/>
                 </div>
                 <div className={styles['info-container']}>
                     <div className={styles.mainInfo}>

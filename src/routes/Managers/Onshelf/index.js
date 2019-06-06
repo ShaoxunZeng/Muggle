@@ -58,13 +58,15 @@ const testAllMovieOnShelf = [
 ];
 
 class Onshelf extends PureComponent {
+
     constructor(props) {
         super(props);
         this.state = {
             movieOnShelfList: [],
             showMainPage: true,
             showAddMoviePage: false,
-            showMovieInfoPage: false
+            showMovieInfoPage: false,
+            currentMovieId: 0
         }
     };
 
@@ -76,9 +78,21 @@ class Onshelf extends PureComponent {
         })
     };
 
-    toDetailPage(movieId) {
-        // console.log(movieId)
+    toDetailPage = (movieId) => {
+        this.setState({
+            showMainPage: false,
+            showMovieInfoPage: true,
+            currentMovieId: movieId
+        });
+        alert({movieId})
     };
+
+    closeMovieInfoPage() {
+        this.setState({
+            showMovieInfoPage: false,
+            showMainPage: true
+        })
+    }
 
     addMovie() {
         this.setState({
@@ -96,7 +110,7 @@ class Onshelf extends PureComponent {
     }
 
     render() {
-        const {movieOnShelfList, showMainPage, showMovieInfoPage, showAddMoviePage} = this.state;
+        const {movieOnShelfList, showMainPage, showMovieInfoPage, showAddMoviePage, currentMovieId} = this.state;
         return (
             <div className={styles.whole}>
                 <Input
@@ -113,18 +127,21 @@ class Onshelf extends PureComponent {
                                 movieOnShelfList.map((movieOnShelf, index) =>
                                     <Col span={6}>
                                         {index === 0 ?
-                                            <div className={styles.addNew} onClick={this.addMovie.bind(this)}><AddNew/>
+                                            <div className={styles.addNew}
+                                                 onClick={this.addMovie.bind(this)}><AddNew/>
                                             </div> : null}
 
-                                        <OnShelfCard
-                                            posterUrl={movieOnShelf.posterUrl}
-                                            movieName={movieOnShelf.movieName}
-                                            movieYear={movieOnShelf.movieYear}
-                                            movieLength={movieOnShelf.movieLength}
-                                            movieType={movieOnShelf.movieType}
-                                            isOnshow={movieOnShelf.isOnShow}
-                                            movieId={movieOnShelf.movieId}
-                                            toDetailPage={this.toDetailPage.bind(this)}/>
+                                            {/*todo() 解决bug */}
+                                        <div onClick={()=>this.toDetailPage(movieOnShelf.movieId)}>
+                                            <OnShelfCard
+                                                posterUrl={movieOnShelf.posterUrl}
+                                                movieName={movieOnShelf.movieName}
+                                                movieYear={movieOnShelf.movieYear}
+                                                movieLength={movieOnShelf.movieLength}
+                                                movieType={movieOnShelf.movieType}
+                                                isOnshow={movieOnShelf.isOnShow}
+                                                movieId={movieOnShelf.movieId}/>
+                                        </div>
                                     </Col>)
                             }
                         </Row>
@@ -133,7 +150,7 @@ class Onshelf extends PureComponent {
                         <NewMovie closeAddMoviePage={this.closeAddMoviePage.bind(this)}/>
                     </div>
                     <div className={showMovieInfoPage ? styles['movie-info'] : styles.hidden}>
-                        <MovieInfo/>
+                        <MovieInfo movieId={currentMovieId}/>
                     </div>
                 </div>
 
