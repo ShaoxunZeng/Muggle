@@ -1,0 +1,72 @@
+@import "../../themes/default.less";
+
+.whole {
+  height: @markcard-height;
+  width: @markcard-width;
+  padding: @markcard-padding;
+
+  display: flex;
+  flex-direction: column;
+
+
+  .image-container {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+
+    .image {
+      box-shadow: 10px 10px 26px #181818;
+      height: @markcard-pic-height;
+      width: @markcard-pic-width;
+    }
+  }
+
+  .info-container {
+    margin-top: 15px;
+
+    .mainInfo {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 5px;
+
+      .movieName {
+        color: @default-yellow;
+        font-size: 13px;
+        letter-spacing: 2px;
+      }
+
+      .tag {
+        margin-left: auto;
+      }
+    }
+
+    .year-time-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      color: @moviedetails-type-color;
+      font-size: 10px;
+      font-weight: lighter;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+
+      .dot {
+        width: 2px;
+        height: 2px;
+        border-radius: 50%;
+        background-color: @moviedetails-dot-color;
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+
+      .movieType {
+        font-weight: normal;
+        margin-left: 30px;
+      }
+
+    }
+
+  }
+
+
+}

@@ -1,16 +1,138 @@
-import { PureComponent } from "react";
+import {PureComponent} from "react";
 import React from "react";
 import styles from "./index.module.less";
 import WithSider from "../../../components/WithSider";
+import {Icon, Input, Row, Col} from "antd";
+import {getMoviesOnShelf} from "../../../services/apiMovies";
+import OnShelfCard from "../../../components/OnShelfCard";
+import AddNew from "../../../components/AddNew";
+import NewMovie from "./components/NewMovie";
+import MovieInfo from "./components/MovieInfo";
+
+const testAllMovieOnShelf = [
+    {
+        isOnShow: true,// 已上映、未上映
+        movieId: 1, // 电影Id
+        movieName: '雷神',// 电影名称
+        movieType: '动作片',// 电影类别（动作片）
+        movieYear: 2019,// 电影年份
+        movieLength: 100,// 电影时长
+        posterUrl: 'https://s2.ax1x.com/2019/05/31/VQrg6s.png'
+    },
+    {
+        isOnShow: false,// 已上映、未上映
+        movieId: 2, // 电影Id
+        movieName: '雷神',// 电影名称
+        movieType: '动作片',// 电影类别（动作片）
+        movieYear: 2019,// 电影年份
+        movieLength: 100,// 电影时长
+        posterUrl: 'https://s2.ax1x.com/2019/05/31/VQrg6s.png'
+    },
+    {
+        isOnShow: true,// 已上映、未上映
+        movieId: 3, // 电影Id
+        movieName: '雷神',// 电影名称
+        movieType: '动作片',// 电影类别（动作片）
+        movieYear: 2019,// 电影年份
+        movieLength: 100,// 电影时长
+        posterUrl: 'https://s2.ax1x.com/2019/05/31/VQrg6s.png'
+    },
+    {
+        isOnShow: true,// 已上映、未上映
+        movieId: 4, // 电影Id
+        movieName: '雷神',// 电影名称
+        movieType: '动作片',// 电影类别（动作片）
+        movieYear: 2019,// 电影年份
+        movieLength: 100,// 电影时长
+        posterUrl: 'https://s2.ax1x.com/2019/05/31/VQrg6s.png'
+    },
+    {
+        isOnShow: false,// 已上映、未上映
+        movieId: 5, // 电影Id
+        movieName: '雷神',// 电影名称
+        movieType: '动作片',// 电影类别（动作片）
+        movieYear: 2019,// 电影年份
+        movieLength: 100,// 电影时长
+        posterUrl: 'https://s2.ax1x.com/2019/05/31/VQrg6s.png'
+    },
+];
 
 class Onshelf extends PureComponent {
-  render() {
-    return (
-        <div className={styles.whole}>
-          Onshelf
-        </div>
-    )
-  };
+    constructor(props) {
+        super(props);
+        this.state = {
+            movieOnShelfList: [],
+            showMainPage: true,
+            showAddMoviePage: false,
+            showMovieInfoPage: false
+        }
+    };
+
+    componentWillMount() {
+        //todo() 调用接口4
+        // getMoviesOnShelf()
+        this.setState({
+            movieOnShelfList: testAllMovieOnShelf
+        })
+    };
+
+    toDetailPage(movieId) {
+       // console.log(movieId)
+    };
+
+    addMovie() {
+        this.setState({
+            showMainPage: false,
+            showAddMoviePage: true
+        });
+        console.log('addMovie')
+    }
+
+    render() {
+        const {movieOnShelfList, showMainPage, showMovieInfoPage, showAddMoviePage} = this.state;
+        return (
+            <div className={styles.whole}>
+                <Input
+                    placeholder="Search Movies"
+                    prefix={<Icon type="search" style={{color: 'rgb(255,255,255)'}}/>}
+                    className={styles.input}
+                />
+                <div className={styles.underline}/>
+
+                <div className={styles['main-body']}>
+                    <div className={showMainPage ? styles.mainPage : styles.hidden}>
+                        <Row className={styles.row}>
+                            {
+                                movieOnShelfList.map((movieOnShelf, index) =>
+                                    <Col span={6}>
+                                        {index === 0 ?
+                                            <div className={styles.addNew} onClick={this.addMovie.bind(this)}><AddNew/>
+                                            </div> : null}
+
+                                        <OnShelfCard
+                                            posterUrl={movieOnShelf.posterUrl}
+                                            movieName={movieOnShelf.movieName}
+                                            movieYear={movieOnShelf.movieYear}
+                                            movieLength={movieOnShelf.movieLength}
+                                            movieType={movieOnShelf.movieType}
+                                            isOnshow={movieOnShelf.isOnShow}
+                                            movieId={movieOnShelf.movieId}
+                                            toDetailPage={this.toDetailPage.bind(this)}/>
+                                    </Col>)
+                            }
+                        </Row>
+                    </div>
+                    <div className={showAddMoviePage ? styles['add-movie'] : styles.hidden}>
+                        <NewMovie/>
+                    </div>
+                    <div className={showMovieInfoPage?styles['movie-info']:styles.hidden}>
+                        <MovieInfo/>
+                    </div>
+                </div>
+
+            </div>
+        )
+    };
 }
 
 export default WithSider(Onshelf);
