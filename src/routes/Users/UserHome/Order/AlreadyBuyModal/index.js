@@ -1,6 +1,7 @@
 import React from "react";
-import styles from "../index.module.less";
+import styles from "./index.module.less";
 import {Modal} from "antd";
+import Button from "../../../../../components/Button";
 
 class AlreadyBuyModal extends React.Component {
   render() {
@@ -9,12 +10,15 @@ class AlreadyBuyModal extends React.Component {
         <Modal
             title="查看取票码"
             visible={modalVisible}
-            onOk={onOk}
-            onCancel={onCancel}
+            footer={null}
         >
           <div className={styles['modal']}>
             <div className={styles['modal-text']}>您的取票码是</div>
             <div className={styles['modal-text']}>{selectedTicketCode}</div>
+          </div>
+          <div className={styles.buttons}>
+            <Button type='gray' onClick={onCancel}>Cancel</Button>
+            <Button type='yellow' onClick={onOk}>OK</Button>
           </div>
         </Modal>
     );
