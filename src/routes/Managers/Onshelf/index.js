@@ -77,7 +77,7 @@ class Onshelf extends PureComponent {
     };
 
     toDetailPage(movieId) {
-       // console.log(movieId)
+        // console.log(movieId)
     };
 
     addMovie() {
@@ -86,6 +86,13 @@ class Onshelf extends PureComponent {
             showAddMoviePage: true
         });
         console.log('addMovie')
+    }
+
+    closeAddMoviePage() {
+        this.setState({
+            showAddMoviePage: false,
+            showMainPage: true
+        })
     }
 
     render() {
@@ -123,9 +130,9 @@ class Onshelf extends PureComponent {
                         </Row>
                     </div>
                     <div className={showAddMoviePage ? styles['add-movie'] : styles.hidden}>
-                        <NewMovie/>
+                        <NewMovie closeAddMoviePage={this.closeAddMoviePage.bind(this)}/>
                     </div>
-                    <div className={showMovieInfoPage?styles['movie-info']:styles.hidden}>
+                    <div className={showMovieInfoPage ? styles['movie-info'] : styles.hidden}>
                         <MovieInfo/>
                     </div>
                 </div>
