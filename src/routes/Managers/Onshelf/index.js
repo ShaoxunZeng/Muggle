@@ -10,153 +10,158 @@ import NewMovie from "./components/NewMovie";
 import MovieInfo from "./components/MovieInfo";
 
 const testAllMovieOnShelf = [
-    {
-        isOnShow: true,// 已上映、未上映
-        movieId: 1, // 电影Id
-        movieName: '雷神',// 电影名称
-        movieType: '动作片',// 电影类别（动作片）
-        movieYear: 2019,// 电影年份
-        movieLength: 100,// 电影时长
-        posterUrl: 'https://s2.ax1x.com/2019/05/31/VQrg6s.png'
-    },
-    {
-        isOnShow: false,// 已上映、未上映
-        movieId: 2, // 电影Id
-        movieName: '雷神',// 电影名称
-        movieType: '动作片',// 电影类别（动作片）
-        movieYear: 2019,// 电影年份
-        movieLength: 100,// 电影时长
-        posterUrl: 'https://s2.ax1x.com/2019/05/31/VQrg6s.png'
-    },
-    {
-        isOnShow: true,// 已上映、未上映
-        movieId: 3, // 电影Id
-        movieName: '雷神',// 电影名称
-        movieType: '动作片',// 电影类别（动作片）
-        movieYear: 2019,// 电影年份
-        movieLength: 100,// 电影时长
-        posterUrl: 'https://s2.ax1x.com/2019/05/31/VQrg6s.png'
-    },
-    {
-        isOnShow: true,// 已上映、未上映
-        movieId: 4, // 电影Id
-        movieName: '雷神',// 电影名称
-        movieType: '动作片',// 电影类别（动作片）
-        movieYear: 2019,// 电影年份
-        movieLength: 100,// 电影时长
-        posterUrl: 'https://s2.ax1x.com/2019/05/31/VQrg6s.png'
-    },
-    {
-        isOnShow: false,// 已上映、未上映
-        movieId: 5, // 电影Id
-        movieName: '雷神',// 电影名称
-        movieType: '动作片',// 电影类别（动作片）
-        movieYear: 2019,// 电影年份
-        movieLength: 100,// 电影时长
-        posterUrl: 'https://s2.ax1x.com/2019/05/31/VQrg6s.png'
-    },
+  {
+    isOnShow: true,// 已上映、未上映
+    movieId: 1, // 电影Id
+    movieName: '雷神',// 电影名称
+    movieType: '动作片',// 电影类别（动作片）
+    movieYear: 2019,// 电影年份
+    movieLength: 100,// 电影时长
+    posterUrl: 'https://s2.ax1x.com/2019/05/31/VQrg6s.png'
+  },
+  {
+    isOnShow: false,// 已上映、未上映
+    movieId: 2, // 电影Id
+    movieName: '雷神',// 电影名称
+    movieType: '动作片',// 电影类别（动作片）
+    movieYear: 2019,// 电影年份
+    movieLength: 100,// 电影时长
+    posterUrl: 'https://s2.ax1x.com/2019/05/31/VQrg6s.png'
+  },
+  {
+    isOnShow: true,// 已上映、未上映
+    movieId: 3, // 电影Id
+    movieName: '雷神',// 电影名称
+    movieType: '动作片',// 电影类别（动作片）
+    movieYear: 2019,// 电影年份
+    movieLength: 100,// 电影时长
+    posterUrl: 'https://s2.ax1x.com/2019/05/31/VQrg6s.png'
+  },
+  {
+    isOnShow: true,// 已上映、未上映
+    movieId: 4, // 电影Id
+    movieName: '雷神',// 电影名称
+    movieType: '动作片',// 电影类别（动作片）
+    movieYear: 2019,// 电影年份
+    movieLength: 100,// 电影时长
+    posterUrl: 'https://s2.ax1x.com/2019/05/31/VQrg6s.png'
+  },
+  {
+    isOnShow: false,// 已上映、未上映
+    movieId: 5, // 电影Id
+    movieName: '雷神',// 电影名称
+    movieType: '动作片',// 电影类别（动作片）
+    movieYear: 2019,// 电影年份
+    movieLength: 100,// 电影时长
+    posterUrl: 'https://s2.ax1x.com/2019/05/31/VQrg6s.png'
+  },
 ];
 
 class Onshelf extends PureComponent {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            movieOnShelfList: [],
-            showMainPage: true,
-            showAddMoviePage: false,
-            showMovieInfoPage: false,
-            currentMovieId: 0
-        }
-    };
-
-    componentWillMount() {
-        //todo() 调用接口4
-        // getMoviesOnShelf()
-        this.setState({
-            movieOnShelfList: testAllMovieOnShelf
-        })
-    };
-
-    toDetailPage = (movieId) => {
-        this.setState({
-            showMainPage: false,
-            showMovieInfoPage: true,
-            currentMovieId: movieId
-        });
-        alert({movieId})
-    };
-
-    closeMovieInfoPage() {
-        this.setState({
-            showMovieInfoPage: false,
-            showMainPage: true
-        })
+  constructor(props) {
+    super(props);
+    this.state = {
+      movieOnShelfList: [],
+      showMainPage: true,
+      showAddMoviePage: false,
+      showMovieInfoPage: false,
+      currentMovieId: 0
     }
+  };
 
-    addMovie() {
-        this.setState({
-            showMainPage: false,
-            showAddMoviePage: true
-        });
-        console.log('addMovie')
-    }
+  componentWillMount() {
+    //todo() 调用接口4
+    // getMoviesOnShelf()
+    getMoviesOnShelf().then((res) => {
+      this.setState({
+        movieOnShelfList: res
+      })
+    });
+    // this.setState({
+    //   movieOnShelfList: testAllMovieOnShelf
+    // })
+  };
 
-    closeAddMoviePage() {
-        this.setState({
-            showAddMoviePage: false,
-            showMainPage: true
-        })
-    }
+  toDetailPage = (movieId) => {
+    this.setState({
+      showMainPage: false,
+      showMovieInfoPage: true,
+      currentMovieId: movieId
+    });
+    alert({movieId})
+  };
 
-    render() {
-        const {movieOnShelfList, showMainPage, showMovieInfoPage, showAddMoviePage, currentMovieId} = this.state;
-        return (
-            <div className={styles.whole}>
-                <Input
-                    placeholder="Search Movies"
-                    prefix={<Icon type="search" style={{color: 'rgb(255,255,255)'}}/>}
-                    className={styles.input}
-                />
-                <div className={styles.underline}/>
+  closeMovieInfoPage() {
+    this.setState({
+      showMovieInfoPage: false,
+      showMainPage: true
+    })
+  }
 
-                <div className={styles['main-body']}>
-                    <div className={showMainPage ? styles.mainPage : styles.hidden}>
-                        <Row className={styles.row}>
-                            {
-                                movieOnShelfList.map((movieOnShelf, index) =>
-                                    <Col span={6}>
-                                        {index === 0 ?
-                                            <div className={styles.addNew}
-                                                 onClick={this.addMovie.bind(this)}><AddNew/>
-                                            </div> : null}
+  addMovie() {
+    this.setState({
+      showMainPage: false,
+      showAddMoviePage: true
+    });
+    console.log('addMovie')
+  }
 
-                                            {/*todo() 解决bug */}
-                                        <div onClick={()=>this.toDetailPage(movieOnShelf.movieId)}>
-                                            <OnShelfCard
-                                                posterUrl={movieOnShelf.posterUrl}
-                                                movieName={movieOnShelf.movieName}
-                                                movieYear={movieOnShelf.movieYear}
-                                                movieLength={movieOnShelf.movieLength}
-                                                movieType={movieOnShelf.movieType}
-                                                isOnshow={movieOnShelf.isOnShow}
-                                                movieId={movieOnShelf.movieId}/>
-                                        </div>
-                                    </Col>)
-                            }
-                        </Row>
-                    </div>
-                    <div className={showAddMoviePage ? styles['add-movie'] : styles.hidden}>
-                        <NewMovie closeAddMoviePage={this.closeAddMoviePage.bind(this)}/>
-                    </div>
-                    <div className={showMovieInfoPage ? styles['movie-info'] : styles.hidden}>
-                        <MovieInfo movieId={currentMovieId}/>
-                    </div>
-                </div>
+  closeAddMoviePage() {
+    this.setState({
+      showAddMoviePage: false,
+      showMainPage: true
+    })
+  }
 
+  render() {
+    const {movieOnShelfList, showMainPage, showMovieInfoPage, showAddMoviePage, currentMovieId} = this.state;
+    return (
+        <div className={styles.whole}>
+          <Input
+              placeholder="Search Movies"
+              prefix={<Icon type="search" style={{color: 'rgb(255,255,255)'}}/>}
+              className={styles.input}
+          />
+          <div className={styles.underline}/>
+
+          <div className={styles['main-body']}>
+            <div className={showMainPage ? styles.mainPage : styles.hidden}>
+              <Row className={styles.row}>
+                {
+                  movieOnShelfList.map((movieOnShelf, index) =>
+                      <Col span={6}>
+                        {index === 0 ?
+                            <div className={styles.addNew}
+                                 onClick={this.addMovie.bind(this)}><AddNew/>
+                            </div> : null}
+
+                        {/*todo() 解决bug */}
+                        <div onClick={() => this.toDetailPage(movieOnShelf.movieId)}>
+                          <OnShelfCard
+                              posterUrl={movieOnShelf.posterUrl}
+                              movieName={movieOnShelf.movieName}
+                              movieYear={movieOnShelf.movieYear}
+                              movieLength={movieOnShelf.movieLength}
+                              movieType={movieOnShelf.movieType}
+                              isOnshow={movieOnShelf.isOnShow}
+                              movieId={movieOnShelf.movieId}/>
+                        </div>
+                      </Col>)
+                }
+              </Row>
             </div>
-        )
-    };
+            <div className={showAddMoviePage ? styles['add-movie'] : styles.hidden}>
+              <NewMovie closeAddMoviePage={this.closeAddMoviePage.bind(this)}/>
+            </div>
+            <div className={showMovieInfoPage ? styles['movie-info'] : styles.hidden}>
+              <MovieInfo movieId={currentMovieId}/>
+            </div>
+          </div>
+
+        </div>
+    )
+  };
 }
 
 export default WithSider(Onshelf);
