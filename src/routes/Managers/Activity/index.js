@@ -111,13 +111,13 @@ class Activity extends PureComponent {
 
   componentWillMount() {
     //TODO() 调用接口19 获取当前所有活动信息
-    getAllActivities().then((res) => this.setState({
-      activities: res
-    }));
+    // getAllActivities().then((res) => this.setState({
+    //   activities: res
+    // }));
     //TODO() 调用接口22 获取简要用户信息
     //TODO() 调用接口4 获取当前已上架所有影片
     this.setState({
-      // activities: testActivityInfo,
+      activities: testActivityInfo,
       briefUserInfo: testBriefUserInfo,
       movieOnShelfInfo: testMovieOnShelfInfo.map(movie =>
           movie.movieId + ' ' + movie.movieName
@@ -154,7 +154,7 @@ class Activity extends PureComponent {
               <TabPane tab="发布优惠券" key="2">
                 <SendCoupon briefUserInfo={briefUserInfo}/>
               </TabPane>
-            </Tabs>,
+            </Tabs>
           </div>
         </div>
     )
