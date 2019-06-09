@@ -31,9 +31,23 @@ class Login extends PureComponent {
     render() {
         return (
             <div className={styles.wrapper}>
-
-
-                {this.state.showAdmin ? <AdminLogin/> :
+                {this.state.showAdmin ?
+                    <div>
+                        <div className={styles.adminRadio}>
+                            <Radio.Group defaultValue="LoginIn">
+                                <Radio.Button value="LoginIn" style={{
+                                    width: 150,
+                                    background: '#414142',
+                                    borderRadius: 10,
+                                }} >管理员入口</Radio.Button>
+                            </Radio.Group>
+                        </div>
+                        <div className={styles.adminModule}>
+                            <AdminLogin/>
+                        </div>
+                        <a onClick={this.handleAdminChange.bind(this)}>用户身份登录 </a>
+                    </div>
+                    :
                     <div className={styles.userModule}>
                         <div className={styles.userRadio}>
                             <Radio.Group onChange={this.handleStatusChange.bind(this)} defaultValue="LoginIn">
@@ -56,10 +70,12 @@ class Login extends PureComponent {
                         <div className={styles.adminModule}>
                             {this.state.toRegister ? <UserRegister/> : <UserLogin/>}
                         </div>
+                        <a onClick={this.handleAdminChange.bind(this)}> 管理员身份登录 </a>
+
                     </div>
+
                 }
 
-                <a onClick={this.handleAdminChange.bind(this)}> 管理员身份登录 </a>
             </div>
         )
     };

@@ -3,7 +3,6 @@ import React from "react";
 import styles from "./index.module.less";
 import WithHeaderFooter from "../../../components/WithHeaderFooter";
 import {Col, Row} from "antd";
-import AddNew from "../../../components/AddNew";
 import OnShelfCard from "../../../components/OnShelfCard";
 
 const testAllMovieOnShelf = [
