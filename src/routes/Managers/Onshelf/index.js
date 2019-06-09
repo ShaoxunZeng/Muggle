@@ -84,7 +84,6 @@ class Onshelf extends PureComponent {
             showMovieInfoPage: true,
             currentMovieId: movieId
         });
-        alert({movieId})
     };
 
     closeMovieInfoPage() {

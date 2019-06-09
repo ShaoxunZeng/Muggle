@@ -5,6 +5,7 @@ import Button from "../../../../../components/Button";
 import {withRouter} from "react-router-dom";
 
 const Panel = Collapse.Panel;
+const InputGroup = Input.Group;
 
 class NewMovie extends Component {
     constructor(props) {
@@ -13,6 +14,10 @@ class NewMovie extends Component {
 
     handleCancel() {
         this.props.closeAddMoviePage();
+    }
+
+    handleSubmit() {
+
     }
 
     render() {
@@ -34,7 +39,7 @@ class NewMovie extends Component {
                         expandIcon={({isActive}) => <Icon type="caret-right" style={{color: '#FFEB9E'}}
                                                           rotate={isActive ? 90 : 0}/>}>
                         <Panel header="电影信息" key="1" style={customPanelStyle}>
-                            <Form layout={'horizontal'} className={styles.form}>
+                            <Form layout={'horizontal'} className={styles.form} onSubmit={this.handleSubmit}>
                                 <Row gutter={24}>
                                     <Col span={9}>
                                         <Form.Item label={'电影名称'}>
@@ -82,12 +87,29 @@ class NewMovie extends Component {
                                 <Row gutter={24}>
                                     <Col span={12}>
                                         <Form.Item label={'导演'}>
-                                            {getFieldDecorator('directors')(<Input/>)}
+                                            <InputGroup size="large">
+                                                <Row gutter={8}>
+                                                    <Col span={8}><Input placeholder={'name'}/></Col>
+                                                    <Col span={12}><Input placeholder={'url'}/></Col>
+                                                </Row>
+                                            </InputGroup>
+                                            <Button className={styles.addButton} type={'gray'} onClick={this.add}>
+                                                <Icon type="plus"/> 添加导演信息
+                                            </Button>
                                         </Form.Item>
                                     </Col>
                                     <Col span={12}>
                                         <Form.Item label={'主演'}>
-                                            {getFieldDecorator('starrings')(<Input/>)}
+                                            <InputGroup size="large">
+                                                <Row gutter={8}>
+                                                    <Col span={8}>
+                                                        <Input placeholder={'name'}/>
+                                                    </Col>
+                                                    <Col span={12}>
+                                                        <Input placeholder={'url'}/>
+                                                    </Col>
+                                                </Row>
+                                            </InputGroup>
                                         </Form.Item>
                                     </Col>
                                 </Row>
@@ -102,22 +124,10 @@ class NewMovie extends Component {
                                                 <DatePicker placeholder={'dataOnShow'}/>)}
                                         </Form.Item>
                                     </Col>
-                                    <Col span={6}>
+                                    <Col span={6} offset={6}>
                                         <Form.Item label={'排片信息观众可见日期'}>
                                             {getFieldDecorator('visibleDate')(
                                                 <DatePicker placeholder={'visibleDate'}/>)}
-                                        </Form.Item>
-                                    </Col>
-                                    <Col span={6}>
-                                        <Form.Item label={'上架开始日期'}>
-                                            {getFieldDecorator('startDate')(
-                                                <DatePicker placeholder={'startDate'}/>)}
-                                        </Form.Item>
-                                    </Col>
-                                    <Col span={6}>
-                                        <Form.Item label={'上架结束日期'}>
-                                            {getFieldDecorator('endDate')(
-                                                <DatePicker placeholder={'endDate'}/>)}
                                         </Form.Item>
                                     </Col>
                                 </Row>
@@ -128,7 +138,7 @@ class NewMovie extends Component {
                     <div className={styles.footer}>
                         <Button type={'gray'}
                                 onClick={this.handleCancel.bind(this)}>取消</Button>
-                        <Button type={'yellow'}>提交</Button>
+                        <Button type={'yellow'} htmlType='submit'>提交</Button>
                     </div>
                 </div>
 
