@@ -32,19 +32,44 @@
         font-size: 18px;
         margin-bottom: 50px;
       }
+    }
+  }
 
-      .text {
-        color: @default-yellow;
+  .text {
+    color: @default-yellow;
+  }
+
+  .coupons {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+
+    .coupon {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+
+      .coupon-info {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-right: 20px;
+
+        p {
+          margin: 0;
+        }
       }
     }
   }
 
-  .coupons {
-
+  .cost {
+    display: flex;
+    justify-content: flex-end;
   }
 
   .buttons {
-    margin-top: 80px;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;

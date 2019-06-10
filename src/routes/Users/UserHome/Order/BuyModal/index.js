@@ -1,44 +1,36 @@
 import React from "react";
 import styles from "./index.module.less";
-import {Modal} from "antd";
+import {Icon, Modal} from "antd";
 import {withRouter} from "react-router-dom";
 import Button from "../../../../../components/Button";
 import CheckBox from "../../../../../components/CheckBox";
 
-class BuyModal extends React.Component {
-  componentWillMount() {
-  }
-
-  handleOk = () => {
-
-  };
-
-  handleCouponSelection = (value) => {
-    console.log(value)
-  };
-
-  order = {
-    orderId: 1,
-    movieName: "spider man",
-    moviePosterUrl: "https://s2.ax1x.com/2019/05/31/VQrg6s.png",
-    hallName: '1号厅',
-    date: '2019-1-1',
-    interval: {
-      startTime: '1:00',
-      endTime: '1:01'
-    },
-    status: 1, //0: 未完成 1: 已完成 2: 已失效
-    cost: 1,
-    ticketCode: '111', //取票码
-    selectedSeats: [{
-      row: 1,
-      column: 1
-    }],
-    ticketNum: 1,
-    initTime: '' //生成订单时间
-  };
-
-  coupon = {
+const coupons = [
+  {
+    couponId: 1,
+    moviesIncluded: [1, 2, 3],
+    couponName: '品质联盟1',
+    couponDescription: '春节电影节优惠券',
+    couponPictureUrl: 'pic',
+    couponDiscount: 30,
+    couponThreshold: 0, //使用门槛
+    couponStartTime: '2019-06-01',
+    couponEndTime: '2019-06-30',
+    couponExpiration: '10天', //有效期长度
+  },
+  {
+    couponId: 2,
+    moviesIncluded: [],
+    couponName: '品质联盟2',
+    couponDescription: '春节电影节优惠券',
+    couponPictureUrl: 'pic',
+    couponDiscount: 1000,
+    couponThreshold: 0, //使用门槛
+    couponStartTime: '2019-06-01',
+    couponEndTime: '2019-06-30',
+    couponExpiration: '10天', //有效期长度
+  },
+  {
     couponId: 2,
     moviesIncluded: [1, 2, 3],
     couponName: '品质联盟2',
@@ -49,14 +41,110 @@ class BuyModal extends React.Component {
     couponStartTime: '2019-06-01',
     couponEndTime: '2019-06-30',
     couponExpiration: '10天', //有效期长度
+  },
+  {
+    couponId: 2,
+    moviesIncluded: [1, 2, 3],
+    couponName: '品质联盟2',
+    couponDescription: '春节电影节优惠券',
+    couponPictureUrl: 'pic',
+    couponDiscount: 1000,
+    couponThreshold: 0, //使用门槛
+    couponStartTime: '2019-06-01',
+    couponEndTime: '2019-06-30',
+    couponExpiration: '10天', //有效期长度
+  },
+  {
+    couponId: 2,
+    moviesIncluded: [1, 2, 3],
+    couponName: '品质联盟2',
+    couponDescription: '春节电影节优惠券',
+    couponPictureUrl: 'pic',
+    couponDiscount: 1000,
+    couponThreshold: 0, //使用门槛
+    couponStartTime: '2019-06-01',
+    couponEndTime: '2019-06-30',
+    couponExpiration: '10天', //有效期长度
+  }, {
+    couponId: 2,
+    moviesIncluded: [1, 2, 3],
+    couponName: '品质联盟2',
+    couponDescription: '春节电影节优惠券',
+    couponPictureUrl: 'pic',
+    couponDiscount: 1000,
+    couponThreshold: 0, //使用门槛
+    couponStartTime: '2019-06-01',
+    couponEndTime: '2019-06-30',
+    couponExpiration: '10天', //有效期长度
+  },
+  {
+    couponId: 2,
+    moviesIncluded: [1, 2, 3],
+    couponName: '品质联盟2',
+    couponDescription: '春节电影节优惠券',
+    couponPictureUrl: 'pic',
+    couponDiscount: 1000,
+    couponThreshold: 0, //使用门槛
+    couponStartTime: '2019-06-01',
+    couponEndTime: '2019-06-30',
+    couponExpiration: '10天', //有效期长度
+  }, {
+    couponId: 2,
+    moviesIncluded: [1, 2, 3],
+    couponName: '品质联盟2',
+    couponDescription: '春节电影节优惠券',
+    couponPictureUrl: 'pic',
+    couponDiscount: 1000,
+    couponThreshold: 0, //使用门槛
+    couponStartTime: '2019-06-01',
+    couponEndTime: '2019-06-30',
+    couponExpiration: '10天', //有效期长度
+  }
+];
+
+class BuyModal extends React.Component {
+  state = {
+    totalCost: 0,
+    coupons: [],
+    order: {}
+  };
+
+  componentWillMount() {
+    const {order} = this.props;
+    this.setState({
+      coupons: coupons.filter((coupon) => {
+        return coupon.couponThreshold <= order.cost
+      }),
+      order,
+      selectedCouponIds: []
+    });
+  };
+
+  handleOk = () => {
+    // TODO
+    //  切换到支付页面
+    console.log("");
+  };
+
+  handleCouponSelection = (value) => {
+    this.setState((prevState) => {
+      return (prevState.selectedCouponIds
+              .filter(item => item.toString() !== value.toString())
+              .length
+          !== prevState.selectedCouponIds.length)
+          ? {selectedCouponIds: prevState.selectedCouponIds.filter(item => item.toString() !== value.toString())}
+          : {selectedCouponIds: [value, ...prevState.selectedCouponIds]}
+    })
   };
 
   render() {
-    const {modalVisible, coupons, onCancel, order} = this.props;
-    return modalVisible ? (
+    const {modalVisible, onCancel} = this.props;
+    const {order, coupons, selectedCouponIds} = this.state;
+    return (
         <Modal
             title="购票"
             visible={modalVisible}
+            onCancel={onCancel}
             footer={null}
         >
           <div className={styles.whole}>
@@ -77,21 +165,37 @@ class BuyModal extends React.Component {
                 })}
               </div>
             </div>
-            <p>可用优惠券</p>
-            <CheckBox value={1} onSelected={this.handleCouponSelection}/>
-            <CheckBox value={2} onSelected={this.handleCouponSelection}/>
+            <p className={styles.text} style={{marginTop: 30, fontSize: 18}}>可用优惠券</p>
             <div className={styles.coupons}>
-              {coupons.map(() => {
-
+              {coupons.map((coupon, index) => {
+                return (
+                    <div className={styles.coupon} key={"" + coupon.couponId}>
+                      <div className={`${styles['coupon-info']} ${styles.text}`}>
+                        <p style={{color: "white"}}>{coupon.couponName}</p>
+                        <div style={{display: "flex", alignItems: "center"}}>
+                          <Icon type="clock-circle"/>
+                          <p style={{marginLeft: 10}}>有效期:{coupon.couponExpiration}</p>
+                        </div>
+                      </div>
+                      <CheckBox value={index} onSelected={this.handleCouponSelection}/>
+                    </div>
+                )
               })}
+            </div>
+            <div className={styles.cost}>
+              <p className={styles.text}
+                 style={{
+                   fontSize: 23,
+                   marginTop: 10
+                 }}>¥ {order.cost - selectedCouponIds.reduce((total, index) => total + coupons[index].couponDiscount, 0)}</p>
             </div>
             <div className={styles.buttons}>
               <Button type='gray' onClick={onCancel}>Cancel</Button>
-              <Button type='yellow' onClick={onCancel}>OK</Button>
+              <Button type='yellow' onClick={this.handleOk}>OK</Button>
             </div>
           </div>
         </Modal>
-    ) : "";
+    );
   }
 }
 

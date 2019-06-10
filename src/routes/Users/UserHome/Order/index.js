@@ -142,105 +142,6 @@ const orders = [
   }
 ];
 
-const coupons = [
-  {
-    couponId: 1,
-    moviesIncluded: [1, 2, 3],
-    couponName: '品质联盟1',
-    couponDescription: '春节电影节优惠券',
-    couponPictureUrl: 'pic',
-    couponDiscount: 30,
-    couponThreshold: 0, //使用门槛
-    couponStartTime: '2019-06-01',
-    couponEndTime: '2019-06-30',
-    couponExpiration: '10天', //有效期长度
-  },
-  {
-    couponId: 2,
-    moviesIncluded: [],
-    couponName: '品质联盟2',
-    couponDescription: '春节电影节优惠券',
-    couponPictureUrl: 'pic',
-    couponDiscount: 1000,
-    couponThreshold: 0, //使用门槛
-    couponStartTime: '2019-06-01',
-    couponEndTime: '2019-06-30',
-    couponExpiration: '10天', //有效期长度
-  },
-  {
-    couponId: 2,
-    moviesIncluded: [1, 2, 3],
-    couponName: '品质联盟2',
-    couponDescription: '春节电影节优惠券',
-    couponPictureUrl: 'pic',
-    couponDiscount: 1000,
-    couponThreshold: 0, //使用门槛
-    couponStartTime: '2019-06-01',
-    couponEndTime: '2019-06-30',
-    couponExpiration: '10天', //有效期长度
-  },
-  {
-    couponId: 2,
-    moviesIncluded: [1, 2, 3],
-    couponName: '品质联盟2',
-    couponDescription: '春节电影节优惠券',
-    couponPictureUrl: 'pic',
-    couponDiscount: 1000,
-    couponThreshold: 0, //使用门槛
-    couponStartTime: '2019-06-01',
-    couponEndTime: '2019-06-30',
-    couponExpiration: '10天', //有效期长度
-  },
-  {
-    couponId: 2,
-    moviesIncluded: [1, 2, 3],
-    couponName: '品质联盟2',
-    couponDescription: '春节电影节优惠券',
-    couponPictureUrl: 'pic',
-    couponDiscount: 1000,
-    couponThreshold: 0, //使用门槛
-    couponStartTime: '2019-06-01',
-    couponEndTime: '2019-06-30',
-    couponExpiration: '10天', //有效期长度
-  }, {
-    couponId: 2,
-    moviesIncluded: [1, 2, 3],
-    couponName: '品质联盟2',
-    couponDescription: '春节电影节优惠券',
-    couponPictureUrl: 'pic',
-    couponDiscount: 1000,
-    couponThreshold: 0, //使用门槛
-    couponStartTime: '2019-06-01',
-    couponEndTime: '2019-06-30',
-    couponExpiration: '10天', //有效期长度
-  },
-  {
-    couponId: 2,
-    moviesIncluded: [1, 2, 3],
-    couponName: '品质联盟2',
-    couponDescription: '春节电影节优惠券',
-    couponPictureUrl: 'pic',
-    couponDiscount: 1000,
-    couponThreshold: 0, //使用门槛
-    couponStartTime: '2019-06-01',
-    couponEndTime: '2019-06-30',
-    couponExpiration: '10天', //有效期长度
-  }, {
-    couponId: 2,
-    moviesIncluded: [1, 2, 3],
-    couponName: '品质联盟2',
-    couponDescription: '春节电影节优惠券',
-    couponPictureUrl: 'pic',
-    couponDiscount: 1000,
-    couponThreshold: 0, //使用门槛
-    couponStartTime: '2019-06-01',
-    couponEndTime: '2019-06-30',
-    couponExpiration: '10天', //有效期长度
-  }
-
-
-];
-
 class Order extends PureComponent {
   columns = [
     {
@@ -359,7 +260,6 @@ class Order extends PureComponent {
     //TODO() 调用接口18. 查看优惠券
     // getAllTicketOrders()
     this.setState({
-      coupons: coupons,
       buyModalVisible: true,
       selectedTicketOrder: orderId,
       cost: cost  // 为了方便判断可用优惠券
@@ -391,19 +291,15 @@ class Order extends PureComponent {
                 });
               }}
           />
-          <BuyModal
+          {this.state.buyModalVisible ? <BuyModal
               modalVisible={this.state.buyModalVisible}
               order={this.state.orders.filter((order) => order.orderId === this.state.selectedTicketOrder)[0]}
-              // 只传入可以用的优惠券
-              coupons={this.state.coupons.filter((coupon) => {
-                return coupon.couponThreshold <= this.state.cost
-              })}
               onCancel={() => {
                 this.setState({
                   buyModalVisible: false,
                 });
               }}
-          />
+          /> : ""}
         </div>
     )
   }
