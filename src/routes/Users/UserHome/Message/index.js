@@ -61,7 +61,7 @@ class Message extends PureComponent {
 
     componentWillMount() {
         //TODO() 调用接口33 查看所有消息
-        // getALlMessage()
+        // getAllMessage()
         this.setState({
             msgList: testMsgList,
             commentFormVisible: false
