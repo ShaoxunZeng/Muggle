@@ -47,17 +47,17 @@ class Sider extends Component {
                 </div>
               </NavLink>
               <div className={styles.underline}/>
-              <NavLink
-                  className={styles["nav-item"]}
-                  to={"/manage/movies"}
-                  activeClassName={styles["nav-active"]}
-              >
-                <div className={styles['vertical-line']}/>
-                <div className={styles.text}>
-                  影片信息
-                </div>
-              </NavLink>
-              <div className={styles.underline}/>
+              {/*<NavLink*/}
+                  {/*className={styles["nav-item"]}*/}
+                  {/*to={"/manage/movies"}*/}
+                  {/*activeClassName={styles["nav-active"]}*/}
+              {/*>*/}
+                {/*<div className={styles['vertical-line']}/>*/}
+                {/*<div className={styles.text}>*/}
+                  {/*影片信息*/}
+                {/*</div>*/}
+              {/*</NavLink>*/}
+              {/*<div className={styles.underline}/>*/}
               <NavLink
                   className={styles["nav-item"]}
                   to={"/manage/halls"}
@@ -80,17 +80,17 @@ class Sider extends Component {
                 </div>
               </NavLink>
               <div className={styles.underline}/>
-              <NavLink
-                  className={styles["nav-item"]}
-                  to={"/manage/member"}
-                  activeClassName={styles["nav-active"]}
-              >
-                <div className={styles['vertical-line']}/>
-                <div className={styles.text}>
-                  会员管理
-                </div>
-              </NavLink>
-              <div className={styles.underline}/>
+              {/*<NavLink*/}
+                  {/*className={styles["nav-item"]}*/}
+                  {/*to={"/manage/member"}*/}
+                  {/*activeClassName={styles["nav-active"]}*/}
+              {/*>*/}
+                {/*<div className={styles['vertical-line']}/>*/}
+                {/*<div className={styles.text}>*/}
+                  {/*会员管理*/}
+                {/*</div>*/}
+              {/*</NavLink>*/}
+              {/*<div className={styles.underline}/>*/}
               <NavLink
                   className={styles["nav-item"]}
                   to={"/manage/strategy"}
@@ -104,6 +104,7 @@ class Sider extends Component {
               <div className={styles.underline}/>
               <NavLink
                   className={styles["nav-item"]}
+                  exact
                   to={"/manage/personnel"}
                   activeClassName={styles["nav-active"]}
               >
@@ -113,18 +114,18 @@ class Sider extends Component {
                 </div>
               </NavLink>
               <div className={styles.underline}/>
-              <NavLink
-                  className={styles["nav-item"]}
-                  exact  // 加一个exact关键字防止主页下面的白条一直都是active
-                  to={"/manage/account"}
-                  activeClassName={styles["nav-active"]}
-              >
-                <div className={styles['vertical-line']}/>
-                <div className={styles.text}>
-                  个人信息
-                </div>
-              </NavLink>
-              <div className={styles.underline}/>
+              {/*<NavLink*/}
+                  {/*className={styles["nav-item"]}*/}
+                  {/*exact  // 加一个exact关键字防止主页下面的白条一直都是active*/}
+                  {/*to={"/manage/account"}*/}
+                  {/*activeClassName={styles["nav-active"]}*/}
+              {/*>*/}
+                {/*<div className={styles['vertical-line']}/>*/}
+                {/*<div className={styles.text}>*/}
+                  {/*个人信息*/}
+                {/*</div>*/}
+              {/*</NavLink>*/}
+              {/*<div className={styles.underline}/>*/}
             </nav>
           </div>
         </div>
