@@ -73,14 +73,14 @@ class Onshelf extends PureComponent {
   componentWillMount() {
     //todo() 调用接口4
     // getMoviesOnShelf()
-    getMoviesOnShelf().then((res) => {
-      this.setState({
-        movieOnShelfList: res
-      })
-    });
-    // this.setState({
-    //   movieOnShelfList: testAllMovieOnShelf
-    // })
+    // getMoviesOnShelf().then((res) => {
+    //   this.setState({
+    //     movieOnShelfList: res
+    //   })
+    // });
+    this.setState({
+      movieOnShelfList: testAllMovieOnShelf
+    })
   };
 
     toDetailPage = (movieId) => {
