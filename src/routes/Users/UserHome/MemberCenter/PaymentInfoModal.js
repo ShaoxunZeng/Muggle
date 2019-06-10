@@ -92,6 +92,8 @@ class PaymentInfoModal extends Component {
             color: '#FFFFFF',
             height: '30px',
             lineHeight: '30px',
+            letterSpacing:'2px',
+            fontWeight:600
         };
 
         return (
@@ -118,7 +120,7 @@ class PaymentInfoModal extends Component {
                                                 memberCards.map(memberCard =>
                                                     <Radio value={memberCard.memberStrategyId} style={radioStyle}
                                                            onChange={this.handleChange}>
-                                                        {memberCard.memberStrategyName + memberCard.purchaseThreshold + memberCard.memberDiscountRate}
+                                                        {memberCard.memberStrategyName + ' 满'+memberCard.purchaseThreshold + '打' +memberCard.memberDiscountRate*10+'折'}
                                                     </Radio>
                                                 )
 
