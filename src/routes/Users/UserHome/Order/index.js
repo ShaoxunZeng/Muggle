@@ -5,7 +5,6 @@ import WithHeaderFooterSider from "../../../../components/WithHeaderFooterSider"
 import {Table} from "antd";
 import Button from "../../../../components/Button";
 import Tag from "./Tag";
-import {getAllTicketOrders} from "../../../../services/apiOrders";
 import AlreadyBuyModal from "./AlreadyBuyModal";
 import BuyModal from "./BuyModal";
 

@@ -3,26 +3,24 @@ import styles from './index.module.less';
 import {Form, Input, Icon} from 'antd'
 import Button from "../Button";
 import {withRouter} from "react-router-dom";
-import {login} from "../../services/apiLoginAndRegister";
-import {setToken} from "../../utils/authorization";
+import {register} from "../../services/apiLoginAndRegister";
 
 
-class LoginInput extends Component {
+class RegisterInput extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
         const {username, password} = values;
-        login({username, password}).then((res) => {
+        register({username, password}).then((res) => {
           console.log(res);
-          setToken(res.token);
-          this.props.history.push('/');
-        })
+          this.props.history.push('/login')
+        }).catch((res) => {
+          alert(res.message);
+        });
       }
-    });
-    //todo() 实现用户登陆后跳转回上一个浏览的界面 调用登陆接口
-    // this.props.history.push('/home/order')
+    })
   };
 
   render() {
@@ -53,7 +51,7 @@ class LoginInput extends Component {
             )}
           </Form.Item>
           <Form.Item>
-            <Button type={'yellow'} htmlType="submit">用户登陆</Button>
+            <Button type={'yellow'} htmlType="submit">用户注册</Button>
           </Form.Item>
         </Form>
     );
@@ -61,4 +59,4 @@ class LoginInput extends Component {
 
 }
 
-export default withRouter(Form.create()(LoginInput));
+export default withRouter(Form.create()(RegisterInput));

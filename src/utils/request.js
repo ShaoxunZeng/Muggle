@@ -2,6 +2,8 @@
 
 // import {getToken, judgeLogin} from "./authorization";
 
+import {getToken} from "./authorization";
+
 const codeMessage = {
   200: "服务器成功返回请求的数据。",
   201: "新建或修改数据成功。",
@@ -20,6 +22,7 @@ const codeMessage = {
   504: "网关超时。"
 };
 function checkStatus(response) {
+  console.log(response);
   if (response.status >= 200 && response.status < 300) {
     return response;
   }
@@ -39,7 +42,8 @@ function checkStatus(response) {
  */
 export default async function request(url, options) {
   const defaultOptions = {
-    credentials: "include"  //允许token认证
+    credentials: "include",  //允许token认证
+    mode: "cors"
   };
   const newOptions = { ...defaultOptions, ...options };
   if (
@@ -64,7 +68,7 @@ export default async function request(url, options) {
   }
 
   newOptions.headers = {
-    // Authorization: getToken(),
+    Authorization: getToken(),
     ...newOptions.headers
   };
 
