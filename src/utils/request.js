@@ -73,17 +73,22 @@ export default async function request(url, options) {
     checkStatus(response);
   } catch (e) {
     console.log(e);
-    /*
+
     if(e.response.status===500){
-    }else if(e.response.status===401){
+    }else if(e.response.status===400){
+      throw e;
+    }
+    /*
+    else if(e.response.status===401){
       const from=encodeURIComponent(window.location.pathname);
       window.location.href=`/login?from=${from}`;
-    }else if(e.response.status===403&&judgeLogin()){
+    } else if(e.response.status===403&&judgeLogin()){
       window.location.href="/403";
     }else {
       throw e;
     }
     */
+
   }
 
   if (newOptions.method === "DELETE" || response.status === 204) {
