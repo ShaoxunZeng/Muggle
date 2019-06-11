@@ -8,6 +8,7 @@ import {ReactComponent as RectangleClicked} from '../../../assets/Rectangle/Clic
 import {ReactComponent as RectangleUnClicked} from '../../../assets/Rectangle/Unclicked.svg';
 import {ReactComponent as Taken} from '../../../assets/Rectangle/Alreadytaken.svg';
 import Button from "../../../components/Button";
+import {withRouter} from "react-router-dom";
 
 /**
  * 0代表没有座位
@@ -170,6 +171,13 @@ class MovieOrder extends Component {
     })
   };
 
+  handleBuyClick = () => {
+    const {selectedScene, selectedSeats} = this.state;
+    // TODO
+    //  调用接口8 生成订单 成功后跳转到购物车页面
+    this.props.history.push("/home/order");
+  };
+
   render() {
     const {movieId} = this.props.match.params;
     const {posterUrl, movieType, year, length, movieName} = this.props.location.state;
@@ -238,7 +246,7 @@ class MovieOrder extends Component {
                 {`¥${selectedSeats.length * selectedScene.price}`}
               </div>
               <div className={styles['continue-button']}>
-                <Button type={'gray'}>立即购买</Button>
+                <Button type={'gray'} onClick={this.handleBuyClick}>立即购买</Button>
               </div>
             </div>
           </div>
@@ -247,4 +255,4 @@ class MovieOrder extends Component {
   };
 }
 
-export default WithHeaderFooter(MovieOrder);
+export default withRouter(WithHeaderFooter(MovieOrder));
