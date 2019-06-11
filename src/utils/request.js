@@ -21,6 +21,7 @@ const codeMessage = {
   503: "服务不可用，服务器暂时过载或维护。",
   504: "网关超时。"
 };
+
 function checkStatus(response) {
   console.log(response);
   if (response.status >= 200 && response.status < 300) {
@@ -45,11 +46,11 @@ export default async function request(url, options) {
     credentials: "include",  //允许token认证
     mode: "cors"
   };
-  const newOptions = { ...defaultOptions, ...options };
+  const newOptions = {...defaultOptions, ...options};
   if (
-    newOptions.method === "POST" ||
-    newOptions.method === "PUT" ||
-    newOptions.method === "DELETE"
+      newOptions.method === "POST" ||
+      newOptions.method === "PUT" ||
+      newOptions.method === "DELETE"
   ) {
     if (!(newOptions.body instanceof FormData)) {
       newOptions.headers = {
@@ -78,8 +79,8 @@ export default async function request(url, options) {
   } catch (e) {
     console.log(e);
 
-    if(e.response.status===500){
-    }else if(e.response.status===400){
+    if (e.response.status === 500) {
+    } else if (e.response.status === 400) {
       throw e;
     }
     /*
@@ -98,5 +99,7 @@ export default async function request(url, options) {
   if (newOptions.method === "DELETE" || response.status === 204) {
     return response.text();
   }
-  return response.json();
+  let result = response.text()
+      .then((text) => text.length ? JSON.parse(text) : {});
+  return Promise.resolve(result);
 }
