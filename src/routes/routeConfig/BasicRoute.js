@@ -52,15 +52,16 @@ export default [
     <Route component={PrivateCinema} exact path='/privateCinema'/>,
     <Route component={MovieDetailsPage} exact path='/moviedetails/:movieId'/>,
     <Route component={MovieOrder} exact path='/movieorder/:movieId'/>,
-    <Route component={Home} exact path='/'/>,
-    //todo() 不知道为什么 一定要设置exact 不然下面的路由跳转无效
+
     //用户中心界面
     <Route component={Order} exact path='/home/order'/>,
     <Route component={Coupon} exact path='/home/coupon'/>,
     <Route component={MemberCenter} exact path='/home/membercenter'/>,
     <Route component={Mark} exact path='/home/mark'/>,
     <Route component={Message} exact path='/home/message'/>,
-    <Route component={Setting} exact path='/home/setting'/>
+    <Route component={Setting} exact path='/home/setting'/>,
+
+    <Route component={Home} path='/'/>,
 
 ]
 ;

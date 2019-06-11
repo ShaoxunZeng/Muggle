@@ -51,7 +51,7 @@ class MovieDetails extends Component {
               <div className={styles.trangle}/>
               <p className={styles.text}>给电影打分</p>
               <div className={styles.rater}>
-                <Rater/>
+                <Rater handleRateChange={() => {}}/>
               </div>
             </div>
             <div className={styles['roles-container']}>
