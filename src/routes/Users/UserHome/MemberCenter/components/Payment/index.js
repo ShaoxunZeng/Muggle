@@ -2,10 +2,12 @@ import React, {Component} from 'react'
 import MemberCard from "../../../../../../components/MemberCard";
 
 class Payment extends Component {
- render() {
+
+
+    render() {
      return (
          <div>
-             <MemberCard/>
+             <MemberCard memberInfo={this.props.memberInfo}/>
          </div>
      )
  }

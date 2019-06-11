@@ -2,7 +2,12 @@ import React, {Component} from 'react'
 import styles from './index.module.less';
 
 class MemberCard extends Component {
+    componentWillMount() {
+        console.log(this.props.memberInfo)
+    }
+
     render() {
+        const memberInfo = this.props.memberInfo;
         return (
             <div className={styles.whole}>
                 <div className={styles.wrapper}>
@@ -12,8 +17,19 @@ class MemberCard extends Component {
                              alt={'logo'}>
                         </img>
                     </div>
+                    <div className={styles.divider}/>
                     <div className={styles.infoWrapper}>
-                        <div className={styles.info}>
+                        <div className={styles.vip}>
+                            VIP
+                        </div>
+
+                        <div className={styles.balanceInfo}>
+                            {memberInfo.memberStrategyName}
+                            <div className={styles.dot}/>
+                            观影{memberInfo.memberDiscount * 10}折优惠
+                        </div>
+                        < div className={styles.type}>
+                            您的余额: <em className={styles.balance}> {memberInfo.memberCredit}</em>
                         </div>
                     </div>
                 </div>

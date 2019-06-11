@@ -4,13 +4,10 @@ import styles from "./index.module.less";
 import WithHeaderFooterSider from "../../../../components/WithHeaderFooterSider";
 import Payment from "./components/Payment";
 import RechargeHistory from "./components/RechargeHistory";
-import {Tabs} from "antd";
-import {getMemberInfo} from "../../../../services/apiMember";
+import {getMemberInfo, getRechargeHistory} from "../../../../services/apiMember";
 import Button from "../../../../components/Button";
 import PaymentInfoModal from "./PaymentInfoModal";
 
-
-const {TabPane} = Tabs;
 
 const testMemberInfo = {
     memberId: 1,
@@ -20,11 +17,23 @@ const testMemberInfo = {
     memberDiscount: 0.7
 };
 
+const testRechargeHistory = [
+    {
+        time: '2019-06-01',// 充值时间
+        cost: 100// 充值记录
+    },
+    {
+        time: '2019-05-10',// 充值时间
+        cost: 200// 充值记录
+    }
+];
+
 class MemberCenter extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
             memberInfo: {},
+            rechargeHistory: [],
             isMember: false,
             paymentModalVisible: false
         }
@@ -41,9 +50,13 @@ class MemberCenter extends PureComponent {
         //         }
         //     }
         // )
+
+        //todo() 调用接口32 查看充值记录
+        // getRechargeHistory()
         this.setState({
-            //   isMember: true,
-            memberInfo: testMemberInfo
+            isMember: true,
+            memberInfo: testMemberInfo,
+            rechargeHistory: testRechargeHistory
         })
 
     }
@@ -61,23 +74,17 @@ class MemberCenter extends PureComponent {
     };
 
     render() {
-        const {isMember, memberInfo} = this.state;
+        const {isMember, memberInfo,rechargeHistory} = this.state;
         return (
             <div className={styles.whole}>
                 {isMember ?
                     <div className={styles.wrapper}>
-                        <Tabs type='card'>
-                            <TabPane tab='我的会员卡' key='1'>
-                                <div className={styles.innerWrapper}>
-                                    <Payment/>
-                                </div>
-                            </TabPane>
-                            <TabPane tab='充值记录' key='2'>
-                                <div className={styles.innerWrapper}>
-                                    <RechargeHistory/>
-                                </div>
-                            </TabPane>
-                        </Tabs>
+                        <div className={styles.paymentWrapper}>
+                            <Payment memberInfo={memberInfo}/>
+                        </div>
+                        <div className={styles.rechargeWrapper}>
+                            <RechargeHistory rechargeHistory={rechargeHistory}/>
+                        </div>
                     </div>
                     :
                     <div className={styles.wrapper2}>
