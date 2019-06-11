@@ -1,6 +1,14 @@
 import request from "../utils/request";
 import prefix from "./version";
 
+//接口14.取消订单
+export const cancelOrder = (orderInfo) => {
+  return request(`${prefix}/order/ticket/cancellation`, {
+    method: 'PUT',
+    body: orderInfo
+  })
+};
+
 //接口8.选座(生成订单)
 export const createTicketOrder = (ticketInfo) => {
   return request(`${prefix}/scene/order/seat/selection`, {
@@ -29,5 +37,13 @@ export const payingWithOthers = (ticketInfo) => {
 export const getAllTicketOrders = () => {
   return request(`${prefix}/order/ticket`, {
     method: 'GET'
+  })
+};
+
+//接口17. 用户退票
+export const returnTicket = (ticketInfo) => {
+  return request(`${prefix}/order/ticket/refund`, {
+    method: 'POST',
+    body: ticketInfo
   })
 };
