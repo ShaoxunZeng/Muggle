@@ -5,7 +5,7 @@ import styles from './index.module.less'
 import Button from "../../../../../components/Button";
 
 const testRefundInfo = {
-    latestRefundTimeBeforePlaying: 5, //距离开场的时间，单位小时
+    latestRefundTimeBeforePaying: 5, //距离开场的时间，单位小时
     refundRate: 0.9
 };
 
@@ -20,12 +20,20 @@ class RefundStrategy extends Component {
     }
 
     componentWillMount() {
-        // todo() 调用接口15. 获取退票策略（总经理+用户）
-        //const refundInfo=getRefundStrategy();
-        this.setState({
-            latestRefundTimeBeforePlaying: testRefundInfo.latestRefundTimeBeforePlaying,
-            refundRate: testRefundInfo.refundRate
-        })
+        getRefundStrategy().then(res => {
+                const refundInfo = res;
+                console.log(res);
+                this.setState({
+                    latestRefundTimeBeforePlaying: refundInfo.latestRefundTimeBeforePaying,
+                    refundRate: refundInfo.refundRate
+                });
+            }
+        );
+
+        // this.setState({
+        //     latestRefundTimeBeforePlaying: testRefundInfo.latestRefundTimeBeforePlaying,
+        //     refundRate: testRefundInfo.refundRate
+        // })
     }
 
     closeModal() {
@@ -56,9 +64,10 @@ class RefundStrategy extends Component {
     handleChangeSubmit = () => {
         let refundInfo = this.state;
         delete refundInfo.changeRefundVisible;
-        // todo() 调用接口16
-        //  changeRefundStrategy(refundInfo).then(()=>{this.closeModal();})
-        this.closeModal();
+        changeRefundStrategy(refundInfo).then(() => {
+            this.closeModal();
+        })
+        //this.closeModal();
     };
 
     render() {

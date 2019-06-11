@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Input, DatePicker, Modal, Form, Select} from 'antd'
+import {Input, DatePicker, Modal, Form} from 'antd'
 import Button from "../../../../../components/Button";
 import {sendCoupon} from "../../../../../services/apiActivity";
 
@@ -32,10 +32,13 @@ class CouponInfoModal extends Component {
                 'userList': this.props.userList
             };
             console.log(couponInfo);
-            this.props.closeCouponInfoModal();
-            //todo() 调用接口23 赠送优惠券
-            // sendCoupon(couponInfo);
-            // setTimeOut
+
+            sendCoupon(couponInfo).then(res => {
+                console.log(res);
+                this.props.closeCouponInfoModal();
+
+            });
+
         });
     };
 
@@ -47,7 +50,7 @@ class CouponInfoModal extends Component {
             <Modal title='优惠券信息' visible={couponFormVisible}
                    onCancel={this.handleCancel}
                    footer={null}
-                  >
+            >
 
                 <Form onSubmit={this.handleSubmit.bind(this)}>
                     <Form.Item>
@@ -68,17 +71,17 @@ class CouponInfoModal extends Component {
                     </Form.Item>
                     <Form.Item>
                         {getFieldDecorator('couponThreshold')(
-                            <Input placeholder={'使用门槛(填写数字)'}/>)}
+                            <Input placeholder={'使用门槛'} suffix={'元'}/>)}
                     </Form.Item>
                     <Form.Item>
                         {getFieldDecorator('couponDiscount')(
-                            <Input placeholder={'折扣(填写数字)'}/>)}
+                            <Input placeholder={'折扣'} suffix={'元'}/>)}
                     </Form.Item>
                     <Form.Item>
                         {getFieldDecorator('couponPictureUrl')(
                             <Input placeholder={'优惠券图片'}/>)}
                     </Form.Item>
-                    <Form.Item style={{textAlign:'right'}}>
+                    <Form.Item style={{textAlign: 'right'}}>
                         <Button type={'yellow'} htmlType={'submit'}>
                             确认赠送
                         </Button>

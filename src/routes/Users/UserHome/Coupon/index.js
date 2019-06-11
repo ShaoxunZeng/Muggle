@@ -107,13 +107,19 @@ class Coupon extends PureComponent {
     }
 
     componentWillMount() {
-        //TODO()  调用接口1的8 获得所有优惠券
-        // getAllCoupons()
-        this.setState(
-            {
-                couponList: testCouponInfo
-            }
-        )
+        //TODO()  调用接口18 获得所有优惠券
+        getAllCoupons().then(res => {
+            this.setState(
+                {
+                    couponList: res
+                }
+            )
+        });
+        // this.setState(
+        //     {
+        //         couponList: testCouponInfo
+        //     }
+        // )
     }
 
     render() {

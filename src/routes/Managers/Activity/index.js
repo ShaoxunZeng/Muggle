@@ -5,7 +5,8 @@ import WithSider from "../../../components/WithSider";
 import SendCoupon from "./components/SendCoupon";
 import ManageActivity from "./components/ManageActivity";
 import {Tabs} from "antd";
-import {delActivity, getAllActivities} from "../../../services/apiActivity";
+import {delActivity, getAllActivities, getBriefUserInfo} from "../../../services/apiActivity";
+import {getMoviesOnShelf} from "../../../services/apiMovies";
 
 
 const {TabPane} = Tabs;
@@ -110,15 +111,27 @@ class Activity extends PureComponent {
     }
 
     componentWillMount() {
-        //TODO() 调用接口19 获取当前所有活动信息
-        // getAllActivities().then((res) => this.setState({
-        //   activities: res
-        // }));
-        //TODO() 调用接口22 获取简要用户信息
-        //TODO() 调用接口4 获取当前已上架所有影片
+        getAllActivities().then((res) => {
+            this.setState({
+                activities: res
+            })
+        });
+        getBriefUserInfo().then(res=>{
+            console.log(res);
+            this.setState({
+                briefUserInfo:res
+            })
+            }
+        );
+        getMoviesOnShelf().then(res => this.setState({
+                movieOnShelfInfo: res.map(movie =>
+                    movie.movieId + ' ' + movie.movieName
+                )
+            })
+        );
         this.setState({
-            activities: testActivityInfo,
-            briefUserInfo: testBriefUserInfo,
+            //   activities: testActivityInfo,
+            //  briefUserInfo: testBriefUserInfo,
             movieOnShelfInfo: testMovieOnShelfInfo.map(movie =>
                 movie.movieId + ' ' + movie.movieName
             )
@@ -133,9 +146,10 @@ class Activity extends PureComponent {
                 activities: this.state.activities.filter(activity => activity.eventId !== eventId)
             }
         );
-        //TODO() 调用接口21  删除优惠活动
-        // Bug：第一次点击删除无法删除
-        // delActivity(eventId);
+        delActivity({eventId: eventId}).then(res => {
+                console.log(res)
+            }
+        );
     };
 
 

@@ -70,18 +70,17 @@ class Onshelf extends PureComponent {
         }
     };
 
-  componentWillMount() {
-    //todo() 调用接口4
-    // getMoviesOnShelf()
-    // getMoviesOnShelf().then((res) => {
-    //   this.setState({
-    //     movieOnShelfList: res
-    //   })
-    // });
-    this.setState({
-      movieOnShelfList: testAllMovieOnShelf
-    })
-  };
+    componentWillMount() {
+
+        getMoviesOnShelf().then((res) => {
+            this.setState({
+                movieOnShelfList: res
+            })
+        });
+        // this.setState({
+        //   movieOnShelfList: testAllMovieOnShelf
+        // })
+    };
 
     toDetailPage = (movieId) => {
         this.setState({
@@ -91,72 +90,72 @@ class Onshelf extends PureComponent {
         });
     };
 
-  closeMovieInfoPage() {
-    this.setState({
-      showMovieInfoPage: false,
-      showMainPage: true
-    })
-  }
+    closeMovieInfoPage() {
+        this.setState({
+            showMovieInfoPage: false,
+            showMainPage: true
+        })
+    }
 
-  addMovie() {
-    this.setState({
-      showMainPage: false,
-      showAddMoviePage: true
-    });
-    console.log('addMovie')
-  }
+    addMovie() {
+        this.setState({
+            showMainPage: false,
+            showAddMoviePage: true
+        });
+        console.log('addMovie')
+    }
 
-  closeAddMoviePage() {
-    this.setState({
-      showAddMoviePage: false,
-      showMainPage: true
-    })
-  }
+    closeAddMoviePage() {
+        this.setState({
+            showAddMoviePage: false,
+            showMainPage: true
+        })
+    }
 
-  render() {
-    const {movieOnShelfList, showMainPage, showMovieInfoPage, showAddMoviePage, currentMovieId} = this.state;
-    return (
-        <div className={styles.whole}>
-          <Input
-              placeholder="Search Movies"
-              prefix={<Icon type="search" style={{color: 'rgb(255,255,255)'}}/>}
-              className={styles.input}
-          />
-          <div className={styles.underline}/>
+    render() {
+        const {movieOnShelfList, showMainPage, showMovieInfoPage, showAddMoviePage, currentMovieId} = this.state;
+        return (
+            <div className={styles.whole}>
+                <Input
+                    placeholder="Search Movies"
+                    prefix={<Icon type="search" style={{color: 'rgb(255,255,255)'}}/>}
+                    className={styles.input}
+                />
+                <div className={styles.underline}/>
 
-          <div className={styles['main-body']}>
-            <div className={showMainPage ? styles.mainPage : styles.hidden}>
-              <Row className={styles.row}>
-                {
-                  movieOnShelfList.map((movieOnShelf, index) =>
-                      <Col span={6}>
-                        {index === 0 ?
-                            <div className={styles.addNew}
-                                 onClick={this.addMovie.bind(this)}><AddNew/>
-                            </div> : null}
+                <div className={styles['main-body']}>
+                    <div className={showMainPage ? styles.mainPage : styles.hidden}>
+                        <Row className={styles.row}>
+                            {
+                                movieOnShelfList.map((movieOnShelf, index) =>
+                                    <Col span={6}>
+                                        {index === 0 ?
+                                            <div className={styles.addNew}
+                                                 onClick={this.addMovie.bind(this)}><AddNew/>
+                                            </div> : null}
 
-                        {/*todo() 解决bug */}
-                        <div onClick={() => this.toDetailPage(movieOnShelf.movieId)}>
-                          <OnShelfCard
-                              posterUrl={movieOnShelf.posterUrl}
-                              movieName={movieOnShelf.movieName}
-                              movieYear={movieOnShelf.movieYear}
-                              movieLength={movieOnShelf.movieLength}
-                              movieType={movieOnShelf.movieType}
-                              isOnshow={movieOnShelf.isOnShow}
-                              movieId={movieOnShelf.movieId}/>
-                        </div>
-                      </Col>)
-                }
-              </Row>
-            </div>
-            <div className={showAddMoviePage ? styles['add-movie'] : styles.hidden}>
-              <NewMovie closeAddMoviePage={this.closeAddMoviePage.bind(this)}/>
-            </div>
-            <div className={showMovieInfoPage ? styles['movie-info'] : styles.hidden}>
-              <MovieInfo movieId={currentMovieId}/>
-            </div>
-          </div>
+                                        {/*todo() 解决bug */}
+                                        <div onClick={() => this.toDetailPage(movieOnShelf.movieId)}>
+                                            <OnShelfCard
+                                                posterUrl={movieOnShelf.posterUrl}
+                                                movieName={movieOnShelf.movieName}
+                                                movieYear={movieOnShelf.movieYear}
+                                                movieLength={movieOnShelf.movieLength}
+                                                movieType={movieOnShelf.movieType}
+                                                isOnshow={movieOnShelf.isOnShow}
+                                                movieId={movieOnShelf.movieId}/>
+                                        </div>
+                                    </Col>)
+                            }
+                        </Row>
+                    </div>
+                    <div className={showAddMoviePage ? styles['add-movie'] : styles.hidden}>
+                        <NewMovie closeAddMoviePage={this.closeAddMoviePage.bind(this)}/>
+                    </div>
+                    <div className={showMovieInfoPage ? styles['movie-info'] : styles.hidden}>
+                        <MovieInfo movieId={currentMovieId}/>
+                    </div>
+                </div>
 
             </div>
         )

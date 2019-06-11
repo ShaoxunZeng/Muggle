@@ -39,11 +39,14 @@ class PaymentInfoModal extends Component {
 
     componentWillMount() {
 
-        //todo() 调用接口27 获取所有会员卡信息
-        // getMemberCards()
-        this.setState({
-            memberCards: testMemberCards
-        })
+        getMemberCards().then(res => {
+            this.setState({
+                memberCards: res
+            })
+        });
+        // this.setState({
+        //     memberCards: testMemberCards
+        // })
     }
 
     handleChange = e => {
@@ -65,9 +68,13 @@ class PaymentInfoModal extends Component {
                 };
                 console.log(paymentInfo);
 
-                //todo() 调用接口26
-                // purchaseMemberCard(paymentInfo);
-                this.props.closePaymentModal();
+                // todo() 接口26
+                purchaseMemberCard(paymentInfo).then(res => {
+                    console.log(res);
+                    this.props.closePaymentModal();
+
+                })
+                ;
             }
 
 
@@ -92,8 +99,8 @@ class PaymentInfoModal extends Component {
             color: '#FFFFFF',
             height: '30px',
             lineHeight: '30px',
-            letterSpacing:'2px',
-            fontWeight:600
+            letterSpacing: '2px',
+            fontWeight: 600
         };
 
         return (
@@ -120,7 +127,7 @@ class PaymentInfoModal extends Component {
                                                 memberCards.map(memberCard =>
                                                     <Radio value={memberCard.memberStrategyId} style={radioStyle}
                                                            onChange={this.handleChange}>
-                                                        {memberCard.memberStrategyName + ' 满'+memberCard.purchaseThreshold + '打' +memberCard.memberDiscountRate*10+'折'}
+                                                        {memberCard.memberStrategyName + ' 满' + memberCard.purchaseThreshold + '打' + memberCard.memberDiscountRate * 10 + '折'}
                                                     </Radio>
                                                 )
 

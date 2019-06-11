@@ -4,6 +4,7 @@ import styles from "./index.module.less";
 import WithHeaderFooter from "../../../components/WithHeaderFooter";
 import {Col, Row} from "antd";
 import OnShelfCard from "../../../components/OnShelfCard";
+import {getMoviesOnShelf} from "../../../services/apiMovies";
 
 const testAllMovieOnShelf = [
     {
@@ -63,11 +64,14 @@ class AllMovies extends PureComponent {
     };
 
     componentWillMount() {
-        //todo() 调用接口4
-        // getMoviesOnShelf()
-        this.setState({
-            movieOnShelfList: testAllMovieOnShelf
-        })
+        getMoviesOnShelf().then((res) => {
+            this.setState({
+                movieOnShelfList: res
+            })
+        });
+        // this.setState({
+        //     movieOnShelfList: testAllMovieOnShelf
+        // })
     };
 
 

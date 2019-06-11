@@ -18,10 +18,10 @@ export const addActivity = (activityInfo) => {
 };
 
 //接口21. 删除优惠活动
-export const delActivity = (eventId) => {
+export const delActivity = (info) => {
     return request(`${prefix}/strategy/event`, {
         method: "DELETE",
-        body: eventId
+        body: info
     })
 };
 

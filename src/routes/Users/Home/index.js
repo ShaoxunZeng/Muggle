@@ -5,6 +5,7 @@ import ImageBoard from "../../../components/ImageBoard";
 import RecentMoives from "../../../components/RecentMovies";
 import Button from "../../../components/Button";
 import WithHeaderFooter from "../../../components/WithHeaderFooter";
+import {getPopularMovies} from "../../../services/apiMovies";
 
 let testInfo = {
     posterUrl: 'https://s2.ax1x.com/2019/04/01/AyCRGq.png',
@@ -18,25 +19,33 @@ let testInfo = {
 let popularMovies = Array(7).fill(testInfo);
 
 class Home extends PureComponent {
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state={
-            popularMovies:[],
-            posterUrls:[]
+        this.state = {
+            popularMovies: [],
+            posterUrls: []
         }
     }
+
     componentWillMount() {
-        //TODO 调用接口3
-        // 获取当前已上架电影信息（七部热门影片）
-        // GET /movie/popular
-        this.setState({
-            popularMovies:popularMovies,
-            posterUrls:popularMovies.map((movieInfo)=>movieInfo.posterUrl)
-        })
+
+        getPopularMovies().then(res => {
+                console.log(res);
+                this.setState({
+                    //popularMovies: res,
+                    posterUrls: res.map((movieInfo) => movieInfo.posterUrl)
+                })
+            }
+        );
+        // this.setState({
+        //     popularMovies: popularMovies,
+        //     posterUrls: popularMovies.map((movieInfo) => movieInfo.posterUrl)
+        // })
     }
 
     render() {
-        const {posterUrls}=this.state;
+        const {posterUrls} = this.state;
+        console.log(posterUrls);
         return (
             <div className={styles.whole}>
                 <div className={styles["image-board"]}>

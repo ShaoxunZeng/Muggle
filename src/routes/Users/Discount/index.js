@@ -4,6 +4,7 @@ import styles from "./index.module.less";
 import WithHeaderFooter from "../../../components/WithHeaderFooter";
 import {Table} from "antd";
 import {Descriptions} from "antd";
+import {getAllActivities, getBriefUserInfo} from "../../../services/apiActivity";
 
 
 const testActivityInfo = [
@@ -87,12 +88,12 @@ class Discount extends PureComponent {
     ];
 
     componentWillMount() {
-        //TODO() 调用接口19 获取当前所有活动信息
-        //TODO() 调用接口22 获取简要用户信息
-        //TODO() 调用接口4 获取当前已上架所有影片
-        this.setState({
-            activities: testActivityInfo
-        })
+        getAllActivities().then(res=>
+            this.setState({
+                activities:res
+            })
+        )
+
     }
 
     onExpand = (expanded, record) => {
@@ -109,8 +110,7 @@ class Discount extends PureComponent {
                     <Descriptions.Item label="参与电影" span={2}>{record.moviesIncluded.join(',')}</Descriptions.Item>
                     <Descriptions.Item label="有效时长">{record.couponExpiration}</Descriptions.Item>
                     <Descriptions.Item label="使用门槛">{record.couponThreshold + '元'}</Descriptions.Item>
-                    <Descriptions.Item label="折扣">{record.couponDiscount}</Descriptions.Item>
-                    <Descriptions.Item label="图片">{record.couponPictureUrl}</Descriptions.Item>
+                    <Descriptions.Item label="优惠">{'满'+record.couponThreshold +'减'+record.couponDiscount+'元'}</Descriptions.Item>
                 </Descriptions>
             </div>
 

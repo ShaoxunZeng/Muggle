@@ -52,10 +52,16 @@ class Mark extends PureComponent {
 
     componentWillMount() {
         //TODO()  调用接口24 查看想看列表
-        // getAllMarks()
-        this.setState({
-            markList: testMarkList
-        })
+        getAllMarks().then(res => {
+            console.log(res);
+                this.setState({
+                    markList: res
+                })
+            }
+        )
+        // this.setState({
+        //     markList: testMarkList
+        // })
     }
 
     render() {

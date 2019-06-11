@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Table, Descriptions, Popconfirm, Icon, Form, Modal, Input, Select, DatePicker} from 'antd'
+import {Table, Descriptions, Popconfirm, Icon} from 'antd'
 import Button from "../../../../../components/Button";
 import ActivityInfoModal from "./ActivityInfoModal";
 
@@ -89,10 +89,8 @@ class ManageActivity extends Component {
                     border>
                     <Descriptions.Item label="优惠券描述">{record.couponDescription}</Descriptions.Item>
                     <Descriptions.Item label="参与电影" span={2}>{record.moviesIncluded.join(',')}</Descriptions.Item>
-                    <Descriptions.Item label="有效时长">{record.couponExpiration}</Descriptions.Item>
-                    <Descriptions.Item label="使用门槛">{record.couponThreshold + '元'}</Descriptions.Item>
-                    <Descriptions.Item label="折扣">{record.couponDiscount}</Descriptions.Item>
-                    <Descriptions.Item label="图片">{record.couponPictureUrl}</Descriptions.Item>
+                    <Descriptions.Item label="有效时长">{record.couponExpiration}小时</Descriptions.Item>
+                    <Descriptions.Item label="优惠">{'满'+record.couponThreshold +'减'+ record.couponDiscount+'元'}</Descriptions.Item>
                 </Descriptions>
             </div>
 

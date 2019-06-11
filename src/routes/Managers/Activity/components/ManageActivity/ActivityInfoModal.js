@@ -16,7 +16,7 @@ class ActivityInfoModal extends Component {
     };
 
     handleSubmit = e => {
-        e.preventDefault();
+        // e.preventDefault();
 
         this.props.form.validateFields((err, fieldsValue) => {
             if (err) {
@@ -24,17 +24,21 @@ class ActivityInfoModal extends Component {
             }
             const activityInfo = {
                 ...fieldsValue,
-                'moviesIncluded':fieldsValue['moviesIncluded'].map(movieInfo=>(Number(movieInfo.split(' ')[0]))),//传movieId列表
+                'moviesIncluded': fieldsValue['moviesIncluded'].map(movieInfo => (Number(movieInfo.split(' ')[0]))),//传movieId列表
                 'couponDiscount': Number(fieldsValue['couponDiscount']),
                 'couponThreshold': Number(fieldsValue['couponThreshold']),
                 'startTime': fieldsValue['startTime'].format('YYYY-MM-DD'),
                 'endTime': fieldsValue['endTime'].format('YYYY-MM-DD'),
+                'couponExpiration':Number(fieldsValue['couponExpiration'])
             };
             console.log(activityInfo);
-            this.props.closeActivityInfoModal();
-            //TODO() 调用接口20 新增优惠活动
-            // addActivity(activityInfo);
-            // setTimeOut
+            addActivity(activityInfo).then(res => {
+                    console.log(res);
+                    this.props.closeActivityInfoModal();
+
+                }
+            );
+
         });
 
     };
@@ -89,11 +93,16 @@ class ActivityInfoModal extends Component {
                         </Form.Item>
                         <Form.Item>
                             {getFieldDecorator('couponThreshold')(
-                                <Input placeholder={'使用门槛(填写数字)'}/>)}
+                                <Input placeholder={'使用门槛(填写数字)'} suffix={'元'}/>)}
                         </Form.Item>
                         <Form.Item>
                             {getFieldDecorator('couponDiscount')(
-                                <Input placeholder={'折扣(填写数字)'}/>)}
+                                <Input placeholder={'折扣'} suffix={'元'}/>)}
+                        </Form.Item>
+                        <Form.Item>
+                            {getFieldDecorator('couponExpiration')(
+                                <Input placeholder={'优惠券有效期'} suffix={'小时'}/>
+                            )}
                         </Form.Item>
                         <Form.Item>
                             {getFieldDecorator('couponPictureUrl')(
