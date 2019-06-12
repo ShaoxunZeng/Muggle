@@ -108,7 +108,7 @@ class Discount extends PureComponent {
                     border>
                     <Descriptions.Item label="优惠券描述">{record.couponDescription}</Descriptions.Item>
                     <Descriptions.Item label="参与电影" span={2}>{record.moviesIncluded.join(',')}</Descriptions.Item>
-                    <Descriptions.Item label="有效时长">{record.couponExpiration}</Descriptions.Item>
+                    <Descriptions.Item label="有效时长">{record.couponExpiration}小时</Descriptions.Item>
                     <Descriptions.Item label="使用门槛">{record.couponThreshold + '元'}</Descriptions.Item>
                     <Descriptions.Item label="优惠">{'满'+record.couponThreshold +'减'+record.couponDiscount+'元'}</Descriptions.Item>
                 </Descriptions>

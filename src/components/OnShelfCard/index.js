@@ -17,17 +17,19 @@ class OnShelfCard extends Component {
                 <div className={styles['info-container']}>
                     <div className={styles.mainInfo}>
                         <div className={styles.movieName}>{movieName}</div>
-                        <div className={styles.tag}>
-                            <Tag color={isOnshow ? 'gold' : 'gray'}>
-                                {isOnshow ? '已上映' : '未上映'}
-                            </Tag>
-                        </div>
                     </div>
                     <div className={styles['year-time-container']}>
-                        {movieYear}
-                        <div className={styles.dot}/>
-                        {movieLength} min
-                        <span className={styles.movieType}>{movieType}</span>
+                        <div className={styles.time}>
+                            {movieYear}
+                            <div className={styles.dot}/>
+                            {movieLength} min
+                            <div className={styles.tag}>
+                                <Tag color={isOnshow ? 'gold' : 'gray'}>
+                                    {isOnshow ? '已上映' : '未上映'}
+                                </Tag>
+                            </div>
+                        </div>
+                        <div className={styles.movieType}>{movieType}</div>
                     </div>
 
                 </div>
