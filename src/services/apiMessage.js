@@ -2,7 +2,7 @@ import request from "../utils/request";
 import prefix from "./version";
 
 //接口33. 查看消息通知
-export const getALlMessage=()=>{
+export const getAllMessage=()=>{
     return request(`${prefix}/user/message`,{
         method:'GET'
     })

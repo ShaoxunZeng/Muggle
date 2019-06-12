@@ -3,8 +3,9 @@ import React from "react";
 import styles from "./index.module.less";
 import WithHeaderFooterSider from "../../../../components/WithHeaderFooterSider";
 import {Table, Tag} from 'antd'
-import {getALlMessage} from "../../../../services/apiMessage";
+import {getAllMessage} from "../../../../services/apiMessage";
 import CommentInfoModal from "./CommentInfoModal/index.js";
+import {getMovieDetails} from "../../../../services/apiMovies";
 
 const testMsgList = [
     {
@@ -55,24 +56,37 @@ class Message extends PureComponent {
         this.state = ({
             msgList: [],
             commentFormVisible: false,
-            commentMovieId: 0//评价电影Id
+            commentMovieId: 0,//评价电影Id
+            movieInfo: {}
         })
     }
 
     componentWillMount() {
         //TODO() 调用接口33 查看所有消息
-        // getAllMessage()
-        this.setState({
-            msgList: testMsgList,
-            commentFormVisible: false
-        })
+        getAllMessage().then(res => {
+            this.setState({
+                msgList: res,
+                commentFormVisible: false
+            })
+        });
+        // this.setState({
+        //     msgList: testMsgList,
+        //     commentFormVisible: false
+        // })
     };
 
     showCommentForm = (movieId) => {
+        console.log(movieId);
         this.setState({
             commentFormVisible: true,
             commentMovieId: movieId
-        })
+        });
+        getMovieDetails(movieId).then(res => {
+                this.setState({
+                    movieInfo: res
+                });
+            }
+        )
     };
     closeCommentInfoModal = () => {
         this.setState({
@@ -104,12 +118,13 @@ class Message extends PureComponent {
     ];
 
     render() {
-        const {msgList, commentFormVisible, commentMovieId} = this.state;
+        const {msgList, commentFormVisible, commentMovieId, movieInfo} = this.state;
         return (
             <div className={styles.whole}>
                 <div className={styles.wrapper}>
                     <Table columns={this.columns} dataSource={msgList}/>
                     <CommentInfoModal
+                        movieInfo={movieInfo}
                         commentFormVisible={commentFormVisible}
                         closeCommentInfoModal={this.closeCommentInfoModal}
                         movieId={commentMovieId}/>
