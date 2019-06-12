@@ -10,6 +10,7 @@ import {ReactComponent as Taken} from '../../../assets/Rectangle/Alreadytaken.sv
 import Button from "../../../components/Button";
 import {withRouter} from "react-router-dom";
 import {getMovieArrangeInfo} from "../../../services/apiMovies";
+import {createTicketOrder} from "../../../services/apiOrders";
 
 /**
  * 0代表没有座位
@@ -178,7 +179,9 @@ class MovieOrder extends Component {
     const {selectedScene, selectedSeats} = this.state;
     // TODO
     //  调用接口8 生成订单 成功后跳转到购物车页面
-    this.props.history.push("/home/order");
+    createTicketOrder({sceneId: selectedScene.sceneId, selectedSeats}).then((res) => {
+      this.props.history.push("/home/order");
+    });
   };
 
   render() {
