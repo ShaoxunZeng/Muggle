@@ -190,7 +190,7 @@ class BuyModal extends React.Component {
     if (memberPaying) {
       // TODO
       //  调用接口11 会员支付
-      // payingWithMember()
+        // payingWithMember()
     } else {
       // TODO
       //  调用接口12 第三方支付

@@ -59,11 +59,11 @@ class MemberCenter extends PureComponent {
             })
         });
 
-        this.setState({
-            isMember: true,
-            memberInfo: testMemberInfo,
-            rechargeHistory: testRechargeHistory
-        })
+        // this.setState({
+        //     isMember: true,
+        //     memberInfo: testMemberInfo,
+        //     rechargeHistory: testRechargeHistory
+        // })
 
     }
 
