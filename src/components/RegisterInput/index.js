@@ -11,13 +11,14 @@ class RegisterInput extends Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
         const {username, password} = values;
         register({username, password}).then((res) => {
-          console.log(res);
-          this.props.history.push('/login')
-        }).catch((res) => {
-          alert(res.message);
+          if (res.succ) {
+            alert("注册成功，请登录");
+            window.location.href = '/login';
+          } else {
+            alert(res.msg);
+          }
         });
       }
     })

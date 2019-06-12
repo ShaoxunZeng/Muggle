@@ -4,7 +4,7 @@ import {Form, Input, Icon} from 'antd'
 import Button from "../Button";
 import {withRouter} from "react-router-dom";
 import {login} from "../../services/apiLoginAndRegister";
-import {setToken} from "../../utils/authorization";
+import {setAuthorization, setToken} from "../../utils/authorization";
 
 
 class LoginInput extends Component {
@@ -16,7 +16,7 @@ class LoginInput extends Component {
         const {username, password} = values;
         login({username, password}).then((res) => {
           console.log(res);
-          setToken(res.token);
+          setAuthorization({role: res.role, token: res.token});
           this.props.history.push('/');
         })
       }

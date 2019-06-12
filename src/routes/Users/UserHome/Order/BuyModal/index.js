@@ -4,6 +4,7 @@ import {Icon, Modal} from "antd";
 import {withRouter} from "react-router-dom";
 import Button from "../../../../../components/Button";
 import CheckBox from "../../../../../components/CheckBox";
+import {getAllCoupons} from "../../../../../services/apiCoupon";
 
 const coupons = [
   {
@@ -114,7 +115,6 @@ class BuyModal extends React.Component {
   state = {
     totalCost: 0,
     coupons: [],
-    order: {},
     isPaying: false,
     memberPaying: false,
     memberInfo: ''
@@ -122,13 +122,14 @@ class BuyModal extends React.Component {
 
   componentWillMount() {
     const {order} = this.props;
-    this.setState({
-      coupons: coupons.filter((coupon) => {
-        return coupon.couponThreshold <= order.cost
-      }),
-      order,
-      selectedCouponIds: [],
-      totalCost: order.cost
+    getAllCoupons().then((coupons) => {
+      this.setState({
+        coupons: coupons.filter((coupon) => {
+          return coupon.couponThreshold <= order.cost
+        }),
+        selectedCouponIds: [],
+        totalCost: order.cost
+      });
     });
   };
 
@@ -176,8 +177,9 @@ class BuyModal extends React.Component {
   };
 
   render() {
-    const {modalVisible} = this.props;
-    const {order, coupons, isPaying, memberPaying, memberInfo, totalCost} = this.state;
+    const {modalVisible, order} = this.props;
+    const {coupons, isPaying, memberPaying, memberInfo, totalCost} = this.state;
+    console.log(order);
     return (
         <Modal
             title="购票"

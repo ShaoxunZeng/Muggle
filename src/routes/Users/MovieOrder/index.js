@@ -182,7 +182,8 @@ class MovieOrder extends Component {
     const {selectedScene, selectedSeats} = this.state;
     // TODO
     //  调用接口8 生成订单 成功后跳转到购物车页面
-    createTicketOrder({sceneId: selectedScene.sceneId, selectedSeats}).then((res) => {
+    let seats = selectedSeats.map((seat) => ({row: seat[0], column: seat[1]}));
+    createTicketOrder({sceneId: selectedScene.sceneId, selectedSeats: seats}).then((res) => {
       this.props.history.push("/home/order");
     });
   };

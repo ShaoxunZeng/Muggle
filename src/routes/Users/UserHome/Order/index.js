@@ -7,6 +7,7 @@ import Button from "../../../../components/Button";
 import Tag from "./Tag";
 import AlreadyBuyModal from "./AlreadyBuyModal";
 import BuyModal from "./BuyModal";
+import {getAllTicketOrders} from "../../../../services/apiOrders";
 
 const orders = [
   {
@@ -263,16 +264,14 @@ class Order extends PureComponent {
   };
 
   componentWillMount() {
-    //TODO() 调用接口13 查看所有购票订单
-    // getAllTicketOrders()
-    this.setState({
-      orders: orders
-    })
+    getAllTicketOrders().then((orders) =>
+        this.setState({
+          orders: orders
+        }));
   }
 
   handleBuyClick = (orderId, cost) => {
-    //TODO() 调用接口18. 查看优惠券
-    // getAllTicketOrders()
+    console.log(orderId);
     this.setState({
       buyModalVisible: true,
       selectedTicketOrder: orderId,

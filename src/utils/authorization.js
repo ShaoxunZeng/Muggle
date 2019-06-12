@@ -30,8 +30,8 @@ export const clearAuthorization = () => {
   return true;
 };
 
-export const judgeLogin = () => {
-  return !!getRole();
+export const judgeLogin = () => {  //登录返回true
+  return !!getToken();
 };
 
 export const judgeAdmin = () => {
