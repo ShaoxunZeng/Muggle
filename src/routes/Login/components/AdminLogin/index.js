@@ -23,8 +23,8 @@ class AdminLogin extends Component {
     render() {
         return (
             <div>
-                <LoginInput />
-                <Button type={'yellow'} onClick={() => this.handleAdminLoginButtonClick()}>管理员登陆</Button>
+                <LoginInput buttonText={'管理员登陆'} />
+                {/*<Button type={'yellow'} onClick={() => this.handleAdminLoginButtonClick()}>管理员登陆</Button>*/}
             </div>
         )
     }

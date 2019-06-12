@@ -14,7 +14,7 @@ class UserLogin extends Component {
   render() {
     return (
         <div>
-          <LoginInput/>
+          <LoginInput buttonText={'用户登录'}/>
         </div>
     )
   }

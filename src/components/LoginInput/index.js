@@ -26,7 +26,7 @@ class LoginInput extends Component {
   };
 
   render() {
-    const {form} = this.props;
+    const {form,buttonText} = this.props;
     const {getFieldDecorator} = form;
     return (
         <Form onSubmit={this.handleSubmit} className="login-form">
@@ -53,7 +53,7 @@ class LoginInput extends Component {
             )}
           </Form.Item>
           <Form.Item>
-            <Button type={'yellow'} htmlType="submit">用户登陆</Button>
+            <Button type={'yellow'} htmlType="submit">{buttonText}</Button>
           </Form.Item>
         </Form>
     );
