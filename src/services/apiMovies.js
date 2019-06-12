@@ -24,6 +24,12 @@ export const getMovieDetails = (movieId) => {
     });
 };
 
+//接口7. 获取某部电影的排片信息
+export const getMovieArrangeInfo = (movieId) => {
+    return request(`${prefix}/scene/info/of_movie?movieid=${movieId}`, {
+        method: "GET",
+    });
+};
 
 //接口36. 查看电影评价
 export const getMovieComment = (movieId) => {
