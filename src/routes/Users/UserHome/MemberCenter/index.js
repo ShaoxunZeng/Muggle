@@ -40,36 +40,34 @@ class MemberCenter extends PureComponent {
     }
 
     componentWillMount() {
-        //todo() 调用接口25 获取会员信息
+        // todo() 调用接口25 获取会员信息 根据token测试
         getMemberInfo().then(res => {
                 console.log(res);
                 this.setState({
                     isMember: true,
                     memberInfo: res
-                });
-
+                })
             }
         ).catch(err => {
             console.log(err)
         });
 
-        // getRechargeHistory().then(res => {
-        //     this.setState({
-        //         rechargeHistory: res
-        //
-        //     })
-        // });
+        // todo() 调用接口32 获得充值记录 根据token测试
+        getRechargeHistory().then(res => {
+            this.setState({
+                rechargeHistory: res
+            })
+        });
 
         this.setState({
-            // isMember: true,
-            // memberInfo: testMemberInfo,
+            isMember: true,
+            memberInfo: testMemberInfo,
             rechargeHistory: testRechargeHistory
         })
 
     }
 
     handlePurchase = () => {
-
         this.setState({
             paymentModalVisible: true
         })
@@ -91,7 +89,9 @@ class MemberCenter extends PureComponent {
                             <Payment memberInfo={memberInfo}/>
                         </div>
                         <div className={styles.rechargeWrapper}>
-                            <RechargeHistory rechargeHistory={rechargeHistory}/>
+                            <RechargeHistory rechargeHistory={rechargeHistory}
+                                             memberId={memberInfo.memberId}
+                            />
                         </div>
                     </div>
                     :

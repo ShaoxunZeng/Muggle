@@ -1,44 +1,66 @@
 import React, {Component} from 'react'
 import styles from './index.module.less';
-import {List, Skeleton,Avatar,Icon} from 'antd'
+import {List, Avatar, Icon} from 'antd'
 
-const IconText = ({ type, text }) => (
+const IconText = ({type, text}) => (
     <span>
-    <Icon type={type} style={{ marginRight: 8 }} />
-        {text}
-  </span>
+        <Icon type={type} style={{marginRight: 8, color: "#FFEB9E"}}/>
+        <span style={{color: '#FFFFFF'}}>  {text}</span>
+    </span>
 );
 
 class MovieComment extends Component {
 
+    commentContent = (comment, time) => {
+        return (
+            <div>
+                {comment + time}
+            </div>
+        )
+    };
+
+
     render() {
         const {movieComment} = this.props;
+
 
         return (
             <div>
                 <List
                     className="commentList"
-                    itemLayout="vertical"
+                    itemLayout="horizontal"
                     size="large"
-                    header={'影评'}
+                    header={
+                        <div className={styles.header}>
+                            <div className={styles['vertical-line']}/>
+                            <div className={styles.text}>影评</div>
+                        </div>
+                    }
                     dataSource={movieComment}
-                    actions={[
-                        <IconText type="star-o" text="156" />,
-                        <IconText type="like-o" text="156" />,
-                        <IconText type="message" text="2" />,
-                    ]}
-                    renderItem={item => (
-                        <List.Item >
-                            <Skeleton avatar title={false} loading={item.loading} active>
-                                <List.Item.Meta
-                                    avatar={
-                                        <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>
-                                    }
-                                    title={<a href="https://ant.design">{item.username}</a>}
-                                    description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-                                />
-                                <div>content</div>
-                            </Skeleton>
+                    renderItem={(item, index) => (
+                        <List.Item key={index}
+                                   actions={[
+                                       <IconText type="star-o" text="0"/>,
+                                       <IconText type="like-o" text="0"/>,
+                                       <IconText type="message" text="0"/>,
+                                   ]}>
+                            <List.Item.Meta
+                                avatar={
+                                    <Avatar size={48} style={{
+                                        color: '#FFEB9E',
+                                        backgroundColor: '#444343'
+                                    }}>{item.username}</Avatar>
+                                }
+                                title={<div className={styles.title}>{item.username}</div>}
+                                description={
+                                    <div className={styles.description}>
+                                        <div className={styles.comment}> {item.comment}
+                                        </div>
+                                        <div className={styles.time}> {item.time}
+                                        </div>
+
+                                    </div>}>
+                            </List.Item.Meta>
                         </List.Item>
                     )}
                 />

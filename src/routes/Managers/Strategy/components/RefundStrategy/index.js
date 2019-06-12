@@ -64,7 +64,9 @@ class RefundStrategy extends Component {
     handleChangeSubmit = () => {
         let refundInfo = this.state;
         delete refundInfo.changeRefundVisible;
+        console.log(refundInfo);
         changeRefundStrategy(refundInfo).then(() => {
+            alert('修改成功');
             this.closeModal();
         })
         //this.closeModal();

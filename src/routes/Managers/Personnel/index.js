@@ -20,27 +20,35 @@ class Personnel extends PureComponent {
         super(props);
         this.state = ({
             managerList: [],
-            managerFormVisible:false
+            managerFormVisible: false
         })
     };
 
     componentWillMount() {
-        //TODO 调用接口49 查看所有管理员列表
-        // getAllManagers()
-        this.setState({
-            managerList: testManagerList,
-            managerFormVisible: false
-        })
+        getAllManagers().then(res => {
+            this.setState({
+                managerList: res,
+                managerFormVisible: false
+            })
+        });
+        // this.setState({
+        //     managerList: testManagerList,
+        //     managerFormVisible: false
+        // })
     }
 
     deleteManager = (managerId) => {
-        this.setState({
-            managerList: this.state.managerList.filter(manager => manager.managerId !== managerId)
-        });
+
         console.log('删除该工号管理员' + managerId);
 
-        //TODO() 调用接口48 删除管理员 Bug: 同删除活动 第一次删除无效
-        // delManager(managerId)
+        //todo() Bug: 同删除活动 第一次删除无效
+        delManager(managerId).then(res => {
+            console.log(res);
+            alert('删除成功');
+            this.setState({
+                managerList: this.state.managerList.filter(manager => manager.managerId !== managerId)
+            });
+        })
     };
 
     showManagerForm = () => {
@@ -62,7 +70,7 @@ class Personnel extends PureComponent {
                 <Icon style={{fontSize: '18px', marginLeft: '10px', color: '#FFEB9E'}} type="plus-circle"
                       onClick={this.showManagerForm}/>
                 <ManagerInfoModal managerFormVisible={this.state.managerFormVisible}
-                                 closeManagerInfoModal={this.closeManagerInfoModal.bind(this)}/>
+                                  closeManagerInfoModal={this.closeManagerInfoModal.bind(this)}/>
             </div>
         )
     };

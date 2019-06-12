@@ -1,12 +1,29 @@
 import React, {Component} from 'react'
 import {Table} from "antd";
-import styles from './index.module.less'
 import Button from "../../../../../../components/Button";
+import RechargeInfoModal from "./Recharge/RechargeInfoModal";
 
 class RechargeHistory extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            RechargeFormVisible: false
+        }
+    }
+
+    closeRechargeInfoModal = () => {
+        this.setState({
+            RechargeFormVisible: false
+        })
+    };
 
     handleRecharge = () => {
-        alert('充值成功')
+        this.setState({
+                RechargeFormVisible: true
+            }
+        );
+
+        //alert('充值成功')
     };
 
     operation = () => {
@@ -27,10 +44,15 @@ class RechargeHistory extends Component {
 
     render() {
         const rechargeHistory = this.props.rechargeHistory;
+        const memberId = this.props.memberId;
 
         return (
             <div>
                 <Table columns={this.columns} dataSource={rechargeHistory}/>
+                <RechargeInfoModal RechargeFormVisible={this.state.RechargeFormVisible}
+                                   closeRechargeInfoModal={this.closeRechargeInfoModal}
+                                   memberId={memberId}
+                />
             </div>
         )
     }

@@ -27,8 +27,8 @@ export const getMovieDetails = (movieId) => {
 
 //接口36. 查看电影评价
 export const getMovieComment = (movieId) => {
-    return request(`${prefix}/movie/comment/${movieId}`, {
-        method: "GET"
+    return request(`${prefix}/movie/comment/?movieId=${movieId}`, {
+        method: "GET",
     });
 };
 

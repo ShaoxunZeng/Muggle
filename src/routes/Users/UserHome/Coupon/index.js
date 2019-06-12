@@ -107,7 +107,7 @@ class Coupon extends PureComponent {
     }
 
     componentWillMount() {
-        //TODO()  调用接口18 获得所有优惠券
+        //TODO()  调用接口18 获得所有优惠券 根据token测试
         getAllCoupons().then(res => {
             this.setState(
                 {

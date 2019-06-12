@@ -12,20 +12,21 @@ class ManagerInfoModal extends Component {
     handleCancel = () => {
         this.props.closeManagerInfoModal();
     };
-    handleSubmit = e => {
-        e.preventDefault();
+    handleSubmit =() => {
         this.props.form.validateFields((err, value) => {
             if (!err) {
                 console.log(value);
-                //TODO() 调用接口47 新增管理员
-                // addManager(value)
+                addManager(value).then(res => {
+                    console.log(res)
+                    alert('添加成功')
+                })
             }
         });
         this.props.closeManagerInfoModal();
     };
 
     render() {
-        const {managerFormVisible}=this.props;
+        const {managerFormVisible} = this.props;
         const {getFieldDecorator} = this.props.form;
 
         return (
@@ -44,7 +45,7 @@ class ManagerInfoModal extends Component {
                             {getFieldDecorator('password')(
                                 <Input placeholder={'管理员密码'}/>)}
                         </Form.Item>
-                        <Form.Item style={{textAlign:'right'}}>
+                        <Form.Item style={{textAlign: 'right'}}>
                             <Button type={'yellow'} htmlType={'submit'}>
                                 确认新增
                             </Button>

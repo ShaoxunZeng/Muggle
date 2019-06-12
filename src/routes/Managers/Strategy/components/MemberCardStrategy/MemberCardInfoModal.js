@@ -12,8 +12,9 @@ class MemberCardInfoModal extends Component {
         this.props.closeMemberCardInfoModal();
     };
 
-    handleSubmit = e => {
-        e.preventDefault();
+    handleSubmit = () => {
+        //todo() 重新渲染页面
+        // e.preventDefault();
         this.props.form.validateFields((err, fieldsValue) => {
             if (err) {
                 return;
@@ -25,9 +26,12 @@ class MemberCardInfoModal extends Component {
                 memberPictureUrl:''
             };
             console.log(newMemberCard);
-            //todo() 调用接口28 新增会员卡
-            // addMemberCard(newMemberCard);
-            this.props.closeMemberCardInfoModal();
+
+            addMemberCard(newMemberCard).then(res=>{
+                console.log(res);
+                this.props.closeMemberCardInfoModal();
+
+            });
         });
 
 

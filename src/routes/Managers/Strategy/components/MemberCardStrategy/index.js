@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {Icon, Popconfirm, Table} from 'antd'
 import {delMemberCard, getMemberCards} from "../../../../../services/apiStrategy";
 import Button from "../../../../../components/Button";
-import ActivityInfoModal from "../../../Activity/components/ManageActivity/ActivityInfoModal";
 import MemberCardInfoModal from "./MemberCardInfoModal";
 
 const testMemberCardInfo = [
@@ -38,31 +37,36 @@ class MemberCardStrategy extends Component {
     }
 
     componentWillMount() {
-        //todo() 调用接口27
-        // getMemberCards()
-        this.setState({
-            memberCardInfo: testMemberCardInfo,
-            memberCardFormVisible:false
-        })
+        getMemberCards().then(res => {
+            this.setState({
+                memberCardInfo: res,
+                memberCardFormVisible: false
+            })
+        });
+        // this.setState({
+        //     memberCardInfo: testMemberCardInfo,
+        //     memberCardFormVisible:false
+        // })
     }
 
     deleteMemberCard = memberStrategyId => {
-        this.setState({
-            memberCardInfo: this.state.memberCardInfo.filter(memberCard => memberCard.memberStrategyId !== memberStrategyId)
-        });
-        //todo() 调用接口29 删除会员卡
-        // delMemberCard(memberStrategyId)
-    };
-
-    showMemberCardForm=()=>{
-        this.setState({
-            memberCardFormVisible:true
+        delMemberCard(memberStrategyId).then(res => {
+            console.log(res);
+            this.setState({
+                memberCardInfo: this.state.memberCardInfo.filter(memberCard => memberCard.memberStrategyId !== memberStrategyId)
+            });
         })
     };
 
-    closeMemberCardInfoModal=()=>{
+    showMemberCardForm = () => {
         this.setState({
-            memberCardFormVisible:false
+            memberCardFormVisible: true
+        })
+    };
+
+    closeMemberCardInfoModal = () => {
+        this.setState({
+            memberCardFormVisible: false
         })
     };
 
@@ -73,7 +77,7 @@ class MemberCardStrategy extends Component {
                 <Icon style={{fontSize: '18px', marginLeft: '10px', color: '#FFEB9E'}} type="plus-circle"
                       onClick={this.showMemberCardForm}/>
                 <MemberCardInfoModal memberCardFormVisible={this.state.memberCardFormVisible}
-                                   closeMemberCardInfoModal={this.closeMemberCardInfoModal}
+                                     closeMemberCardInfoModal={this.closeMemberCardInfoModal}
                 />
 
             </div>)

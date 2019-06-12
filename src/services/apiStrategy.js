@@ -35,14 +35,14 @@ export const addMemberCard = (newMemberCard) => {
 export const delMemberCard = (memberStrategyId) => {
     return request(`${prefix}/strategy/member`, {
         method: 'DELETE',
-        body: memberStrategyId
+        body: {'memberStrategyId': memberStrategyId}
     })
 };
 
 //接口30. 修改某个类别会员卡信息（总经理）
-export const changeMemberCard=(newMemberCard)=>{
-    return request(`${prefix}/strategy/member`,{
-        method:'PUT',
-        body:newMemberCard
+export const changeMemberCard = (newMemberCard) => {
+    return request(`${prefix}/strategy/member`, {
+        method: 'PUT',
+        body: newMemberCard
     })
 };

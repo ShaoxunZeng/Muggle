@@ -68,7 +68,7 @@ class PaymentInfoModal extends Component {
                 };
                 console.log(paymentInfo);
 
-                // todo() 接口26
+                // todo() 接口26 根据token测试
                 purchaseMemberCard(paymentInfo).then(res => {
                     console.log(res);
                     this.props.closePaymentModal();
