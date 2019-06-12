@@ -119,7 +119,7 @@ class BuyModal extends React.Component {
     coupons: [],
     isPaying: false,
     memberPaying: false,
-    memberInfo: '',
+    memberInfo: [],
     order: {}
   };
 
@@ -187,16 +187,21 @@ class BuyModal extends React.Component {
 
   handleConfirmPaying = (totalCost) => {
     const {selectedCouponIndexes, memberPaying} = this.state;
+    let coupons = selectedCouponIndexes.map((item) => ({couponId: this.state.coupons[item].couponId}));
     if (memberPaying) {
-      // TODO
-      //  调用接口11 会员支付
-        // payingWithMember()
+      payingWithMember({memberId: this.state.memberInfo.memberId, orderId: this.state.order.orderId, coupons})
+          .then((res) => {
+            alert("完成支付 ¥" + totalCost);
+            this.props.history.push("/");
+          })
     } else {
-      // TODO
-      //  调用接口12 第三方支付
-      // payingWithOthers()
+      payingWithOthers({orderId: this.state.order.orderId, coupons})
+          .then((res) => {
+            alert("完成支付 ¥" + totalCost);
+            this.props.history.push("/");
+          });
+      alert("完成支付 ¥" + totalCost);
     }
-    alert("完成支付 ¥" + totalCost);
   };
 
   render() {
@@ -220,7 +225,7 @@ class BuyModal extends React.Component {
                                 <p style={{color: "#C0C0C0", cursor: "pointer"}}
                                    onClick={() => this.setState({memberPaying: false})}> 第三方支付 </p>
                               </div>
-                              {memberInfo === ""
+                              {memberInfo.length === 0
                                   ? <div className={styles['not-member']}>
                                     <p className={styles.text}>您还不是会员</p>
                                     <p className={styles.text}
