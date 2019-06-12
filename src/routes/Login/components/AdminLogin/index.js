@@ -1,4 +1,4 @@
-import {login} from "../../../../services/apiLogin.js"
+import {login} from "../../../../services/apiLoginAndRegister.js"
 import React, {Component} from 'react'
 import styles from "../../index.module.less";
 import Button from "../../../../components/Button";

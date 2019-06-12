@@ -64,26 +64,26 @@ class Mark extends PureComponent {
         // })
     }
 
-    render() {
-        const {markList} = this.state;
-        return (
-            <div className={styles.whole}>
-                <Row className={styles.row} gutter={16}>
-                    {
-                        markList.map(mark =>
-                            <Col span={6}>
-                                <MarkCard posterUrl={mark.posterUrl} movieName={mark.movieName}
-                                          movieType={mark.movieType} movieYear={mark.movieYear}
-                                          movieLength={mark.movieLength} movieDescription={mark.movieDescription}
-                                          userStatus={mark.userStatus} movieStatus={mark.movieStatus}
-                                />
-                            </Col>
-                        )
-                    }
-                </Row>
-            </div>
-        )
-    }
+  render() {
+    const {markList} = this.state;
+    return (
+        <div className={styles.whole}>
+          <Row className={styles.row} gutter={16}>
+            {
+              markList.map(mark =>
+                  <Col span={6}>
+                    <MarkCard posterUrl={mark.posterUrl} movieName={mark.movieName}
+                              movieType={mark.movieType} movieYear={mark.movieYear}
+                              movieLength={mark.movieLength} movieDescription={mark.movieDescription}
+                              userStatus={mark.userStatus} movieStatus={mark.movieStatus}
+                    />
+                  </Col>
+              )
+            }
+          </Row>
+        </div>
+    )
+  }
 }
 
 export default WithHeaderFooterSider(Mark)

@@ -9,6 +9,8 @@ import {ReactComponent as RectangleUnClicked} from '../../../assets/Rectangle/Un
 import {ReactComponent as Taken} from '../../../assets/Rectangle/Alreadytaken.svg';
 import Button from "../../../components/Button";
 import {withRouter} from "react-router-dom";
+import {getMovieArrangeInfo} from "../../../services/apiMovies";
+import {createTicketOrder} from "../../../services/apiOrders";
 
 /**
  * 0代表没有座位
@@ -107,10 +109,12 @@ class MovieOrder extends Component {
     // 指定第一个场次为默认选择的场次
     // 同时指定第一个场次的seats作为默认展示的seats
     // 指定默认的sceneId，作为唯一的key传入Picker组件
-    this.setState({
-      scenes: scenes,
-      selectedScene: scenes[0],
-    })
+    const {movieId} = this.props.match.params;
+    getMovieArrangeInfo(movieId).then((scenes) =>
+        this.setState({
+          scenes: scenes,
+          selectedScene: scenes[0],
+        }));
   };
 
   /**
@@ -175,11 +179,12 @@ class MovieOrder extends Component {
     const {selectedScene, selectedSeats} = this.state;
     // TODO
     //  调用接口8 生成订单 成功后跳转到购物车页面
-    this.props.history.push("/home/order");
+    createTicketOrder({sceneId: selectedScene.sceneId, selectedSeats}).then((res) => {
+      this.props.history.push("/home/order");
+    });
   };
 
   render() {
-    const {movieId} = this.props.match.params;
     const {posterUrl, movieType, year, length, movieName} = this.props.location.state;
     const {scenes, selectedSeats, selectedScene} = this.state;
     return (
