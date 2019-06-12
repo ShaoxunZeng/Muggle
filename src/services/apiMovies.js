@@ -26,7 +26,7 @@ export const getMovieDetails = (movieId) => {
 
 //接口7. 获取某部电影的排片信息
 export const getMovieArrangeInfo = (movieId) => {
-    return request(`${prefix}/scene/info/of_movie?movieid=${movieId}`, {
+    return request(`${prefix}/scene/info/of_movie?movieId=${movieId}`, {
         method: "GET",
     });
 };

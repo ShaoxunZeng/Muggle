@@ -216,7 +216,6 @@ class Order extends PureComponent {
       align: 'center',
       render: (text, record) => {
         return (
-            // TODO 增加退票等等操作
             <div className={styles.cost}>
               <div className={styles.text}>
                 {record.status === 2 &&

@@ -99,7 +99,8 @@ class MovieOrder extends Component {
     this.state = {
       selectedSeats: [],
       selectedScene: {},
-      scenes: [{}]
+      scenes: [{}],
+      isLoading: true
     };
   }
 
@@ -110,11 +111,13 @@ class MovieOrder extends Component {
     // 同时指定第一个场次的seats作为默认展示的seats
     // 指定默认的sceneId，作为唯一的key传入Picker组件
     const {movieId} = this.props.match.params;
-    getMovieArrangeInfo(movieId).then((scenes) =>
-        this.setState({
-          scenes: scenes,
-          selectedScene: scenes[0],
-        }));
+    getMovieArrangeInfo(movieId).then((scenes) => {
+      this.setState({
+        scenes: scenes,
+        selectedScene: scenes[0],
+        isLoading: false
+      })
+    });
   };
 
   /**
@@ -157,7 +160,7 @@ class MovieOrder extends Component {
       this.setState((prevState) => {
         return {
           selectedScene: scene,
-          selectedSeats: []
+          selectedSeats: [],
         }
       })
     }
@@ -186,8 +189,8 @@ class MovieOrder extends Component {
 
   render() {
     const {posterUrl, movieType, year, length, movieName} = this.props.location.state;
-    const {scenes, selectedSeats, selectedScene} = this.state;
-    return (
+    const {scenes, selectedSeats, selectedScene, isLoading} = this.state;
+    return isLoading ? "" : (
         <div className={styles.whole}>
           <div className={styles.left}>
             <div className={styles['image-container']}>

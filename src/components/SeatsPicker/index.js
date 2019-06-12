@@ -37,7 +37,7 @@ class SeatsPicker extends Component {
                   {row.map((column, columnIndex) => {
                     if (column === 0) {
                       return <NoSeat key={sceneId + "_" + columnIndex}/>  //产生唯一的key，不仅是sibling，而且要和别的场次不一样
-                    } else return (column === 1
+                    } else return (column === 2
                         ? <SeatTaken key={sceneId + "_" + columnIndex}/>
                         :
                         <Seat key={sceneId + "_" + columnIndex} position={this.calculate(seats, rowIndex, columnIndex)}
