@@ -167,7 +167,7 @@ class Order extends PureComponent {
               <div className={styles.text}>
                 <p style={{fontWeight: "bold", fontSize: 16}}>{record.hallName}</p>
                 {record.selectedSeats.map((item) => {
-                  return <div>{`${item.row} 排 ${item.column} 座`}</div>
+                  return <div>{`${item.row+1} 排 ${item.column+1} 座`}</div>
                 })}
               </div>
             </div>
