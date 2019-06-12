@@ -10,6 +10,7 @@ class AlreadyBuyModal extends React.Component {
         <Modal
             title="查看取票码"
             visible={modalVisible}
+            onCancel={onCancel}
             footer={null}
         >
           <div className={styles['modal']}>

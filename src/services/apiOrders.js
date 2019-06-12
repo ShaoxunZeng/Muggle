@@ -31,3 +31,19 @@ export const getAllTicketOrders = () => {
     method: 'GET'
   })
 };
+
+//接口14.取消订单
+export const cancelOrder = (orderInfo) => {
+  return request(`${prefix}/order/ticket/cancellation`, {
+    method: 'PUT',
+    body: orderInfo
+  })
+};
+
+//接口17. 用户退票
+export const returnTicket = (ticketInfo) => {
+  return request(`${prefix}/order/ticket/refund`, {
+    method: 'POST',
+    body: ticketInfo
+  })
+};

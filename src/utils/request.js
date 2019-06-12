@@ -2,6 +2,8 @@
 
 // import {getToken, judgeLogin} from "./authorization";
 
+import {getToken} from "./authorization";
+
 const codeMessage = {
     200: "服务器成功返回请求的数据。",
     201: "新建或修改数据成功。",
@@ -19,7 +21,6 @@ const codeMessage = {
     503: "服务不可用，服务器暂时过载或维护。",
     504: "网关超时。"
 };
-
 function checkStatus(response) {
     console.log(response);
     if (response.status >= 200 && response.status < 300) {
@@ -40,35 +41,36 @@ function checkStatus(response) {
  * @return {object}           An object containing either "data" or "err"
  */
 export default async function request(url, options) {
-    const defaultOptions = {
-        credentials: "include"  //允许token认证
-    };
-    const newOptions = {...defaultOptions, ...options};
-    if (
-        newOptions.method === "POST" ||
-        newOptions.method === "PUT" ||
-        newOptions.method === "DELETE"
-    ) {
-        if (!(newOptions.body instanceof FormData)) {
-            newOptions.headers = {
-                Accept: "application/json",
-                "Content-Type": "application/json; charset=utf-8",
-                ...newOptions.headers
-            };
-            newOptions.body = JSON.stringify(newOptions.body);
-        } else {
-            // newOptions.body is FormData
-            newOptions.headers = {
-                Accept: "application/json",
-                ...newOptions.headers
-            };
-        }
-    }
-
-    newOptions.headers = {
-        // Authorization: getToken(),
+  const defaultOptions = {
+    credentials: "include",  //允许token认证
+    mode: "cors"
+  };
+  const newOptions = {...defaultOptions, ...options};
+  if (
+      newOptions.method === "POST" ||
+      newOptions.method === "PUT" ||
+      newOptions.method === "DELETE"
+  ) {
+    if (!(newOptions.body instanceof FormData)) {
+      newOptions.headers = {
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=utf-8",
         ...newOptions.headers
-    };
+      };
+      newOptions.body = JSON.stringify(newOptions.body);
+    } else {
+      // newOptions.body is FormData
+      newOptions.headers = {
+        Accept: "application/json",
+        ...newOptions.headers
+      };
+    }
+  }
+
+  newOptions.headers = {
+    Authorization: getToken(),
+    ...newOptions.headers
+  };
 
     const response = await fetch(url, newOptions);
     try {
@@ -93,14 +95,23 @@ export default async function request(url, options) {
         }
         */
 
+    /*
+    else if(e.response.status===401){
+      const from=encodeURIComponent(window.location.pathname);
+      window.location.href=`/login?from=${from}`;
+    } else if(e.response.status===403&&judgeLogin()){
+      window.location.href="/403";
+    }else {
+      throw e;
+    }
+    */
+
     }
 
-    if (newOptions.method === "DELETE" || response.status === 204) {
-        return response.text();
-    }
-
-    let result = response.text()
-        .then((text) => text.length ? JSON.parse(text) : {});
-    return Promise.resolve(result);
-    //return response.json();
+  if (newOptions.method === "DELETE" || response.status === 204) {
+    return response.text();
+  }
+  let result = response.text()
+      .then((text) => text.length ? JSON.parse(text) : {});
+  return Promise.resolve(result);
 }

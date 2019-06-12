@@ -5,7 +5,6 @@ import WithHeaderFooterSider from "../../../../components/WithHeaderFooterSider"
 import {Table} from "antd";
 import Button from "../../../../components/Button";
 import Tag from "./Tag";
-import {getAllTicketOrders} from "../../../../services/apiOrders";
 import AlreadyBuyModal from "./AlreadyBuyModal";
 import BuyModal from "./BuyModal";
 
@@ -83,7 +82,7 @@ const orders = [
       startTime: '1:00',
       endTime: '1:01'
     },
-    status: 0, //0: 未完成 1: 已完成 2: 已失效
+    status: 3, //0: 未完成 可取消 1: 已完成 可退票 2: 已失效 3：已完成 不可退票
     cost: 1,
     ticketCode: '444', //取票码
     selectedSeats: [{
@@ -127,7 +126,7 @@ const orders = [
       startTime: '1:00',
       endTime: '1:01'
     },
-    status: 0, //0: 未完成 1: 已完成 2: 已失效
+    status: 0,
     cost: 1,
     ticketCode: '666', //取票码
     selectedSeats: [{
@@ -220,17 +219,33 @@ class Order extends PureComponent {
             // TODO 增加退票等等操作
             <div className={styles.cost}>
               <div className={styles.text}>
-                {record.status === 0 &&
-                <Button type="yellow" onClick={() => this.handleBuyClick(record.orderId, record.cost)}>立即支付</Button>}
-                {record.status === 1 &&
-                <Tag type="lime" onClick={() => this.handleLookClick(record.ticketCode)}>
-                  查看取票码
-                </Tag>
-                }
                 {record.status === 2 &&
+                <div>
+                  <Button type="yellow" onClick={() => this.handleBuyClick(record.orderId, record.cost)}>立即支付</Button>
+                  <p style={{marginTop: 10, cursor: "pointer"}}
+                     onClick={() => this.handleCancelOrderClick()}>取消订单</p>
+                </div>
+                }
+                {record.status === 1 &&
+                <div>
+                  <Tag type="lime" onClick={() => this.handleLookClick(record.ticketCode)}>
+                    查看取票码
+                  </Tag>
+                  <p style={{marginTop: 10, cursor: "pointer"}}
+                     onClick={() => this.handleReturnTicketClick()}>退票</p>
+                </div>
+                }
+                {record.status === 3 &&
                 <Tag type="grey">
                   已失效
                 </Tag>}
+                {record.status === 0 &&
+                <div>
+                  <Tag type="lime" onClick={() => this.handleLookClick(record.ticketCode)}>
+                    查看取票码
+                  </Tag>
+                </div>
+                }
               </div>
             </div>
         )
@@ -271,6 +286,20 @@ class Order extends PureComponent {
       alreadyBuyModalVisible: true,
       selectedTicketCode: ticketCode
     })
+  };
+
+  handleCancelOrderClick = () => {
+    // TODO
+    //  调用取消order接口
+    //  cancelOrder()
+    alert("取消订单");
+  };
+
+  handleReturnTicketClick = () => {
+    // TODO
+    //  调用退票接口
+    //  returnTicket()
+    alert("退票");
   };
 
   render() {
