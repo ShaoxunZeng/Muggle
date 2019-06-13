@@ -7,7 +7,7 @@ import Button from "../../../../components/Button";
 import Tag from "./Tag";
 import AlreadyBuyModal from "./AlreadyBuyModal";
 import BuyModal from "./BuyModal";
-import {cancelOrder, getAllTicketOrders} from "../../../../services/apiOrders";
+import {cancelOrder, getAllTicketOrders, returnTicket} from "../../../../services/apiOrders";
 
 const orders = [
     {
@@ -147,6 +147,7 @@ class Order extends PureComponent {
         {
             title: '电影',
             align: 'center',
+            width: 200,
             render: (text, record) => {
                 return (
                     <div className={styles.movieInfo}>
@@ -233,7 +234,7 @@ class Order extends PureComponent {
                                     查看取票码
                                 </Tag>
                                 <p style={{marginTop: 10, cursor: "pointer"}}
-                                   onClick={() => this.handleReturnTicketClick()}>退票</p>
+                                   onClick={() => this.handleReturnTicketClick(record.orderId)}>退票</p>
                             </div>
                             }
                             {record.status === 3 &&
@@ -288,18 +289,17 @@ class Order extends PureComponent {
     };
 
     handleCancelOrderClick = (orderId) => {
-        cancelOrder({'orderId': orderId}).then(res=>{
+        cancelOrder({'orderId': orderId}).then(res => {
             console.log(res);
             alert("成功取消订单!");
 
         })
     };
 
-    handleReturnTicketClick = () => {
-        // TODO
-        //  调用退票接口
-        //  returnTicket()
-        alert("退票");
+    handleReturnTicketClick = (orderId) => {
+        returnTicket({'orderId': orderId}).then(res => {
+            alert("退票成功！");
+        })
     };
 
     render() {

@@ -62,7 +62,6 @@ class Message extends PureComponent {
     }
 
     componentWillMount() {
-        //TODO() 调用接口33 查看所有消息
         getAllMessage().then(res => {
             this.setState({
                 msgList: res,
@@ -74,6 +73,11 @@ class Message extends PureComponent {
         //     commentFormVisible: false
         // })
     };
+
+    toPurchase = (movieId) => {
+        this.props.history.push(`/moviedetails/${movieId}`);
+    };
+
 
     showCommentForm = (movieId) => {
         console.log(movieId);
@@ -102,20 +106,64 @@ class Message extends PureComponent {
             title: '消息状态',
             align: 'center',
             render: (text, record) => {
-                return (
-                    record.messageType === 3 ?
-                        <Tag color={'yellow'} onClick={() => this.showCommentForm(record.additionalMovieId)}>去评价</Tag> :
-                        record.messageType === 4 ?
-                            <Tag color={'yellow'} onClick={() => {
-                                this.props.history.push('/allmovies')
-                            }}>去购票</Tag> :
-                            <Tag color={record.messageStatus === 0 ? 'gold' : 'grey'}>
-                                {record.messageStatus === 0 ? '未读' : '已读'}
-                            </Tag>
-                )
+                switch (record.messageType) {
+                    case 0:
+                        return (
+                            <div style={{display: 'flex', flexDirection: 'row'}}>
+                                <Tag color={'yellow'}
+                                     onClick={() => {
+                                         this.props.history.push('/allmovies')
+                                     }}>去购票</Tag>
+                                <Tag color={record.messageStatus === 0 ? 'gold' : 'grey'}>
+                                    {record.messageStatus === 0 ? '未读' : '已读'}
+                                </Tag>
+                            </div>);
+                    case 1:
+                        return (
+                            <div style={{display: 'flex', flexDirection: 'row'}}>
+                                <Tag color={'orange'}
+                                     onClick={() => this.toPurchase(record.additionalMovieId)}>去观看</Tag>
+                                <Tag color={record.messageStatus === 0 ? 'gold' : 'grey'}>
+                                    {record.messageStatus === 0 ? '未读' : '已读'}
+                                </Tag>
+                            </div>);
+                    case 3:
+                        return (
+                            <div style={{display: 'flex', flexDirection: 'row'}}>
+                                <Tag color={'yellow'}
+                                     onClick={() => this.showCommentForm(record.additionalMovieId)}>去评价</Tag>
+                                <Tag color={record.messageStatus === 0 ? 'gold' : 'grey'}>
+                                    {record.messageStatus === 0 ? '未读' : '已读'}
+                                </Tag>
+                            </div>);
+                    case 4:
+                        return (
+                            <div style={{display: 'flex', flexDirection: 'row'}}>
+                                <Tag color={'yellow'}
+                                     onClick={() => {
+                                         this.props.history.push('/allmovies')
+                                     }}>去购票</Tag>
+                                <Tag color={record.messageStatus === 0 ? 'gold' : 'grey'}>
+                                    {record.messageStatus === 0 ? '未读' : '已读'}
+                                </Tag>
+                            </div>);
+                    default:
+                        return (<Tag color={record.messageStatus === 0 ? 'gold' : 'grey'}>
+                            {record.messageStatus === 0 ? '未读' : '已读'}
+                        </Tag>)
+                }
             }
-        }
-    ];
+        }];
+    // record.messageType === 3 ?
+    //     <Tag color={'yellow'} onClick={() => this.showCommentForm(record.additionalMovieId)}>去评价</Tag> :
+    //     record.messageType === 4 ?
+    //         <Tag color={'yellow'} onClick={() => {
+    //             this.props.history.push('/allmovies')
+    //         }}>去购票</Tag> :
+    //         <Tag color={record.messageStatus === 0 ? 'gold' : 'grey'}>
+    //             {record.messageStatus === 0 ? '未读' : '已读'}
+    //         </Tag>
+
 
     render() {
         const {msgList, commentFormVisible, commentMovieId, movieInfo} = this.state;

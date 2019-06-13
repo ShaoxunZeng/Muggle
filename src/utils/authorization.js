@@ -1,6 +1,6 @@
 export const AUTHORIZATION_TOKEN = "token";
 export const AUTHORIZATION_ROLE = "role";
-export const ALL_ROLE_TYPE = ["customer","movie_manager","admin"];
+export const ALL_ROLE_TYPE = ["customer","movie_manager","administrator"];
 
 export const getRole = () => {
   return localStorage.getItem(AUTHORIZATION_ROLE);

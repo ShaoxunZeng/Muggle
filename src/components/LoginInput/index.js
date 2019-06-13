@@ -17,12 +17,23 @@ class LoginInput extends Component {
         login({username, password}).then((res) => {
           console.log(res);
           setAuthorization({role: res.role, token: res.token});
-          this.props.history.push('/');
+          let role=res.role;
+          console.log(role);
+          switch (role) {
+              case 'customer':
+                  this.props.history.push('/allmovies');
+                  break;
+              case 'movie_manager':
+                  this.props.history.push('/manage/arrange');
+                  break;
+              case 'administrator':
+                  this.props.history.push('/manage/arrange');
+                  break;
+          }
         })
       }
     });
-    //todo() 实现用户登陆后跳转回上一个浏览的界面 调用登陆接口
-    // this.props.history.push('/home/order')
+
   };
 
   render() {
