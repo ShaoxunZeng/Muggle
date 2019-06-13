@@ -15,11 +15,12 @@ class MovieDetails extends Component {
             mark({'movieId': movieId}).then(res => {
                 console.log(res);
                 alert("已添加到我喜欢");
-            }).catch(err=>{
+            }).catch(err => {
                 alert('您已添加过该影片！')
             })
         } else {
-            alert('请先登陆')
+            alert('收藏到我喜欢请先登陆');
+            setTimeout(this.props.history.push(`/login`), 8000);
         }
     };
 
@@ -32,7 +33,13 @@ class MovieDetails extends Component {
             year,
             length
         };
-        this.props.history.push(`/movieorder/${movieId}`, state)
+        if (judgeLogin()) {
+            this.props.history.push(`/movieorder/${movieId}`, state)
+        } else {
+            alert('购票前请先登陆！');
+            setTimeout(
+                this.props.history.push(`/login`), 3000)
+        }
     };
 
     render() {

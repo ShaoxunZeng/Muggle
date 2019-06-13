@@ -10,7 +10,7 @@ class Header extends Component {
                 <div className={styles.content}>
                     <div className={styles.up}>
                         <div className={styles.icon}>
-                            MUGGLE  CINEME
+                            MUGGLE  CINEMA
                         </div>
                         <div className={styles.right}>
                             <UserAvatar src={"https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"} />

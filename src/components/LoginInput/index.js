@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import styles from './index.module.less';
 import {Form, Input, Icon} from 'antd'
 import Button from "../Button";
 import {withRouter} from "react-router-dom";
@@ -21,7 +20,7 @@ class LoginInput extends Component {
           console.log(role);
           switch (role) {
               case 'customer':
-                  this.props.history.push('/allmovies');
+                  this.props.history.push('/home/message');
                   break;
               case 'movie_manager':
                   this.props.history.push('/manage/arrange');

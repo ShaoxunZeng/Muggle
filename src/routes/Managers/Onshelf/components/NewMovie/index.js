@@ -9,16 +9,31 @@ const InputGroup = Input.Group;
 
 class NewMovie extends Component {
     constructor(props) {
-        super(props)
-    }
+        super(props);
+        this.state = {
+            directorNum: 1,
+            starringNum: 1
+        }
+    };
 
     handleCancel() {
         this.props.closeAddMoviePage();
-    }
+    };
 
     handleSubmit() {
+    };
 
-    }
+    addDirector = () => {
+        this.setState({
+            directorNum: this.state.directorNum + 1
+        })
+    };
+
+    addStarring = () => {
+        this.setState({
+            starringNum: this.state.starringNum + 1
+        })
+    };
 
     render() {
         const {getFieldDecorator} = this.props.form;
@@ -87,29 +102,38 @@ class NewMovie extends Component {
                                 <Row gutter={24}>
                                     <Col span={12}>
                                         <Form.Item label={'导演'}>
-                                            <InputGroup size="large">
-                                                <Row gutter={8}>
-                                                    <Col span={8}><Input placeholder={'name'}/></Col>
-                                                    <Col span={12}><Input placeholder={'url'}/></Col>
-                                                </Row>
-                                            </InputGroup>
-                                            <Button className={styles.addButton} type={'gray'} onClick={this.add}>
-                                                <Icon type="plus"/> 添加导演信息
-                                            </Button>
+
+                                            {Array(this.state.directorNum).map(() =>
+                                                <InputGroup size="large">
+                                                    <Row gutter={8}>
+                                                        <Col span={8}><Input placeholder={'name'}/></Col>
+                                                        <Col span={12}><Input placeholder={'url'}/></Col>
+                                                    </Row>
+                                                </InputGroup>
+                                            )}
+
+                                            <div className={styles.addButton}>
+                                                <Button type={'gray'} onClick={this.addDirector}>
+                                                    <Icon type="plus"/> 添加导演
+                                                </Button>
+                                            </div>
                                         </Form.Item>
                                     </Col>
                                     <Col span={12}>
                                         <Form.Item label={'主演'}>
-                                            <InputGroup size="large">
-                                                <Row gutter={8}>
-                                                    <Col span={8}>
-                                                        <Input placeholder={'name'}/>
-                                                    </Col>
-                                                    <Col span={12}>
-                                                        <Input placeholder={'url'}/>
-                                                    </Col>
-                                                </Row>
-                                            </InputGroup>
+                                            {Array(this.state.starringNum).map(() =>
+                                                <InputGroup size="large">
+                                                    <Row gutter={8}>
+                                                        <Col span={8}><Input placeholder={'name'}/></Col>
+                                                        <Col span={12}><Input placeholder={'url'}/></Col>
+                                                    </Row>
+                                                </InputGroup>
+                                            )}
+                                            <div className={styles.addButton}>
+                                                <Button type={'gray'} onClick={this.addStarring}>
+                                                    <Icon type="plus"/> 添加主演
+                                                </Button>
+                                            </div>
                                         </Form.Item>
                                     </Col>
                                 </Row>

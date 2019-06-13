@@ -17,7 +17,12 @@ class SendCoupon extends Component {
 
     columns = [
         {title: '用户Id', align: 'center', dataIndex: 'userId', key: 'userId'},
-        {title: '用户累计消费', align: 'center', dataIndex: 'userTotalConsumption', key: 'userTotalConsumption'},
+        {
+            title: '用户累计消费', align: 'center', dataIndex: 'userTotalConsumption', key: 'userTotalConsumption',
+            sorter: (a, b) => a.userTotalConsumption - b.userTotalConsumption,
+            sortDirections: ['descend', 'ascend'],
+
+        },
         {
             title: '用户类别', align: 'center', dataIndex: 'isMember', key: 'isMember',
             filters: [
@@ -32,6 +37,8 @@ class SendCoupon extends Component {
         },
         {
             title: '会员卡余额', align: 'center', dataIndex: 'memberCredit', key: 'memberCredit',
+            sorter: (a, b) => a.memberCredit - b.memberCredit,
+            sortDirections: ['descend', 'ascend'],
             render: memberCredit => (
                 <span>{memberCredit === -1 ? '暂无会员卡' : memberCredit}</span>
             )

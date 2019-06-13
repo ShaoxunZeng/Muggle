@@ -72,14 +72,14 @@ class Onshelf extends PureComponent {
 
     componentWillMount() {
 
-        getMoviesOnShelf().then((res) => {
-            this.setState({
-                movieOnShelfList: res
-            })
-        });
-        // this.setState({
-        //   movieOnShelfList: testAllMovieOnShelf
-        // })
+        // getMoviesOnShelf().then((res) => {
+        //     this.setState({
+        //         movieOnShelfList: res
+        //     })
+        // });
+        this.setState({
+          movieOnShelfList: testAllMovieOnShelf
+        })
     };
 
     toDetailPage = (movieId) => {

@@ -7,6 +7,30 @@
 
   .up {
     height: @sider-up-height;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    //align-items: center;
+    margin-left: 50px;
+
+    .avatar {
+    }
+
+    .iconWrapper {
+      margin-top: 20px;
+      margin-left: 18px;
+
+      .Icon {
+        color: @default-foreground-darker-color;
+        font-size: 20px;
+
+        &:hover {
+          color: @default-yellow;
+        }
+      }
+
+
+    }
   }
 
   .yellow-lines {

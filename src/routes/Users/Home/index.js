@@ -54,7 +54,6 @@ class Home extends PureComponent {
                 <div className={styles["recent-movies"]}>
                     <RecentMoives/>
                 </div>
-                <Button type="gray"> 立即购买 </Button>
             </div>
         )
     };

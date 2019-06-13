@@ -47,7 +47,7 @@ class Index extends Component {
         super(props);
         this.state = {
             commentText: '',
-            rate:10
+            rate: 10
         }
     }
 
@@ -62,10 +62,10 @@ class Index extends Component {
         })
     };
 
-    handleRateChange=(value)=>{
+    handleRateChange = (value) => {
         console.log(value);
         this.setState({
-            rate:value
+            rate: value
         })
     };
 
@@ -77,17 +77,16 @@ class Index extends Component {
         };
         console.log(comment);
         this.props.closeCommentInfoModal();
-        sendComment(comment).then(res=>{
+        sendComment(comment).then(res => {
             console.log(res);
             alert('评论成功!')
-        })
+        });
 
     };
 
 
-
     render() {
-        const {commentFormVisible,movieInfo} = this.props;
+        const {commentFormVisible, movieInfo} = this.props;
         const {commentText} = this.state;
         return (
             <div>

@@ -59,7 +59,6 @@ class PaymentInfoModal extends Component {
         });
     };
     handleSubmit = e => {
-        e.preventDefault();
         this.props.form.validateFields((err, value) => {
             if (!err) {
                 const paymentInfo = {
@@ -71,6 +70,7 @@ class PaymentInfoModal extends Component {
                 // todo() 接口26 根据token测试
                 purchaseMemberCard(paymentInfo).then(res => {
                     console.log(res);
+                    alert('恭喜您成为MuggleCinema会员！')
                     this.props.closePaymentModal();
 
                 })

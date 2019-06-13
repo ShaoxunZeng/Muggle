@@ -16,7 +16,7 @@ class ActivityInfoModal extends Component {
     };
 
     handleSubmit = e => {
-        // e.preventDefault();
+        e.preventDefault();
 
         this.props.form.validateFields((err, fieldsValue) => {
             if (err) {
@@ -29,13 +29,14 @@ class ActivityInfoModal extends Component {
                 'couponThreshold': Number(fieldsValue['couponThreshold']),
                 'startTime': fieldsValue['startTime'].format('YYYY-MM-DD'),
                 'endTime': fieldsValue['endTime'].format('YYYY-MM-DD'),
-                'couponExpiration':Number(fieldsValue['couponExpiration'])
+                'couponExpiration': Number(fieldsValue['couponExpiration'])
             };
             console.log(activityInfo);
             addActivity(activityInfo).then(res => {
                     console.log(res);
-                    this.props.closeActivityInfoModal();
-
+                    alert('新增活动成功');
+                    setTimeout(this.props.closeActivityInfoModal(), 5000);
+                    this.forceUpdate();
                 }
             );
 
@@ -101,7 +102,7 @@ class ActivityInfoModal extends Component {
                         </Form.Item>
                         <Form.Item>
                             {getFieldDecorator('couponExpiration')(
-                                <Input placeholder={'优惠券有效期'} suffix={'小时'}/>
+                                <Input placeholder={'优惠券有效期'} suffix={'天'}/>
                             )}
                         </Form.Item>
                         <Form.Item>

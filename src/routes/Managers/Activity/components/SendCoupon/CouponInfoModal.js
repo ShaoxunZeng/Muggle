@@ -35,7 +35,8 @@ class CouponInfoModal extends Component {
 
             sendCoupon(couponInfo).then(res => {
                 console.log(res);
-                this.props.closeCouponInfoModal();
+                alert('成功赠送优惠券！');
+                setTimeout(this.props.closeCouponInfoModal(), 4000);
 
             });
 
