@@ -36,7 +36,6 @@ class ActivityInfoModal extends Component {
                     console.log(res);
                     alert('新增活动成功');
                     setTimeout(this.props.closeActivityInfoModal(), 5000);
-                    this.forceUpdate();
                 }
             );
 

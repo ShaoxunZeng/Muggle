@@ -1,14 +1,17 @@
 import React, {Component} from 'react'
 import styles from './index.module.less';
-import {Tag} from "antd";
+import {Tag, Icon} from "antd";
+import {delMovieOnShelf} from "../../services/apiOnShelf";
 
 class OnShelfCard extends Component {
     constructor(props) {
         super(props);
     }
 
+
+
     render() {
-        const {posterUrl, movieName, movieYear, movieLength, movieType, isOnshow} = this.props;
+        const {posterUrl, movieName, movieYear, movieLength, movieType, isOnshow, movieId} = this.props;
         return (
             <div className={styles.whole}>
                 <div className={styles['image-container']}>
@@ -29,7 +32,8 @@ class OnShelfCard extends Component {
                                 </Tag>
                             </div>
                         </div>
-                        <div className={styles.movieType}>{movieType}</div>
+                        <div className={styles.movieType}>{movieType}
+                        </div>
                     </div>
 
                 </div>

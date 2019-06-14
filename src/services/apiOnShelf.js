@@ -18,10 +18,10 @@ export const changeMovieOnshelf=(movieInfo)=>{
 };
 
 //接口51. 下架电影
-export const delMovieOnShelf=(movieId)=>{
+export const delMovieOnShelf=(info)=>{
     return request(`${prefix}/movie`,{
         method:'DELETE',
-        body:movieId
+        body:info
     })
 };
 

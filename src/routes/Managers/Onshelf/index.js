@@ -8,6 +8,8 @@ import OnShelfCard from "../../../components/OnShelfCard";
 import AddNew from "../../../components/AddNew";
 import NewMovie from "./components/NewMovie";
 import MovieInfo from "./components/MovieInfo";
+import {delMovieOnShelf} from "../../../services/apiOnShelf";
+import Button from "../../../components/Button";
 
 const testAllMovieOnShelf = [
     {
@@ -72,14 +74,14 @@ class Onshelf extends PureComponent {
 
     componentWillMount() {
 
-        // getMoviesOnShelf().then((res) => {
-        //     this.setState({
-        //         movieOnShelfList: res
-        //     })
-        // });
-        this.setState({
-          movieOnShelfList: testAllMovieOnShelf
-        })
+        getMoviesOnShelf().then((res) => {
+            this.setState({
+                movieOnShelfList: res
+            })
+        });
+        // this.setState({
+        //   movieOnShelfList: testAllMovieOnShelf
+        // })
     };
 
     toDetailPage = (movieId) => {
@@ -88,6 +90,17 @@ class Onshelf extends PureComponent {
             showMovieInfoPage: true,
             currentMovieId: movieId
         });
+    };
+
+    delMovie = (movieId) => {
+        delMovieOnShelf(
+            {'movieId': movieId}).then(res => {
+            console.log(res);
+            alert('下架成功！')
+        }).catch(err => {
+            alert('该电影当前有排片，无法下架')
+            console.log(err)
+        })
     };
 
     closeMovieInfoPage() {
@@ -128,7 +141,7 @@ class Onshelf extends PureComponent {
                         <Row className={styles.row}>
                             {
                                 movieOnShelfList.map((movieOnShelf, index) =>
-                                    <Col span={6}>
+                                    <Col span={6} style={{marginBottom:40}}>
                                         {index === 0 ?
                                             <div className={styles.addNew}
                                                  onClick={this.addMovie.bind(this)}><AddNew/>
@@ -144,6 +157,12 @@ class Onshelf extends PureComponent {
                                                 movieType={movieOnShelf.movieType}
                                                 isOnshow={movieOnShelf.isOnShow}
                                                 movieId={movieOnShelf.movieId}/>
+                                        </div>
+                                        <div style={{marginLeft:20}}>
+                                            <Button type={'gray'}
+                                                    onClick={() => this.delMovie(movieOnShelf.movieId)}>
+                                                下架电影
+                                            </Button>
                                         </div>
                                     </Col>)
                             }
