@@ -13,7 +13,6 @@ class MemberCardInfoModal extends Component {
     };
 
     handleSubmit = () => {
-        //todo() 重新渲染页面
         // e.preventDefault();
         this.props.form.validateFields((err, fieldsValue) => {
             if (err) {

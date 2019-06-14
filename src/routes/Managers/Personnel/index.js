@@ -41,7 +41,6 @@ class Personnel extends PureComponent {
 
         console.log('删除该工号管理员' + managerId);
 
-        //todo() Bug: 同删除活动 第一次删除无效
         delManager(managerId).then(res => {
             console.log(res);
             alert('删除成功');

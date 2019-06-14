@@ -155,8 +155,7 @@ class BuyModal extends React.Component {
             })
         });
 
-        // TODO
-        //  请求接口25 获取会员信息 catch住非会员 如果不是会员 俺么memberInfo设置为空 下面判断要用到
+
         // this.setState({
         //     isPaying: true,
         //     memberPaying: true,

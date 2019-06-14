@@ -51,7 +51,6 @@ class Mark extends PureComponent {
     }
 
     componentWillMount() {
-        //TODO()  调用接口24 查看想看列表 根据token测试
         getAllMarks().then(res => {
             console.log(res);
                 this.setState({

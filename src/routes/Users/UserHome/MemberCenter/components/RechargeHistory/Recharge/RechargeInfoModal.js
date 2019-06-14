@@ -35,7 +35,6 @@ class RechargeInfoModal extends Component {
                     'memberId': this.props.memberId
                 };
                 console.log(paymentInfo);
-                //todo() 调用接口31 充值会员卡 根据token测试
                 rechargeMemberCard(paymentInfo).then(res => {
                     console.log(res)
                 })

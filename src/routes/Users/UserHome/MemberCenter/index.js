@@ -40,7 +40,6 @@ class MemberCenter extends PureComponent {
     }
 
     componentWillMount() {
-        // todo() 调用接口25 获取会员信息 根据token测试
         getMemberInfo().then(res => {
                 console.log(res);
                 this.setState({
@@ -52,7 +51,6 @@ class MemberCenter extends PureComponent {
             console.log(err)
         });
 
-        // todo() 调用接口32 获得充值记录 根据token测试
         getRechargeHistory().then(res => {
             this.setState({
                 rechargeHistory: res

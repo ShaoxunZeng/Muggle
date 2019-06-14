@@ -67,7 +67,6 @@ class PaymentInfoModal extends Component {
                 };
                 console.log(paymentInfo);
 
-                // todo() 接口26 根据token测试
                 purchaseMemberCard(paymentInfo).then(res => {
                     console.log(res);
                     alert('恭喜您成为MuggleCinema会员！')

@@ -76,7 +76,8 @@ class Onshelf extends PureComponent {
 
         getMoviesOnShelf().then((res) => {
             this.setState({
-                movieOnShelfList: res
+                movieOnShelfList: res,
+                currentMovieId:res[0].movieId
             })
         });
         // this.setState({

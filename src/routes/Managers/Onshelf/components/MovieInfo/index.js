@@ -69,13 +69,25 @@ class MovieInfo extends Component {
     };
 
     componentWillMount() {
-        // todo() 调用接口5
-        //  getMovieDetails(this.props.movieId)
-        console.log(this.props.movieId);
+        //         getMovieDetails(this.props.movieId).then(res=>{
+        //             this.setState({
+        //                 movieInfo: res
+        //             })
+        //
+        // })
         this.setState({
             movieInfo: testMovieInfo
         })
     }
+
+    // () {
+    //     getMovieDetails(this.props.movieId).then(res=>{
+    //         this.setState({
+    //             movieInfo: res
+    //         })
+    //     });
+    // console.log(this.props.movieId);
+
 
     render() {
         const {movieInfo} = this.state;

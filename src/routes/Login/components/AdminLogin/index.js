@@ -16,7 +16,6 @@ class AdminLogin extends Component {
     }
 
     handleAdminLoginButtonClick() {
-        //todo() 调用登陆接口
         this.props.history.push('/manage')
     }
 
