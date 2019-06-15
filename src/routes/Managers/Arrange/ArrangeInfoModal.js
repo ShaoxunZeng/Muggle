@@ -88,6 +88,8 @@ class ArrangeInfoModal extends Component {
             }
             const sceneInfo = {
                 ...fieldsValue,
+                'movieId':Number(fieldsValue['movieId'].split(' ')[0]),
+                'price':Number(fieldsValue['price']),
                 'date': fieldsValue['date'].format('YYYY-MM-DD'),
                 'startTime':fieldsValue['startTime'].format('HH:mm')
             };
@@ -121,7 +123,7 @@ class ArrangeInfoModal extends Component {
                                 </Select>)}
                         </Form.Item>
                         <Form.Item>
-                            {getFieldDecorator('hallId')(
+                            {getFieldDecorator('hallName')(
                                 <Select placeholder={'选择影厅'}>
                                     {
                                         hallInfo.map(hall => (

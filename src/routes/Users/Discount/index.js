@@ -5,6 +5,8 @@ import WithHeaderFooter from "../../../components/WithHeaderFooter";
 import {Table} from "antd";
 import {Descriptions} from "antd";
 import {getAllActivities, getBriefUserInfo} from "../../../services/apiActivity";
+import {getMovieDetails} from "../../../services/apiMovies";
+import {getMovieInfoById} from "../../../utils/getMovieInfoById";
 
 
 const testActivityInfo = [
@@ -88,13 +90,23 @@ class Discount extends PureComponent {
     ];
 
     componentWillMount() {
-        getAllActivities().then(res=>
+        getAllActivities().then(res => {
             this.setState({
-                activities:res
+                activities: res
             })
-        )
+        }).then(() => {
+            let activities = this.state.activities;
+            activities.map(activity => {
+                activity.moviesIncluded=getMovieInfoById(activity.moviesIncluded)
+            })
+            this.setState({
+                activities:activities
+            })
+        })
+
 
     }
+
 
     onExpand = (expanded, record) => {
         console.log('onExpand', expanded, record);
@@ -110,7 +122,8 @@ class Discount extends PureComponent {
                     <Descriptions.Item label="参与电影" span={2}>{record.moviesIncluded.join(',')}</Descriptions.Item>
                     <Descriptions.Item label="有效时长">{record.couponExpiration}天</Descriptions.Item>
                     <Descriptions.Item label="使用门槛">{record.couponThreshold + '元'}</Descriptions.Item>
-                    <Descriptions.Item label="优惠">{'满'+record.couponThreshold +'减'+record.couponDiscount+'元'}</Descriptions.Item>
+                    <Descriptions.Item
+                        label="优惠">{'满' + record.couponThreshold + '减' + record.couponDiscount + '元'}</Descriptions.Item>
                 </Descriptions>
             </div>
 
@@ -134,7 +147,8 @@ class Discount extends PureComponent {
                 </div>
             </div>
         )
-    };
+    }
+    ;
 }
 
 export default WithHeaderFooter(Discount);

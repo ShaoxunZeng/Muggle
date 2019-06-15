@@ -1,7 +1,13 @@
-import {getMovieInfoList} from "../services/apiMovies";
+import {getMovieDetails, getMovieInfoList} from "../services/apiMovies";
 
 
 //根据movieId列表返回movieName列表
 export const getMovieInfoById = (moviesIncluded) => {
-    return getMovieInfoList(moviesIncluded).map(movieInfo => movieInfo.movieName);
+    let movieNameList = []
+    moviesIncluded.map(movieId => {
+        getMovieDetails(movieId).then(res => {
+            movieNameList.push(res.movieName)
+        })
+    });
+    return movieNameList
 };
