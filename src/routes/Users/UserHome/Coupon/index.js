@@ -112,7 +112,10 @@ class Coupon extends PureComponent {
                 {
                     couponList: res
                 }
-            )
+            );
+            if(res.length===0){
+                alert('暂无可用优惠券')
+            }
         });
         // this.setState(
         //     {

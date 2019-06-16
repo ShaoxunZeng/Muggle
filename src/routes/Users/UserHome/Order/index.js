@@ -266,11 +266,17 @@ class Order extends PureComponent {
     };
 
     componentWillMount() {
-        getAllTicketOrders().then((orders) =>
-            this.setState({
-                orders: orders
-            }));
+        getAllTicketOrders().then((orders) => {
+                this.setState({
+                    orders: orders
+                });
+                if (orders.length === 0) {
+                    alert('暂无订单，快去购票吧！')
+                }
+            }
+        )
     }
+
 
     handleBuyClick = (orderId, cost) => {
         console.log(orderId);

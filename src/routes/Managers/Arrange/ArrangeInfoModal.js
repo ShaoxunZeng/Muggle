@@ -2,7 +2,7 @@ import {Form, Input, Modal, DatePicker, TimePicker, Select} from 'antd'
 import Button from "../../../components/Button";
 import React, {Component} from 'react'
 import {getMoviesOnShelf} from "../../../services/apiMovies";
-import {getAllHalls} from "../../../services/apiHall";
+import {getAllHalls} from "../../../services/apiHalls";
 import {addScene} from "../../../services/apiArrange";
 
 const {Option} = Select;

@@ -55,7 +55,10 @@ class Mark extends PureComponent {
             console.log(res);
                 this.setState({
                     markList: res
-                })
+                });
+            if(res.length===0){
+                alert('你还没有想看电影，快去影院首页看看吧')
+            }
             }
         )
         // this.setState({

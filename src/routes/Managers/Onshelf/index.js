@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./index.module.less";
 import WithSider from "../../../components/WithSider";
 import {Icon, Input, Row, Col} from "antd";
-import {getMoviesOnShelf} from "../../../services/apiMovies";
+import {getMovieDetails, getMoviesOnShelf} from "../../../services/apiMovies";
 import OnShelfCard from "../../../components/OnShelfCard";
 import AddNew from "../../../components/AddNew";
 import NewMovie from "./components/NewMovie";
@@ -59,6 +59,46 @@ const testAllMovieOnShelf = [
     },
 ];
 
+const testMovieInfo = {
+    movieId: 1,
+    posterUrl: "https://s2.ax1x.com/2019/05/07/EyJKv4.png",
+    movieName: "雷  神 Thor: Ragnarok",
+    movieType: "Action, Adventure, Drama",
+    country: "USA",
+    language: 'English',
+    year: 2019,
+    length: 123,
+    score: 8.9,
+    description: '电影描述',
+    dateOnShow: '2019-06-06', //上映日期
+    visibleDate: '2019-06-10', // 排片信息观众可见时间
+    status: 1, //电影状态，0: 未上映，1: 上映中，2: 已结束
+    directors: [{
+        name: "雷神",
+        url: "https://s2.ax1x.com/2019/05/07/EyJKv4.png"
+    }, {
+        name: "李爹",
+        url: "https://s2.ax1x.com/2019/05/09/EgLvlj.png"
+    }],
+    starrings: [{
+        name: "国照",
+        url: "https://s2.ax1x.com/2019/05/09/EgOpmq.png"
+    }, {
+        name: "姜神",
+        url: "https://s2.ax1x.com/2019/05/09/EgXzd0.png"
+    }, {
+        name: "耿爷",
+        url: "https://s2.ax1x.com/2019/05/09/EgjCJU.png"
+    }, {
+        name: "羊男",
+        url: "https://s2.ax1x.com/2019/05/09/EgjAy9.png"
+    }, {
+        name: "鹿女",
+        url: "https://s2.ax1x.com/2019/05/09/Egjedx.png"
+    }]
+};
+
+
 class Onshelf extends PureComponent {
 
     constructor(props) {
@@ -68,7 +108,7 @@ class Onshelf extends PureComponent {
             showMainPage: true,
             showAddMoviePage: false,
             showMovieInfoPage: false,
-            currentMovieId: 0
+            currentMovieInfo: testMovieInfo
         }
     };
 
@@ -77,20 +117,31 @@ class Onshelf extends PureComponent {
         getMoviesOnShelf().then((res) => {
             this.setState({
                 movieOnShelfList: res,
-                currentMovieId:res[0].movieId
-            })
+            });
+            // console.log(res[0].movieId)
         });
         // this.setState({
         //   movieOnShelfList: testAllMovieOnShelf
         // })
     };
 
-    toDetailPage = (movieId) => {
+
+    showDetailPage = () => {
         this.setState({
             showMainPage: false,
             showMovieInfoPage: true,
-            currentMovieId: movieId
-        });
+        })
+    };
+
+    toDetailPage = (movieId) => {
+        getMovieDetails(movieId).then(res => {
+                this.setState({
+                    currentMovieInfo: res
+                });
+            console.log(res);
+            setTimeout(this.showDetailPage, 300)
+            }
+        );
     };
 
     delMovie = (movieId) => {
@@ -127,7 +178,7 @@ class Onshelf extends PureComponent {
     }
 
     render() {
-        const {movieOnShelfList, showMainPage, showMovieInfoPage, showAddMoviePage, currentMovieId} = this.state;
+        const {movieOnShelfList, showMainPage, showMovieInfoPage, showAddMoviePage, currentMovieId, currentMovieInfo} = this.state;
         return (
             <div className={styles.whole}>
                 <Input
@@ -142,7 +193,7 @@ class Onshelf extends PureComponent {
                         <Row className={styles.row}>
                             {
                                 movieOnShelfList.map((movieOnShelf, index) =>
-                                    <Col span={6} style={{marginBottom:40}}>
+                                    <Col span={6} style={{marginBottom: 40}}>
                                         {index === 0 ?
                                             <div className={styles.addNew}
                                                  onClick={this.addMovie.bind(this)}><AddNew/>
@@ -159,7 +210,7 @@ class Onshelf extends PureComponent {
                                                 isOnshow={movieOnShelf.isOnShow}
                                                 movieId={movieOnShelf.movieId}/>
                                         </div>
-                                        <div style={{marginLeft:20}}>
+                                        <div style={{marginLeft: 20, marginTop: 10}}>
                                             <Button type={'gray'}
                                                     onClick={() => this.delMovie(movieOnShelf.movieId)}>
                                                 下架电影
@@ -173,13 +224,15 @@ class Onshelf extends PureComponent {
                         <NewMovie closeAddMoviePage={this.closeAddMoviePage.bind(this)}/>
                     </div>
                     <div className={showMovieInfoPage ? styles['movie-info'] : styles.hidden}>
-                        <MovieInfo movieId={currentMovieId}/>
+                        <MovieInfo movieId={currentMovieId} movieInfo={currentMovieInfo}/>
                     </div>
+
                 </div>
 
             </div>
         )
-    };
+    }
+    ;
 }
 
 export default WithSider(Onshelf);
