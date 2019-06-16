@@ -9,8 +9,8 @@ let intervals = [{
   startTime: "7:00",
   endTime: "9:00"
 },{
-  startTime: "09:30",
-  endTime: "11:30"
+  startTime: "09:00",
+  endTime: "10:00"
 },{
   startTime: "21:30",
   endTime: "23:28"

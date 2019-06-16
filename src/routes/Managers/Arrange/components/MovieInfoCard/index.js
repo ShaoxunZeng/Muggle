@@ -4,7 +4,7 @@ import styles from "./index.module.less";
 
 class MovieInfoCard extends PureComponent {
   render() {
-    const {movieName, posterUrl, length} = this.props;
+    const {movieName, posterUrl, length, price} = this.props;
     return (
         <div className={styles.whole}>
           <div className={styles['image-container']}>
@@ -12,6 +12,7 @@ class MovieInfoCard extends PureComponent {
             <div className={styles.text}>
               <div>{movieName}</div>
               <div>{length + " min"}</div>
+              <div>¥  {price}</div>
             </div>
           </div>
         </div>

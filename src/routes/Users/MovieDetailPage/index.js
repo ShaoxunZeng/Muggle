@@ -39,7 +39,8 @@ const movieDetails = {
     }, {
         name: "鹿女",
         url: "https://s2.ax1x.com/2019/05/09/Egjedx.png"
-    }]
+    }],
+    visibleDate: "2019-06-14"
 };
 
 const testMovieComment = [
@@ -103,6 +104,7 @@ class MovieDetailPage extends PureComponent {
                     score={movieDetails.score}
                     directors={movieDetails.directors}
                     starrings={movieDetails.starrings}
+                    visibleDate={movieDetails.visibleDate}
                 />
                 <div className={styles.movieDes}>
                     <div className={styles.title}>
