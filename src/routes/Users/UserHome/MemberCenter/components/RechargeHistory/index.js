@@ -45,6 +45,7 @@ class RechargeHistory extends Component {
     render() {
         const rechargeHistory = this.props.rechargeHistory;
         const memberId = this.props.memberId;
+        const memberStrategyName=this.props.memberStrategyName;
 
         return (
             <div>
@@ -52,6 +53,8 @@ class RechargeHistory extends Component {
                 <RechargeInfoModal RechargeFormVisible={this.state.RechargeFormVisible}
                                    closeRechargeInfoModal={this.closeRechargeInfoModal}
                                    memberId={memberId}
+                                   memberStrategyName={memberStrategyName}
+
                 />
             </div>
         )

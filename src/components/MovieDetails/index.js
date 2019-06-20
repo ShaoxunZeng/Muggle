@@ -37,7 +37,7 @@ class MovieDetails extends Component {
       if (new Date() > new Date(visibleDate)) {
         this.props.history.push(`/movieorder/${movieId}`, state)
       } else {
-        alert("该片还未上映");
+        alert("该片暂无排片");
       }
     } else {
       alert('购票前请先登陆！');

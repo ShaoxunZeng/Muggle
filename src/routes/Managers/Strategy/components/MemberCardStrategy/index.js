@@ -4,7 +4,7 @@ import {Icon, Popconfirm, Table} from 'antd'
 import {delMemberCard, getMemberCards} from "../../../../../services/apiStrategy";
 import Button from "../../../../../components/Button";
 import MemberCardInfoModal from "./MemberCardInfoModal";
-import MemberCardReviseCard from "./MemberCardReviseCard";
+import MemberCardReviseModal from "./MemberCardReviseModal";
 
 const testMemberCardInfo = [
     {
@@ -74,7 +74,7 @@ class MemberCardStrategy extends Component {
     };
 
     changeMemberCardInfo = (memberCard) => {
-        console.log(memberCard);
+       // console.log(memberCard);
         this.setState({
             memberCardReviseFormVisible: true,
             memberCardReviseInfo: memberCard
@@ -102,7 +102,6 @@ class MemberCardStrategy extends Component {
                       onClick={this.showMemberCardForm}/>
                 <MemberCardInfoModal memberCardFormVisible={this.state.memberCardFormVisible}
                                      closeMemberCardInfoModal={this.closeMemberCardInfoModal}
-                                     memberCardReviseInfo={this.state.memberCardReviseInfo}
                 />
 
             </div>)
@@ -129,9 +128,12 @@ class MemberCardStrategy extends Component {
                         <div className={styles.changeButton}>
                             <Button type='yellow' onClick={() => this.changeMemberCardInfo(record)}>修改
                             </Button>
-                            <MemberCardReviseCard memberCardReviseFormVisible={this.state.memberCardReviseFormVisible}
-                                                  closeMemberCardReviseModal={this.closeMemberCardReviseModal}
-                                                  memberCardReviseInfo={this.state.memberCardReviseInfo}
+                            <MemberCardReviseModal memberCardReviseFormVisible={this.state.memberCardReviseFormVisible}
+                                                   closeMemberCardReviseModal={this.closeMemberCardReviseModal}
+                                                   memberStrategyId={this.state.memberCardReviseInfo.memberStrategyId}
+                                                   memberStrategyName={this.state.memberCardReviseInfo.memberStrategyName}
+                                                   purchaseThreshold={this.state.memberCardReviseInfo.purchaseThreshold}
+                                                   memberDiscountRate={this.state.memberCardReviseInfo.memberDiscountRate}
                             />
                         </div>
                         <Popconfirm title="确认删除该类会员卡吗？"

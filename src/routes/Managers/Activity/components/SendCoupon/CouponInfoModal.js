@@ -37,6 +37,8 @@ class CouponInfoModal extends Component {
                 console.log(res);
                 alert('成功赠送优惠券！');
                 setTimeout(this.props.closeCouponInfoModal(), 4000);
+                window.location.href = '/manage/activity';
+
 
             });
 

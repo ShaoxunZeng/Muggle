@@ -18,6 +18,7 @@ class LoginInput extends Component {
           setAuthorization({role: res.role, token: res.token});
           let role=res.role;
           console.log(role);
+          alert('登陆成功');
           switch (role) {
               case 'customer':
                   this.props.history.push('/home/message');

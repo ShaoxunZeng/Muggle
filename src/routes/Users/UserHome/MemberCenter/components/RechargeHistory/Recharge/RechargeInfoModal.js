@@ -4,6 +4,7 @@ import Button from "../../../../../../../components/Button";
 import {rechargeMemberCard} from "../../../../../../../services/apiMember";
 import {getMemberCards} from "../../../../../../../services/apiStrategy";
 import {Radio} from "antd/lib/radio";
+import styles from './index.module.less'
 
 class RechargeInfoModal extends Component {
     constructor(props) {
@@ -15,10 +16,15 @@ class RechargeInfoModal extends Component {
 
     componentWillMount() {
         getMemberCards().then(res => {
+            let memberCards = res.sort((a, b) => (a.purchaseThreshold - b.purchaseThreshold));
+            let memberStrategyName = this.props.memberStrategyName;
+            let currentCard = memberCards.filter(memberCard => memberCard.memberStrategyName === memberStrategyName)[0];
+            console.log(currentCard);
             this.setState({
-                memberCards: res
-            })
-        })
+                memberCards: memberCards.filter(memberCard => memberCard.purchaseThreshold > currentCard.purchaseThreshold)
+            });
+        });
+
     }
 
     handleCancel = () => {
@@ -54,16 +60,21 @@ class RechargeInfoModal extends Component {
                 <Modal visible={RechargeFormVisible} title={'VIP充值'}
                        onCancel={this.handleCancel}
                        footer={null}>
-                    {
+                    <div className={styles.text}>
+                        {
+                            memberCards.length === 0 ?
+                                <div className={styles.hint}>
+                                    您已是Muggle影院的顶级会员
+                                </div> :
+                                memberCards.map(memberCard =>
+                                    <div className={styles.hint}>
+                                        {'充值满' + memberCard.purchaseThreshold + '元  即可升级为' + memberCard.memberStrategyName + '  享受' + memberCard.memberDiscountRate * 10 + '折优惠'}
+                                    </div>
+                                )
 
-                        memberCards.map(memberCard =>
-                            <div>
-                                {memberCard.memberStrategyName + ' 满' + memberCard.purchaseThreshold + '打' + memberCard.memberDiscountRate * 10 + '折'}
-                            </div>
-                        )
 
-
-                    }
+                        }
+                    </div>
                     <Form onSubmit={this.handleSubmit.bind(this)}>
                         <Form.Item>
                             {getFieldDecorator('cost')(

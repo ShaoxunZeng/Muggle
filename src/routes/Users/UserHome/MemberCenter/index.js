@@ -89,6 +89,7 @@ class MemberCenter extends PureComponent {
                         <div className={styles.rechargeWrapper}>
                             <RechargeHistory rechargeHistory={rechargeHistory}
                                              memberId={memberInfo.memberId}
+                                             memberStrategyName={memberInfo.memberStrategyName}
                             />
                         </div>
                     </div>

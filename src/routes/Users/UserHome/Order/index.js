@@ -2,7 +2,7 @@ import {PureComponent} from "react";
 import React from "react";
 import styles from "./index.module.less";
 import WithHeaderFooterSider from "../../../../components/WithHeaderFooterSider";
-import {Table} from "antd";
+import {Popconfirm, Table} from "antd";
 import Button from "../../../../components/Button";
 import Tag from "./Tag";
 import AlreadyBuyModal from "./AlreadyBuyModal";
@@ -224,8 +224,14 @@ class Order extends PureComponent {
                             <div>
                                 <Button type="yellow"
                                         onClick={() => this.handleBuyClick(record.orderId, record.cost)}>立即支付</Button>
-                                <p style={{marginTop: 10, cursor: "pointer"}}
-                                   onClick={() => this.handleCancelOrderClick(record.orderId)}>取消订单</p>
+
+                                <Popconfirm title='确认取消订单？'
+                                            onConfirm={() => this.handleCancelOrderClick(record.orderId)}
+                                            okText="Yes"
+                                            cancelText="No">
+                                    <p style={{marginTop: 10, cursor: "pointer"}}>取消订单</p>
+                                </Popconfirm>
+
                             </div>
                             }
                             {record.status === 1 &&
@@ -233,8 +239,12 @@ class Order extends PureComponent {
                                 <Tag type="lime" onClick={() => this.handleLookClick(record.ticketCode)}>
                                     查看取票码
                                 </Tag>
-                                <p style={{marginTop: 10, cursor: "pointer"}}
-                                   onClick={() => this.handleReturnTicketClick(record.orderId)}>退票</p>
+                                <Popconfirm title='确认退票？'
+                                            onConfirm={() => this.handleReturnTicketClick(record.orderId)}
+                                            okText="Yes"
+                                            cancelText="No">
+                                    <p style={{marginTop: 10, cursor: "pointer"}}>退票</p></Popconfirm>
+
                             </div>
                             }
                             {record.status === 3 &&
@@ -298,13 +308,15 @@ class Order extends PureComponent {
         cancelOrder({'orderId': orderId}).then(res => {
             console.log(res);
             alert("成功取消订单!");
-
+            window.location.href = '/home/order';
         })
     };
 
     handleReturnTicketClick = (orderId) => {
         returnTicket({'orderId': orderId}).then(res => {
             alert("退票成功！");
+            window.location.href = '/home/order';
+
         })
     };
 
