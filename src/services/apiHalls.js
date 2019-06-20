@@ -15,3 +15,11 @@ export const addHall = (hall) => {
     body: hall
   })
 };
+
+//53. 修改影厅
+export const changeHall = (hall) => {
+  return request(`${prefix}/hall`, {
+    method: 'PUT',
+    body: hall
+  })
+};
