@@ -37,7 +37,7 @@ class ArrangeInfoCard extends PureComponent {
   };
 
   handleTimeChange = (res) => {
-    let t = moment(res).format("HH:mm:ss");
+    let t = moment(res).format("HH:mm");
     console.log(t);
     this.setState({
       time: t
