@@ -45,10 +45,10 @@ export default [
   <Route component={(getRole() !== "" && getRole() !== "customer") ? Account : Login} exact path='/manage/account'/>,
 
   // 管理员界面
-  <Route component={getRole() !== "administrator" ? Halls : Login} exact path='/manage/halls'/>,
-  <Route component={getRole() !== "administrator" ? Activity : Login} exact path='/manage/activity'/>,
-  <Route component={getRole() !== "administrator" ? Strategy : Login} exact path='/manage/strategy'/>,
-  <Route component={getRole() !== "administrator" ? Personnel : Login} exact path='/manage/personnel'/>,
+  <Route component={getRole() === "administrator" ? Halls : Login} exact path='/manage/halls'/>,
+  <Route component={getRole() === "administrator" ? Activity : Login} exact path='/manage/activity'/>,
+  <Route component={getRole() === "administrator" ? Strategy : Login} exact path='/manage/strategy'/>,
+  <Route component={getRole() === "administrator" ? Personnel : Login} exact path='/manage/personnel'/>,
 
   // 用户界面
   <Route component={AllMovies} exact path='/allmovies'/>,
