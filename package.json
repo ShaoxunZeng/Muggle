@@ -46,5 +46,5 @@
     "react-hot-loader": "^4.8.6"
   },
   "homepage": ".",
-  "proxy": "http://172.26.19.25:8080"
+  "proxy": "http://192.168.43.126:8080"
 }

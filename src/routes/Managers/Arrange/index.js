@@ -162,6 +162,7 @@ class Arrange extends PureComponent {
                     optionFilterProp="children"
                     className={styles.hallpicker}
                     onChange={this.handleChooseHall}
+                    defaultValue={this.state.hallName}
                 >
                   {halls.map((hall) => {
                     return <Select.Option value={hall.hallName}>{hall.hallName}</Select.Option>

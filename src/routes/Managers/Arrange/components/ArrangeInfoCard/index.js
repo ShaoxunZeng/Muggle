@@ -72,8 +72,19 @@ class ArrangeInfoCard extends PureComponent {
     });
   };
 
+  componentWillMount() {
+    const {arrangeInfo, halls} = this.props;
+    this.setState({
+      hallName: arrangeInfo.hallName,
+      date: arrangeInfo.data,
+      time: arrangeInfo.startTime,
+      price: arrangeInfo.price
+    });
+  };
+
   render() {
     const {arrangeInfo, halls} = this.props;
+    const {hallName, date, time, price} = this.state;
     return (
         <div className={styles.whole}>
           <div className={styles.info}>
@@ -93,6 +104,7 @@ class ArrangeInfoCard extends PureComponent {
                   optionFilterProp="children"
                   className={styles.input}
                   onChange={this.handleHallChange}
+                  defaultValue={hallName}
               >
                 {halls.map(hall =>
                     <Select.Option value={hall.hallName}>{hall.hallName}</Select.Option>
@@ -101,15 +113,15 @@ class ArrangeInfoCard extends PureComponent {
             </div>
             <div className={styles.container}>
               <div className={styles.text}>日期</div>
-              <DatePicker className={styles.input} onChange={this.handleDateChange}/>
+              <DatePicker className={styles.input} onChange={this.handleDateChange} defaultValue={date}/>
             </div>
             <div className={styles.container}>
               <div className={styles.text}>时间</div>
-              <TimePicker onChange={this.handleTimeChange} className={styles.input}/>
+              <TimePicker onChange={this.handleTimeChange} className={styles.input} defaultValue={time}/>
             </div>
             <div className={styles.container}>
               <div className={styles.text}>票价</div>
-              <Input className={styles.input} placeholder="price" onChange={this.handlePriceChange}/>
+              <Input className={styles.input} placeholder="price" onChange={this.handlePriceChange} defaultValue={price}/>
             </div>
             <Button type="yellow" onClick={this.handleSubmitChange}>确认修改</Button>
             <Button type="gray"
