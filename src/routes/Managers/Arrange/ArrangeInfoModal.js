@@ -96,7 +96,10 @@ class ArrangeInfoModal extends Component {
             console.log(sceneInfo);
             addScene(sceneInfo).then(res=>{
                 alert('新增排片成功');
-                setTimeout(this.props.closeArrangeInfoModal(),5000);
+                setTimeout(this.props.closeArrangeInfoModal(),3000);
+                setTimeout(  window.location.href = "/manage/arrange",300);
+
+
             })
         });
     };

@@ -15,7 +15,9 @@ class RefundStrategy extends Component {
         this.state = {
             latestRefundTimeBeforePlaying: 0,
             refundRate: 0,
-            changeRefundVisible: false
+            changeRefundVisible: false,
+            newLatestRefundTimeBeforePlaying: 0,
+            newRefundRate: 0,
         }
     }
 
@@ -24,8 +26,10 @@ class RefundStrategy extends Component {
                 const refundInfo = res;
                 console.log(res);
                 this.setState({
-                    latestRefundTimeBeforePlaying: refundInfo.latestRefundTimeBeforePaying,
-                    refundRate: refundInfo.refundRate
+                    latestRefundTimeBeforePlaying: refundInfo.latestRefundTimeBeforePlaying,
+                    refundRate: refundInfo.refundRate,
+                    newLatestRefundTimeBeforePlaying: refundInfo.latestRefundTimeBeforePlaying,
+                    newRefundRate: refundInfo.refundRate*100,
                 });
             }
         );
@@ -52,21 +56,26 @@ class RefundStrategy extends Component {
 
     handleRateChange = (e) => {
         this.setState({
-            refundRate: e.target.value
+            newRefundRate: e.target.value
         })
     };
     handleTimeChange = (e) => {
         this.setState({
-            latestRefundTimeBeforePlaying: e.target.value
+            newLatestRefundTimeBeforePlaying: e.target.value
         })
     };
 
     handleChangeSubmit = () => {
-        let refundInfo = this.state;
-        delete refundInfo.changeRefundVisible;
+        let refundInfo = {};
+        refundInfo.refundRate = Number(this.state.newRefundRate) / 100;
+        refundInfo.latestRefundTimeBeforePlaying = Number(this.state.newLatestRefundTimeBeforePlaying);
         console.log(refundInfo);
         changeRefundStrategy(refundInfo).then(() => {
             alert('修改成功');
+            this.setState({
+                latestRefundTimeBeforePlaying: this.state.newLatestRefundTimeBeforePlaying,
+                refundRate: this.state.newRefundRate/100,
+            });
             this.closeModal();
         })
         //this.closeModal();
@@ -99,12 +108,12 @@ class RefundStrategy extends Component {
                             <div className={styles.text}>
                                 <div className={styles.hint}>开场前可退票时间</div>
                                 <Input className={styles.input} onChange={this.handleTimeChange.bind(this)}
-                                       value={latestRefundTimeBeforePlaying} suffix={'小时'}/>
+                                       value={this.state.newLatestRefundTimeBeforePlaying} suffix={'小时'}/>
                             </div>
                             <div className={styles.text}>
                                 <div className={styles.hint}>退票可返还金额百分比</div>
                                 <Input className={styles.input} onChange={this.handleRateChange.bind(this)}
-                                       value={refundRate}/>
+                                       value={this.state.newRefundRate} suffix={'%'}/>
                             </div>
                             <div className={styles.footer}>
                                 <Button type={'yellow'} onClick={this.handleChangeSubmit.bind(this)}>提交修改</Button>

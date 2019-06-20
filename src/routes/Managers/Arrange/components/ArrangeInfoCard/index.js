@@ -76,8 +76,8 @@ class ArrangeInfoCard extends PureComponent {
     const {arrangeInfo, halls} = this.props;
     this.setState({
       hallName: arrangeInfo.hallName,
-      date: arrangeInfo.data,
-      time: arrangeInfo.startTime,
+      date: arrangeInfo.date,
+      time: arrangeInfo.interval.startTime,
       price: arrangeInfo.price
     });
   };
@@ -117,7 +117,7 @@ class ArrangeInfoCard extends PureComponent {
             </div>
             <div className={styles.container}>
               <div className={styles.text}>时间</div>
-              <TimePicker onChange={this.handleTimeChange} className={styles.input} defaultValue={moment(time)}/>
+              <TimePicker onChange={this.handleTimeChange} className={styles.input} format={'HH:mm'} defaultValue={moment(time,"HH:mm")}/>
             </div>
             <div className={styles.container}>
               <div className={styles.text}>票价</div>

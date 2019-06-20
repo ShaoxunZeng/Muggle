@@ -12,17 +12,20 @@ class ManagerInfoModal extends Component {
     handleCancel = () => {
         this.props.closeManagerInfoModal();
     };
-    handleSubmit =() => {
+    handleSubmit = e => {
+        e.preventDefault();
         this.props.form.validateFields((err, value) => {
             if (!err) {
                 console.log(value);
                 addManager(value).then(res => {
-                    console.log(res)
-                    alert('添加成功')
+                    console.log(res);
+                    alert('添加成功');
+                    this.props.closeManagerInfoModal();
+                    window.location.href = "/manage/personnel";
+
                 })
             }
         });
-        this.props.closeManagerInfoModal();
     };
 
     render() {

@@ -8,6 +8,7 @@ class MemberCardInfoModal extends Component {
         super(props)
     }
 
+
     handleCancel = () => {
         this.props.closeMemberCardInfoModal();
     };
@@ -22,17 +23,16 @@ class MemberCardInfoModal extends Component {
                 ...fieldsValue,
                 "memberDiscountRate": Number(fieldsValue['memberDiscountRate']),
                 "purchaseThreshold": Number(fieldsValue['purchaseThreshold']),
-                memberPictureUrl:''
+                memberPictureUrl: ''
             };
             console.log(newMemberCard);
 
-            addMemberCard(newMemberCard).then(res=>{
+            addMemberCard(newMemberCard).then(res => {
                 console.log(res);
                 this.props.closeMemberCardInfoModal();
 
             });
         });
-
 
     };
 
@@ -40,6 +40,7 @@ class MemberCardInfoModal extends Component {
     render() {
         const {memberCardFormVisible} = this.props;
         const {getFieldDecorator} = this.props.form;
+
         return (
             <div>
                 <Modal title={'新会员卡信息'}
@@ -49,8 +50,10 @@ class MemberCardInfoModal extends Component {
                     <Form onSubmit={this.handleSubmit.bind(this)}>
                         <Form.Item>
                             {getFieldDecorator('memberStrategyName')(
-                                <Input placeholder={'会员卡名称'}/>
-                            )}
+                                <Input placeholder={'会员卡名称'}
+                                />
+                            )
+                            }
                         </Form.Item>
                         <Form.Item>
                             {getFieldDecorator('purchaseThreshold')(

@@ -83,7 +83,6 @@ class AllMovies extends PureComponent {
     };
 
     handleSearch = (value) => {
-        alert(value);
         this.setState({
             currentMovieOnShelfList: this.state.currentMovieOnShelfList.filter(movie => movie.movieName.indexOf(value) !== -1)
         })

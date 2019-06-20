@@ -1,4 +1,4 @@
-import { PureComponent } from "react";
+import {PureComponent} from "react";
 import React from "react";
 import styles from "./index.module.less";
 import ImageBoard from "../../../components/ImageBoard";
@@ -7,13 +7,16 @@ import Button from "../../../components/Button";
 import WithHeaderFooter from "../../../components/WithHeaderFooter";
 
 class PrivateCinema extends PureComponent {
-  render() {
-    return (
-        <div className={styles.whole}>
-          Private Cinema
-        </div>
-    )
-  };
+    componentWillMount() {
+        alert('该功能暂未上线！');
+        setTimeout(this.props.history.push('/allmovies'), 3000)
+    }
+
+    render() {
+        return (
+            <div className={styles.whole}/>
+        )
+    };
 }
 
 export default WithHeaderFooter(PrivateCinema);

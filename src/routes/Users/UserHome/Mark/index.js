@@ -57,7 +57,8 @@ class Mark extends PureComponent {
             markList: res
           });
           if (res.length === 0) {
-            alert('你还没有想看电影，快去影院首页看看吧')
+            alert('你还没有想看电影，快去影院首页看看吧');
+            this.props.history.push('/allmovies')
           }
         }
     )

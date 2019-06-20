@@ -78,8 +78,7 @@ export default async function request(url, options) {
   } catch (e) {
     console.log(e);
 
-    if (e.response.status === 500) {
-    } else if (e.response.status === 400) {
+   if (e.response.status === 400) {
       throw e;
     } else if (e.response.status === 401) {
       alert("用户名或密码错误");

@@ -47,7 +47,7 @@ class Personnel extends PureComponent {
             this.setState({
                 managerList: this.state.managerList.filter(manager => manager.managerId !== managerId)
             });
-        })
+        });
     };
 
     showManagerForm = () => {

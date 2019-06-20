@@ -138,8 +138,8 @@ class Onshelf extends PureComponent {
                 this.setState({
                     currentMovieInfo: res
                 });
-            console.log(res);
-            setTimeout(this.showDetailPage, 300)
+                console.log(res);
+                setTimeout(this.showDetailPage, 300)
             }
         );
     };
@@ -148,9 +148,10 @@ class Onshelf extends PureComponent {
         delMovieOnShelf(
             {'movieId': movieId}).then(res => {
             console.log(res);
-            alert('下架成功！')
+            alert('下架成功！');
+            setTimeout(window.location.href = "/manage/onshelf", 1000)
         }).catch(err => {
-            alert('该电影当前有排片，无法下架')
+            alert('该电影当前有排片，无法下架');
             console.log(err)
         })
     };
@@ -177,12 +178,19 @@ class Onshelf extends PureComponent {
         })
     }
 
+    handleSearch = (value) => {
+        this.setState({
+            movieOnShelfList: this.state.movieOnShelfList.filter(movie => movie.movieName.indexOf(value) !== -1)
+        })
+    };
+
     render() {
         const {movieOnShelfList, showMainPage, showMovieInfoPage, showAddMoviePage, currentMovieId, currentMovieInfo} = this.state;
         return (
             <div className={styles.whole}>
                 <Input
                     placeholder="Search Movies"
+                    onSearch={value => this.handleSearch(value)}
                     prefix={<Icon type="search" style={{color: 'rgb(255,255,255)'}}/>}
                     className={styles.input}
                 />

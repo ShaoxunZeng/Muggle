@@ -1,8 +1,10 @@
 import React, {Component} from 'react'
+import styles from './index.module.less'
 import {Icon, Popconfirm, Table} from 'antd'
 import {delMemberCard, getMemberCards} from "../../../../../services/apiStrategy";
 import Button from "../../../../../components/Button";
 import MemberCardInfoModal from "./MemberCardInfoModal";
+import MemberCardReviseCard from "./MemberCardReviseCard";
 
 const testMemberCardInfo = [
     {
@@ -32,7 +34,8 @@ class MemberCardStrategy extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            memberCardInfo: []
+            memberCardInfo: [],
+            memberCardReviseInfo: testMemberCardInfo[0]
         }
     }
 
@@ -40,7 +43,8 @@ class MemberCardStrategy extends Component {
         getMemberCards().then(res => {
             this.setState({
                 memberCardInfo: res,
-                memberCardFormVisible: false
+                memberCardFormVisible: false,
+                memberCardReviseFormVisible: false
             })
         });
         // this.setState({
@@ -50,12 +54,17 @@ class MemberCardStrategy extends Component {
     }
 
     deleteMemberCard = memberStrategyId => {
+        console.log(memberStrategyId);
         delMemberCard(memberStrategyId).then(res => {
-            console.log(res);
+            alert('删除成功！');
             this.setState({
                 memberCardInfo: this.state.memberCardInfo.filter(memberCard => memberCard.memberStrategyId !== memberStrategyId)
             });
+
+        }).catch(res => {
+            alert('该会员卡已有用户使用，不可删除！')
         })
+
     };
 
     showMemberCardForm = () => {
@@ -64,9 +73,24 @@ class MemberCardStrategy extends Component {
         })
     };
 
+    changeMemberCardInfo = (memberCard) => {
+        console.log(memberCard);
+        this.setState({
+            memberCardReviseFormVisible: true,
+            memberCardReviseInfo: memberCard
+        })
+    };
+
+
     closeMemberCardInfoModal = () => {
         this.setState({
             memberCardFormVisible: false
+        })
+    };
+
+    closeMemberCardReviseModal = () => {
+        this.setState({
+            memberCardReviseFormVisible: false
         })
     };
 
@@ -78,6 +102,7 @@ class MemberCardStrategy extends Component {
                       onClick={this.showMemberCardForm}/>
                 <MemberCardInfoModal memberCardFormVisible={this.state.memberCardFormVisible}
                                      closeMemberCardInfoModal={this.closeMemberCardInfoModal}
+                                     memberCardReviseInfo={this.state.memberCardReviseInfo}
                 />
 
             </div>)
@@ -100,9 +125,20 @@ class MemberCardStrategy extends Component {
             title: this.operation, align: 'center', dataIndex: 'delete',
             render: (text, record) =>
                 this.state.memberCardInfo.length >= 1 ? (
-                    <Popconfirm title="确认删除该类会员卡吗？" onConfirm={() => this.deleteMemberCard(record.memberStrategyId)}>
-                        <Button type='yellow'>Delete</Button>
-                    </Popconfirm>
+                    <div className={styles.buttonGroup}>
+                        <div className={styles.changeButton}>
+                            <Button type='yellow' onClick={() => this.changeMemberCardInfo(record)}>修改
+                            </Button>
+                            <MemberCardReviseCard memberCardReviseFormVisible={this.state.memberCardReviseFormVisible}
+                                                  closeMemberCardReviseModal={this.closeMemberCardReviseModal}
+                                                  memberCardReviseInfo={this.state.memberCardReviseInfo}
+                            />
+                        </div>
+                        <Popconfirm title="确认删除该类会员卡吗？"
+                                    onConfirm={() => this.deleteMemberCard(record.memberStrategyId)}>
+                            <Button type='gray'>删除</Button>
+                        </Popconfirm>
+                    </div>
                 ) : null,
         }
     ];
