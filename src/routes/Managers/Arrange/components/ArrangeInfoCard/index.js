@@ -113,11 +113,11 @@ class ArrangeInfoCard extends PureComponent {
             </div>
             <div className={styles.container}>
               <div className={styles.text}>日期</div>
-              <DatePicker className={styles.input} onChange={this.handleDateChange} defaultValue={date}/>
+              <DatePicker className={styles.input} onChange={this.handleDateChange} defaultValue={moment(date)}/>
             </div>
             <div className={styles.container}>
               <div className={styles.text}>时间</div>
-              <TimePicker onChange={this.handleTimeChange} className={styles.input} defaultValue={time}/>
+              <TimePicker onChange={this.handleTimeChange} className={styles.input} defaultValue={moment(time)}/>
             </div>
             <div className={styles.container}>
               <div className={styles.text}>票价</div>
